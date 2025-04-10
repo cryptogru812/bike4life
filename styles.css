@@ -7,9 +7,7 @@ body {
   flex-direction: column;
   gap: 30px;
   justify-content: center;
-  
 }
-
 
 .landscape-section {
   background-image: url("./assets/image/header.svg");
@@ -37,8 +35,36 @@ body {
   font-weight: 300;
 }
 
+.main {
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.element {
+  display: flex;
+}
+
+.right {
+  width: 83.33%;
+}
+
+.right hr {
+  margin-top: 40px;
+  margin-bottom: 0;
+  border: 0.5px solid white;
+}
+
+.bike-element hr { 
+  margin: 13px 0;
+  border: 0.5px solid white;
+}
+
+.left {
+  width: 16.67%;
+}
+
 .bikes {
-  flex: 6;
   display: flex;
   gap: 25px;
   overflow-x: auto;
@@ -52,10 +78,6 @@ body {
   border-radius: 8px;
   width: 80%;
 }
-
-/* .bikes::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 2px #D9D9D9;
-} */
 
 .bikes::-webkit-scrollbar-thumb {
   background-color: #626262;
@@ -137,7 +159,7 @@ body {
   color: #fff;
   font-family: Arial, sans-serif;
   margin-top: 52px;
-  padding: 20px;
+  padding: 0 25px;
   width: 300px;
   border-radius: 10px;
   text-align: center;
@@ -150,19 +172,14 @@ body {
 }
 
 .explore-btn {
-  background: linear-gradient(90deg, #2cd4d9, #5a67d8);
+  background: linear-gradient(90deg, #23C9B5, #23A9D2);
   color: white;
   border: none;
   border-radius: 6px;
-  padding: 10px 20px;
+  padding: 10px 60px;
   font-size: 14px;
   cursor: pointer;
   margin-bottom: 10px;
-}
-
-hr {
-  border: 0.5px solid #333;
-  margin: 16px 0;
 }
 
 .features {
@@ -189,8 +206,8 @@ hr {
 }
 
 .positive span {
-  color: #2cd4d9;  
-  border:#23C9B5 2px solid;
+  color: #2cd4d9;
+  border: #23C9B5 2px solid;
   aspect-ratio: 1/1;
   display: flex;
   justify-content: center;
@@ -199,9 +216,9 @@ hr {
 }
 
 .negative span {
-  color: #ec4899;  
-  border:#ec4899 2px solid;
-  aspect-ratio: 1/1;  
+  color: #ec4899;
+  border: #ec4899 2px solid;
+  aspect-ratio: 1/1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -209,8 +226,9 @@ hr {
 }
 
 .card {
-  padding: 20px;
+  padding: 0 25px;
   text-align: center;
+  min-width: 300px;
 }
 
 .icon img {
@@ -220,6 +238,10 @@ hr {
 
 .bsa img {
   width: 78px;
+}
+
+.zoll img {
+  width: 50px;
 }
 
 .label {
@@ -253,4 +275,158 @@ hr {
   font-size: 12px;
   color: #aaa;
   padding: 10px 0;
+}
+
+.dot {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.cyan {
+  background-color: #06b6d4;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin: 18px;
+}
+
+.pink {
+  background-color: #ec4899;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin: 18px;
+}
+
+.bike-element {
+  display: flex;
+  gap: 25px;
+  overflow: hidden;
+}
+
+.filter-box {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 8px;
+  color: black;
+  background-color: #767676;
+  padding-bottom: 190px;
+}
+
+.filter-box h2 {
+  display: flex;
+  font-size: 20px;
+  font-weight: 800;
+  gap: 8px;
+  align-items: center;
+  margin: 0px;
+}
+
+.left hr {
+  margin: 0;
+  border: 0.5px solid #2C2C2C;
+}
+
+.range-values {
+  font-size: 1.2em;
+  margin-bottom: 14px;
+  font-weight: bold;
+}
+
+.range-slider {
+  position: relative;
+  height: 8px;
+  width: 100%;
+  border-radius: 4px;
+  background: linear-gradient(to right, #552037, #BB4678);
+}
+
+.slider-track {
+  position: absolute;
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(to right, #23C8B6, #23A9D1);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  position: absolute;
+  pointer-events: none;
+  width: 100%;
+  height: 8px;
+  background: transparent;
+  margin: 0;
+  z-index: 2;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #23C8B6;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  pointer-events: all;
+}
+
+input[type=range]::-moz-range-thumb {
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #23A9D1;
+  border: 2px solid white;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.accordion {  
+  background-color: #B8B8B8;
+}
+
+.accordion-header {
+  background-color: #434343;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 700;
+  position: relative;
+  cursor: pointer;
+}
+
+.allow {
+  position: absolute;
+  right: 20px;
+  top: 30%;
+}
+
+.accordion-body {
+  padding: 20px 10px;
+  color: #000;
+}
+
+.accordion-item {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 20px;
+}
+
+.bike {
+  padding: 6px 0;
+}
+
+.framekit {
+  padding: 25px 0;
+}
+
+.contra {
+  padding: 40px 0 0 0;
 }

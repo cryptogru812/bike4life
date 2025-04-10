@@ -1,7 +1,12 @@
-const result = document.getElementById("result");
+const bikeCrad = document.getElementById("bike-card");
+const priceBox = document.getElementById("price-box");
+const titan = document.getElementById("titan");
+const bsa = document.getElementById("bsa");
+const zoll = document.getElementById("zoll");
+const tools = document.getElementById("tools");
 
 const getData = () => {
-    bikes = [
+    const bikes = [
         { id: 1, image: './assets/image/bike/bike1.svg', title: 'Aristos T', slogan: 'A titan for everyone!' },
         { id: 2, image: './assets/image/bike/bike2.svg', title: 'Aristos GT', slogan: 'For gravel and bikepacking' },
         { id: 3, image: './assets/image/bike/bike3.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities' },
@@ -15,7 +20,12 @@ const getData = () => {
         { id: 11, image: './assets/image/bike/bike3.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities' },
         { id: 12, image: './assets/image/bike/bike4.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities' },
     ]
-    result.innerHTML = "";
+    bikeCrad.innerHTML = "";
+    priceBox.innerHTML = "";
+    titan.innerHTML = ""
+    bsa.innerHTML = "";
+    zoll.innerHTML = "";
+    tools.innerHTML = "";
     bikes.forEach((bike) => {
         const div = document.createElement("div");
         div.innerHTML = `
@@ -39,7 +49,12 @@ const getData = () => {
                 </div>
             </div>
         </div>
-
+      `;
+      bikeCrad.appendChild(div);
+    });
+    bikes.forEach(() => {
+        const div = document.createElement("div");
+        div.innerHTML = `
         <div class="price-box">
             <div class="price">3.499,00€</div>
             <button class="explore-btn">Explore</button>
@@ -53,7 +68,12 @@ const getData = () => {
                 <li class="negative"><span>–</span> No complete cable integration possible</li>
             </ul>
         </div>
-
+      `;
+      priceBox.appendChild(div);
+    });
+    bikes.forEach(() => {
+        const div = document.createElement("div");
+        div.innerHTML = `
         <div class="card">
             <div class="icon">
                 <img src="./assets/image/bike-frame-icon.svg" alt="Bike Frame" />
@@ -84,7 +104,12 @@ const getData = () => {
             <div class="divider"></div>
             <div class="label">Partially integrated from down tube</div>
         </div>
-
+      `;
+      titan.appendChild(div);
+    });
+    bikes.forEach(() => {
+        const div = document.createElement("div");
+        div.innerHTML = `
         <div class="card">
             <div class="bsa">
                 <img src="./assets/image/bsa.svg" alt="BSA" />
@@ -96,8 +121,58 @@ const getData = () => {
             <div class="label">10 - 48</div>
         </div>
       `;
-        result.appendChild(div);
+      bsa.appendChild(div);
     });
+    bikes.forEach(() => {
+        const div = document.createElement("div");
+        div.innerHTML = `
+        <div class="card">
+            <div class="zoll">
+                <img src="./assets/image/zoll.svg" alt="zoll" />
+            </div>
+            <div class="label">28 Zoll</div>
+            <div class="divider"></div>
+            <div class="label">--</div>
+            <div class="divider"></div>
+            <div class="label">45mm</div>
+            <div class="divider"></div>
+            <div class="label">145Kg</div>
+        </div>
+      `;
+      zoll.appendChild(div);
+    });
+    bikes.forEach(() => {
+        const div = document.createElement("div");
+        div.innerHTML = `
+        <div class="card">
+            <div class="zoll">
+                <img src="./assets/image/tools.svg" alt="tools" />
+            </div>
+            <div class="dot"><div class="cyan"></div></div>
+            <div class="divider"></div>
+            <div class="dot"><div class="pink"></div></div>
+            <div class="divider"></div>
+            <div class="dot"><div class="cyan"></div></div>
+            <div class="divider"></div>            
+            <div class="label">3x</div>
+            <div class="divider"></div>
+            <div class="dot"><div class="cyan"></div></div>
+            <div class="divider"></div>
+            <div class="dot"><div class="pink"></div></div>
+            <div class="divider"></div>
+            <div class="dot"><div class="cyan"></div></div>
+            <div class="divider"></div>
+        </div>
+      `;
+      tools.appendChild(div);
+    });
+    bikeCrad.addEventListener("scroll", () => {
+        priceBox.scrollLeft = bikeCrad.scrollLeft;
+        titan.scrollLeft = bikeCrad.scrollLeft;
+        bsa.scrollLeft = bikeCrad.scrollLeft;
+        zoll.scrollLeft = bikeCrad.scrollLeft;
+        tools.scrollLeft = bikeCrad.scrollLeft;
+    })
 };
 
 getData();

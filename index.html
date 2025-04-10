@@ -18,14 +18,75 @@
       </div>
     </div>
   </div>
-  <div style="display: flex; color: white; font-size: larger;">
-    <div style="flex: 1;">
-      <p style="color: white;">Left</p>
+  <div class="main">
+    <div class="element">
+      <div class="left">
+        <div class="filter-box">
+          <h2>Price <img src="./assets/image/down.svg" /></h2>
+          <hr />
+          <div class="range-values" id="rangeValue">2000€ to 4000€</div>
+          <div class="range-slider">
+            <div class="slider-track" id="slider-track"></div>
+            <input type="range" min="0" max="10000" value="2000" id="range-min">
+            <input type="range" min="0" max="10000" value="4000" id="range-max">
+          </div>
+        </div>
+      </div>
+      <div class="right bikes" id="bike-card">
+        <h3>Loading...</h3>
+      </div>
     </div>
-    <div class="bikes" id="result">
-      <h3>Loading...</h3>
+    <div class="element">
+      <div class="left accordion">
+        <div class="accordion-header" onclick="toggleAccordion()">
+          <span>General Infos</span>
+          <span class="allow" id="arrow">▾</span>
+        </div>
+        <div class="accordion-body" id="accordionContent">
+          <div class="accordion-item bike">Price Bike</div>
+          <hr />
+          <div class="accordion-item framekit">Price Framekit</div>
+          <hr />
+          <div class="accordion-item contra">Pro and Contra</div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="bike-element" id="price-box"></div>
+        <hr id="price-box-hr" />
+      </div>
+    </div>
+    <div class="element">
+      <div class="left"></div>
+      <div class="right">
+        <div class="bike-element" id="titan"></div>
+        <hr />
+      </div>
+    </div>
+    <div class="element">
+      <div class="left"></div>
+      <div class="right">
+        <div class="bike-element" id="bsa"></div>
+      </div>
+      <hr />
+    </div>
+    <div class="element">
+      <div class="left"></div>
+      <div class="right">
+        <div class="bike-element" id="zoll"></div>
+        <hr />
+      </div>
+    </div>
+    <div class="element">
+      <div class="left"></div>
+      <div class="right">
+        <div class="bike-element" id="tools"></div>
+      </div>
     </div>
   </div>
-  <script src="./assets/java/bike.js"></script>
+  </div>
+  <script src="./assets/js/bike.js"></script>
+  <script src="./assets/js/filter.js"></script>
+  <script src="./assets/js/toggle.js"></script>
 </body>
+
 </html>
