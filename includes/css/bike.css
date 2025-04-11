@@ -1,7 +1,12 @@
+@font-face {
+  font-family: inter;
+  src: url("../font/Inter-VariableFont_opsz\,wght.ttf");
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: inter;
   background-color: #000000;
   display: flex;
   flex-direction: column;
@@ -19,6 +24,7 @@ body {
   position: relative;
   display: flex;
   align-items: center;
+  margin-top: 60px;
 }
 
 .landscape-section-left {
@@ -33,6 +39,7 @@ body {
   color: white;
   font-size: 64px;
   font-weight: 300;
+  margin: 36.5px 0;
 }
 
 .main {
@@ -83,7 +90,7 @@ body {
 
 .bike-card {
   width: 350px;
-  font-family: Arial, sans-serif;
+  font-family: inter;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   background-color: white;
@@ -135,9 +142,15 @@ body {
 .bike-footer {
   background-color: #ccc;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
   padding: 12px 16px;
+  font-size: 16px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .bike-info h3 {
@@ -158,27 +171,53 @@ body {
 }
 
 .compare input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
-  accent-color: #555;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #666;
+  /* unselected */
+  transition: background 0.3s ease;
+}
+
+.compare input[type="checkbox"]:checked {
+  appearance: none;
+  background: linear-gradient(#23C9B5, #23A9D2);
+}
+
+.compare label {
+  cursor: pointer;
 }
 
 .price-box {
   background-color: #000;
   color: #fff;
-  font-family: Arial, sans-serif;
-  margin-top: 52px;
-  padding: 0 25px;
+  font-family: inter;
+  margin-top: 55px;
+  padding: 1px 26px;
   width: 300px;
   border-radius: 10px;
   text-align: center;
 }
 
+.price-box div {
+  margin: 0 20px;
+}
+
 .price {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 9px;
-  margin-top: 13px;
+  font-size: 20px;
+  font-weight: 700;
+  padding-bottom: 9px;
+  padding-top: 13px;
+}
+
+.price-rev {
+  font-size: 20px;
+  font-weight: 700;
+  padding-bottom: 13px;
+  padding-top: 9px;
 }
 
 .explore-btn {
@@ -187,22 +226,34 @@ body {
   border: none;
   border-radius: 6px;
   padding: 10px 60px;
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 700;
   cursor: pointer;
   margin-bottom: 23px;
 }
 
+.explore-btn-2 {
+  background: linear-gradient(90deg, #23C9B5, #23A9D2);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 60px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-bottom: 17px;
+}
+
 .features {
   list-style: none;
-  padding: 0;
+  padding: 0 10px;
   margin: 0;
-  text-align: left;
+  text-align: center;
 }
 
 .features li {
   display: flex;
   align-items: center;
-  margin: 10px 0;
   font-size: 16px;
   font-weight: 500;
 }
@@ -224,7 +275,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
 }
 
 .negative span {
@@ -244,9 +294,9 @@ body {
 }
 
 .icon img {
-  margin-top: 30px;
+  padding-top: 30px;
   width: 160px;
-  margin-bottom: 10px;
+  padding-bottom: 26px;
 }
 
 .bsa img {
@@ -255,12 +305,19 @@ body {
 }
 
 .zoll img {
+  padding-top: 15px;
   width: 50px;
 }
 
 .label {
-  padding: 24px 0;
+  padding-top: 24px;
+  padding-bottom: 24px;
   font-size: 16px;
+}
+
+.first-label {
+  padding-bottom: 23px; 
+  padding-top: 12px
 }
 
 .divider {
@@ -273,13 +330,12 @@ body {
   overflow: hidden;
   height: 10px;
   display: flex;
-  margin-top: 22px;
   background-color: #d84e6f;
 }
 
 .bar-comfortable {
   border-radius: 20px;
-  width: 60%;
+  width: 70%;
   background-color: #53d8d4;
 }
 
@@ -287,8 +343,9 @@ body {
   display: flex;
   justify-content: space-between;
   font-size: 12px;
+  font-weight: 500;
   color: #aaa;
-  padding: 10px 0;
+  padding: 5px 0;
 }
 
 .dot {
@@ -303,6 +360,15 @@ body {
   height: 30px;
   border-radius: 50%;
   margin: 18px;
+}
+
+.first-cyan {
+  background-color: #06b6d4;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-top: 12px;
+  margin-bottom: 18px;
 }
 
 .pink {
@@ -326,7 +392,7 @@ body {
   gap: 8px;
   color: black;
   background-color: #767676;
-  padding-bottom: 192px;
+  padding-bottom: 225px;
 }
 
 .filter-box h2 {
@@ -400,7 +466,7 @@ input[type=range]::-moz-range-thumb {
   pointer-events: all;
 }
 
-.accordion {  
+.accordion {
   background-color: #B8B8B8;
   border-radius: 0 5px 5px 0;
 }
@@ -415,7 +481,7 @@ input[type=range]::-moz-range-thumb {
   font-weight: 700;
   position: relative;
   cursor: pointer;
-  border-radius: 0 5px 0 0  ;
+  border-radius: 0 5px 0 0;
 }
 
 .allow {
@@ -425,28 +491,34 @@ input[type=range]::-moz-range-thumb {
 }
 
 .accordion-body {
-  padding: 20px 10px;
+  padding: 0 10px;
   color: #000;
 }
 
 .accordion-item {
   text-align: center;
-  height: 64px;
+  height: 67px;
   font-size: 20px;
+  font-weight: 400;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .bike {
-  padding: 5px 0;
+  height: 106px;
+  display: flex;
+  align-items: center;
 }
 
 .framekit {
-  padding: 23px 0;
+  height: 100px;
+  display: flex;
+  align-items: center;
 }
 
 .contra {
-  padding: 40px 0 0 0;
+  height: 240px;
+  display: flex;
+  align-items: center;
 }
-
