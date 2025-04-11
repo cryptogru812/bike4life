@@ -18,6 +18,8 @@ function updateSlider() {
     } else {
         rangeValue.textContent = `${rangeMin.value}€ to ${rangeMax.value}€`;
         fillSlider();
+
+        displayBikes();
     }
 }
 
@@ -30,6 +32,7 @@ function fillSlider() {
 
 rangeMin.addEventListener("input", updateSlider);
 rangeMax.addEventListener("input", updateSlider);
+
 window.onload = () => {
     updateSlider();
 };

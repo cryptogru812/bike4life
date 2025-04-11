@@ -5,28 +5,43 @@ const bsa = document.getElementById("bsa");
 const zoll = document.getElementById("zoll");
 const tools = document.getElementById("tools");
 
-const getData = () => {
-    const bikes = [
-        { id: 1, image: './assets/image/bike/bike1.svg', title: 'Aristos T', slogan: 'A titan for everyone!' },
-        { id: 2, image: './assets/image/bike/bike2.svg', title: 'Aristos GT', slogan: 'For gravel and bikepacking' },
-        { id: 3, image: './assets/image/bike/bike3.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities' },
-        { id: 4, image: './assets/image/bike/bike4.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities' },
-        { id: 5, image: './assets/image/bike/bike1.svg', title: 'Aristos T', slogan: 'A titan for everyone!' },
-        { id: 6, image: './assets/image/bike/bike2.svg', title: 'Aristos GT', slogan: 'For gravel and bikepacking' },
-        { id: 7, image: './assets/image/bike/bike3.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities' },
-        { id: 8, image: './assets/image/bike/bike4.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities' },
-        { id: 9, image: './assets/image/bike/bike1.svg', title: 'Aristos T', slogan: 'A titan for everyone!' },
-        { id: 10, image: './assets/image/bike/bike2.svg', title: 'Aristos GT', slogan: 'For gravel and bikepacking' },
-        { id: 11, image: './assets/image/bike/bike3.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities' },
-        { id: 12, image: './assets/image/bike/bike4.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities' },
-    ]
+const bikes = [
+    { id: 1, image: './assets/image/bike/bike1.svg', title: 'Aristos T', slogan: 'A titan for everyone!', price: 2000 },
+    { id: 2, image: './assets/image/bike/bike2.svg', title: 'Aristos GT', slogan: 'For gravel and bikepacking', price: 3500 },
+    { id: 3, image: './assets/image/bike/bike3.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 9000 },
+    { id: 4, image: './assets/image/bike/bike4.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 8000 },
+    { id: 5, image: './assets/image/bike/bike1.svg', title: 'Aristos T', slogan: 'A titan for everyone!', price: 7500 },
+    { id: 6, image: './assets/image/bike/bike2.svg', title: 'Aristos GT', slogan: 'For gravel and bikepacking', price: 3200 },
+    { id: 7, image: './assets/image/bike/bike3.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 3800 },
+    { id: 8, image: './assets/image/bike/bike4.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 3400 },
+    { id: 9, image: './assets/image/bike/bike1.svg', title: 'Aristos T', slogan: 'A titan for everyone!', price: 7300 },
+    { id: 10, image: './assets/image/bike/bike2.svg', title: 'Aristos GT', slogan: 'For gravel and bikepacking', price: 6000 },
+    { id: 11, image: './assets/image/bike/bike3.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 5400 },
+    { id: 12, image: './assets/image/bike/bike4.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 4700 },
+]
+
+const filterBikesByPrice = () => {
+    // Get the slider values from the DOM (ensure these elements exist)
+    const rangeMinElem = document.getElementById("range-min");
+    const rangeMaxElem = document.getElementById("range-max");
+    const minPrice = parseInt(rangeMinElem.value) || 0;
+    const maxPrice = parseInt(rangeMaxElem.value) || 10000;
+    
+    // Return only bikes with price between min and max
+    return bikes.filter(bike => bike.price >= minPrice && bike.price <= maxPrice);
+};
+
+const displayBikes  = () => {   
+    
+    const filteredBikes = filterBikesByPrice();
+
     bikeCrad.innerHTML = "";
     priceBox.innerHTML = "";
     titan.innerHTML = ""
     bsa.innerHTML = "";
     zoll.innerHTML = "";
     tools.innerHTML = "";
-    bikes.forEach((bike) => {
+    filteredBikes.forEach((bike) => {
         const div = document.createElement("div");
         div.innerHTML = `
         <div class="bike-card">
@@ -52,16 +67,16 @@ const getData = () => {
       `;
       bikeCrad.appendChild(div);
     });
-    bikes.forEach(() => {
+    filteredBikes.forEach(() => {
         const div = document.createElement("div");
         div.innerHTML = `
         <div class="price-box">
             <div class="price">3.499,00€</div>
             <button class="explore-btn">Explore</button>
-            <hr>
+            <div class="divider"></div>
             <div class="price">1.890,00€</div>
             <button class="explore-btn">Explore</button>
-            <hr>
+            <div class="divider"></div>
             <ul class="features">
                 <li class="positive"><span>+</span> Excellent price-performance ratio</li>
                 <li class="positive"><span>+</span> Minimalistically displays everything that is required</li>
@@ -71,7 +86,7 @@ const getData = () => {
       `;
       priceBox.appendChild(div);
     });
-    bikes.forEach(() => {
+    filteredBikes.forEach(() => {
         const div = document.createElement("div");
         div.innerHTML = `
         <div class="card">
@@ -107,7 +122,7 @@ const getData = () => {
       `;
       titan.appendChild(div);
     });
-    bikes.forEach(() => {
+    filteredBikes.forEach(() => {
         const div = document.createElement("div");
         div.innerHTML = `
         <div class="card">
@@ -123,7 +138,7 @@ const getData = () => {
       `;
       bsa.appendChild(div);
     });
-    bikes.forEach(() => {
+    filteredBikes.forEach(() => {
         const div = document.createElement("div");
         div.innerHTML = `
         <div class="card">
@@ -141,7 +156,7 @@ const getData = () => {
       `;
       zoll.appendChild(div);
     });
-    bikes.forEach(() => {
+    filteredBikes.forEach(() => {
         const div = document.createElement("div");
         div.innerHTML = `
         <div class="card">
@@ -159,9 +174,6 @@ const getData = () => {
             <div class="dot"><div class="cyan"></div></div>
             <div class="divider"></div>
             <div class="dot"><div class="pink"></div></div>
-            <div class="divider"></div>
-            <div class="dot"><div class="cyan"></div></div>
-            <div class="divider"></div>
         </div>
       `;
       tools.appendChild(div);
@@ -175,4 +187,6 @@ const getData = () => {
     })
 };
 
-getData();
+window.onload = () => {
+    displayBikes();
+};

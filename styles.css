@@ -46,22 +46,11 @@ body {
 }
 
 .right {
-  width: 83.33%;
-}
-
-.right hr {
-  margin-top: 40px;
-  margin-bottom: 0;
-  border: 0.5px solid white;
-}
-
-.bike-element hr { 
-  margin: 13px 0;
-  border: 0.5px solid white;
+  width: 85.44%;
 }
 
 .left {
-  width: 16.67%;
+  width: 14.56%;
 }
 
 .bikes {
@@ -69,6 +58,7 @@ body {
   gap: 25px;
   overflow-x: auto;
   padding-bottom: 20px;
+  margin-bottom: 28px;
 }
 
 
@@ -100,6 +90,18 @@ body {
   padding: 10px 16px;
   position: absolute;
   gap: 8px;
+}
+
+.line {
+  position: relative;
+  padding: 17px;
+}
+
+.line hr {
+  width: 82%;
+  position: absolute;
+  right: 0;
+  margin: 0;
 }
 
 .logo {
@@ -168,7 +170,8 @@ body {
 .price {
   font-size: 24px;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 9px;
+  margin-top: 13px;
 }
 
 .explore-btn {
@@ -179,7 +182,7 @@ body {
   padding: 10px 60px;
   font-size: 14px;
   cursor: pointer;
-  margin-bottom: 10px;
+  margin-bottom: 23px;
 }
 
 .features {
@@ -232,12 +235,14 @@ body {
 }
 
 .icon img {
+  margin-top: 30px;
   width: 160px;
   margin-bottom: 10px;
 }
 
 .bsa img {
   width: 78px;
+  margin-bottom: -10px;
 }
 
 .zoll img {
@@ -251,7 +256,7 @@ body {
 
 .divider {
   height: 1px;
-  background-color: #555;
+  background-color: white;
 }
 
 .bar-container {
@@ -312,7 +317,7 @@ body {
   gap: 8px;
   color: black;
   background-color: #767676;
-  padding-bottom: 190px;
+  padding-bottom: 192px;
 }
 
 .filter-box h2 {
@@ -388,6 +393,7 @@ input[type=range]::-moz-range-thumb {
 
 .accordion {  
   background-color: #B8B8B8;
+  border-radius: 0 5px 5px 0;
 }
 
 .accordion-header {
@@ -400,6 +406,7 @@ input[type=range]::-moz-range-thumb {
   font-weight: 700;
   position: relative;
   cursor: pointer;
+  border-radius: 0 5px 0 0  ;
 }
 
 .allow {
@@ -415,18 +422,22 @@ input[type=range]::-moz-range-thumb {
 
 .accordion-item {
   text-align: center;
-  margin: 20px 0;
+  height: 64px;
   font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .bike {
-  padding: 6px 0;
+  padding: 5px 0;
 }
 
 .framekit {
-  padding: 25px 0;
+  padding: 23px 0;
 }
 
 .contra {
   padding: 40px 0 0 0;
 }
+

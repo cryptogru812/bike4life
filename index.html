@@ -52,32 +52,108 @@
       </div>
       <div class="right">
         <div class="bike-element" id="price-box"></div>
-        <hr id="price-box-hr" />
       </div>
     </div>
-    <div class="element">
-      <div class="left"></div>
-      <div class="right">
-        <div class="bike-element" id="titan"></div>
-        <hr />
-      </div>
-    </div>
-    <div class="element">
-      <div class="left"></div>
-      <div class="right">
-        <div class="bike-element" id="bsa"></div>
-      </div>
+    <div class="line">
       <hr />
     </div>
     <div class="element">
-      <div class="left"></div>
+      <div class="left accordion">
+        <div class="accordion-header" onclick="toggleFrame()">
+          <span>Frame & Fork</span>
+          <span class="allow" id="framearrow">▾</span>
+        </div>
+        <div class="accordion-body" id="frameContent">
+          <div class="accordion-item" style="padding: 39px 0;">Geometry</div>
+          <hr />
+          <div class="accordion-item">Material</div>
+          <hr />
+          <div class="accordion-item">Pipe set</div>
+          <hr />
+          <div class="accordion-item">Fork</div>
+          <hr />
+          <div class="accordion-item">Weight bike</div>
+          <hr />
+          <div class="accordion-item">Frame weight</div>
+          <hr />
+          <div class="accordion-item">Fork weight</div>
+          <hr />
+          <div class="accordion-item">Dropout</div>
+          <hr />
+          <div class="accordion-item">Cable routing </div>
+        </div>
+      </div>
       <div class="right">
-        <div class="bike-element" id="zoll"></div>
-        <hr />
+        <div class="bike-element" id="titan"></div>
       </div>
     </div>
+    <div class="line">
+      <hr />
+    </div>
     <div class="element">
-      <div class="left"></div>
+      <div class="left accordion">
+        <div class="accordion-header" onclick="toggleBsa()">
+          <span>Gears & brakes</span>
+          <span class="allow" id="bsaarrow">▾</span>
+        </div>
+        <div class="accordion-body" id="bsaContent">
+          <div class="accordion-item">Inner bearing type</div>
+          <hr />
+          <div class="accordion-item">Circuit type</div>
+          <hr />
+          <div class="accordion-item">Translation options</div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="bike-element" id="bsa"></div>
+      </div>
+    </div>
+    <div class="line">
+      <hr />
+    </div>
+    <div class="element">
+      <div class="left accordion">
+        <div class="accordion-header" onclick="toggleZoll()">
+          <span>Wheels & tires</span>
+          <span class="allow" id="zollarrow">▾</span>
+        </div>
+        <div class="accordion-body" id="zollContent">
+          <div class="accordion-item" style="margin-top: -20px;">Wheel size</div>
+          <hr />
+          <div class="accordion-item">Tire width 27.5” (without mudguards)</div>
+          <hr />
+          <div class="accordion-item">Tire width 28” (without mudguards)</div>
+          <hr />
+          <div class="accordion-item">Maximum total load</div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="bike-element" id="zoll"></div>
+      </div>
+    </div>
+    <div class="line">
+      <hr />
+    </div>
+    <div class="element">
+      <div class="left accordion">
+        <div class="accordion-header" onclick="toggleTools()">
+          <span>Mounting options</span>
+          <span class="allow" id="toolsarrow">▾</span>
+        </div>
+        <div class="accordion-body" id="toolsContent">
+          <div class="accordion-item" style="margin-top: -20px;">Luggage rack mounting</div>
+          <hr />
+          <div class="accordion-item">Lowrider mounting</div>
+          <hr />
+          <div class="accordion-item">Mudguard mounting</div>
+          <hr />
+          <div class="accordion-item">Bottle holder eyelets</div>
+          <hr />
+          <div class="accordion-item">Light mounting</div>
+          <hr />
+          <div class="accordion-item">Stand mounting</div>
+        </div>
+      </div>
       <div class="right">
         <div class="bike-element" id="tools"></div>
       </div>
