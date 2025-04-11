@@ -6,18 +6,18 @@ const zoll = document.getElementById("zoll");
 const tools = document.getElementById("tools");
 
 const bikes = [
-    { id: 1, image: './assets/image/bike/bike1.svg', title: 'Aristos T', slogan: 'A titan for everyone!', price: 2000 },
-    { id: 2, image: './assets/image/bike/bike2.svg', title: 'Aristos GT', slogan: 'For gravel and bikepacking', price: 3500 },
-    { id: 3, image: './assets/image/bike/bike3.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 9000 },
-    { id: 4, image: './assets/image/bike/bike4.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 8000 },
-    { id: 5, image: './assets/image/bike/bike1.svg', title: 'Aristos T', slogan: 'A titan for everyone!', price: 7500 },
-    { id: 6, image: './assets/image/bike/bike2.svg', title: 'Aristos GT', slogan: 'For gravel and bikepacking', price: 3200 },
-    { id: 7, image: './assets/image/bike/bike3.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 3800 },
-    { id: 8, image: './assets/image/bike/bike4.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 3400 },
-    { id: 9, image: './assets/image/bike/bike1.svg', title: 'Aristos T', slogan: 'A titan for everyone!', price: 7300 },
-    { id: 10, image: './assets/image/bike/bike2.svg', title: 'Aristos GT', slogan: 'For gravel and bikepacking', price: 6000 },
-    { id: 11, image: './assets/image/bike/bike3.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 5400 },
-    { id: 12, image: './assets/image/bike/bike4.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 4700 },
+    { id: 1, image: './includes/image/bike/bike1.svg', title: 'Aristos T', slogan: 'A titan for everyone!', price: 2000 },
+    { id: 2, image: './includes/image/bike/bike2.svg', title: 'Aristos GT', slogan: 'For gravel and bikepacking', price: 3500 },
+    { id: 3, image: './includes/image/bike/bike3.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 9000 },
+    { id: 4, image: './includes/image/bike/bike4.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 8000 },
+    { id: 5, image: './includes/image/bike/bike1.svg', title: 'Aristos T', slogan: 'A titan for everyone!', price: 7500 },
+    { id: 6, image: './includes/image/bike/bike2.svg', title: 'Aristos GT', slogan: 'For gravel and bikepacking', price: 3200 },
+    { id: 7, image: './includes/image/bike/bike3.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 3800 },
+    { id: 8, image: './includes/image/bike/bike4.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 3400 },
+    { id: 9, image: './includes/image/bike/bike1.svg', title: 'Aristos T', slogan: 'A titan for everyone!', price: 7300 },
+    { id: 10, image: './includes/image/bike/bike2.svg', title: 'Aristos GT', slogan: 'For gravel and bikepacking', price: 6000 },
+    { id: 11, image: './includes/image/bike/bike3.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 5400 },
+    { id: 12, image: './includes/image/bike/bike4.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 4700 },
 ]
 
 const filterBikesByPrice = () => {

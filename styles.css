@@ -10,7 +10,7 @@ body {
 }
 
 .landscape-section {
-  background-image: url("./assets/image/header.svg");
+  background-image: url("../image/header.svg");
   width: 100%;
   height: 150px;
   background-size: cover;
