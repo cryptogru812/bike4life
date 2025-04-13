@@ -329,6 +329,10 @@
     .menu-left img{
       width: 200px !important;
     }
+
+    .allow {
+      display: none;
+    }
   }
 
 
