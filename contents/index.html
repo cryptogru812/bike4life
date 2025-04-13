@@ -1,20 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bikelife</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-
-<body>
-  <div class="landscape-section">
-    <div class="landscape-section-left">
-      <img src="./assets/image/headerleft.svg" alt="headerleft" />
-      <div style="display: flex; gap: 40px;">
-        <p class="landscape-section-title">Gravel</p>
-        <img src="./assets/image/dropdown.svg" alt="dropdwn" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<section>
+  <style>
+    @import url('../includes/css/bike.css');
+  </style>
+  <div class="landscape-section" id="landscape-section">
+    <div class="landscape-section-left" id="landscape-section-left">
+      <div style="position: relative;" onclick="toggleMenuLeft()">
+        <img src="../includes/image/headerleft.svg" alt="headerleft" id="headerleft" />
+        <div class="menu-left" id="menu-left">
+          <img src="../includes/image/leftdrop.svg" />
+          <img src="../includes/image/leftdrop.svg" />
+          <img src="../includes/image/leftdrop.svg" />
+        </div>
+      </div>
+      <div class="menu-text" onclick="toggleBikeMenu()">
+        <p class="landscape-section-title" id="menu-text">Gravel</p>
+        <img src="../includes/image/dropdown.svg" alt="dropdwn" id="dropdown" class="dropdown" />
+        <div class="bike-menu" id="bike-menu"></div>
       </div>
     </div>
   </div>
@@ -22,7 +24,7 @@
     <div class="element">
       <div class="left">
         <div class="filter-box">
-          <h2>Price <img src="./assets/image/down.svg" /></h2>
+          <h2>Price <img src="../includes/image/down.svg" /></h2>
           <hr />
           <div class="range-values" id="rangeValue">2000€ to 4000€</div>
           <div class="range-slider">
@@ -64,17 +66,17 @@
           <span class="allow" id="framearrow">▾</span>
         </div>
         <div class="accordion-body" id="frameContent">
-          <div class="accordion-item" style="padding: 39px 0;">Geometry</div>
+          <div class="accordion-item geometry">Geometry</div>
           <hr />
           <div class="accordion-item">Material</div>
           <hr />
           <div class="accordion-item">Pipe set</div>
           <hr />
-          <div class="accordion-item">Fork</div>
+          <div class="accordion-item fork">Fork</div>
           <hr />
           <div class="accordion-item">Weight bike</div>
           <hr />
-          <div class="accordion-item">Frame weight</div>
+          <div class="accordion-item frameweight">Frame weight</div>
           <hr />
           <div class="accordion-item">Fork weight</div>
           <hr />
@@ -99,7 +101,7 @@
         <div class="accordion-body" id="bsaContent">
           <div class="accordion-item">Inner bearing type</div>
           <hr />
-          <div class="accordion-item">Circuit type</div>
+          <div class="accordion-item circuit">Circuit type</div>
           <hr />
           <div class="accordion-item">Translation options</div>
         </div>
@@ -118,7 +120,7 @@
           <span class="allow" id="zollarrow">▾</span>
         </div>
         <div class="accordion-body" id="zollContent">
-          <div class="accordion-item" style="margin-top: -20px;">Wheel size</div>
+          <div class="accordion-item">Wheel size</div>
           <hr />
           <div class="accordion-item">Tire width 27.5” (without mudguards)</div>
           <hr />
@@ -141,7 +143,7 @@
           <span class="allow" id="toolsarrow">▾</span>
         </div>
         <div class="accordion-body" id="toolsContent">
-          <div class="accordion-item" style="margin-top: -20px;">Luggage rack mounting</div>
+          <div class="accordion-item">Luggage rack mounting</div>
           <hr />
           <div class="accordion-item">Lowrider mounting</div>
           <hr />
@@ -160,9 +162,8 @@
     </div>
   </div>
   </div>
-  <script src="./assets/js/bike.js"></script>
-  <script src="./assets/js/filter.js"></script>
-  <script src="./assets/js/toggle.js"></script>
-</body>
-
-</html>
+  <script src="../includes/js/bike.js"></script>
+  <script src="../includes/js/filter.js"></script>
+  <script src="../includes/js/toggle.js"></script>
+  <script src="../includes/js/menu.js"></script>
+</section>
