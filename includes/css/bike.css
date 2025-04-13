@@ -630,8 +630,9 @@
     align-items: center;
     aspect-ratio: 1/1;
     padding-bottom: 1px;
+    margin: 0px!important;
   }
-
+  
   .negative {
     color: #ec4899;
     border: #ec4899 2px solid;
@@ -640,6 +641,7 @@
     justify-content: center;
     align-items: center;
     padding-bottom: 1px;
+    margin: 0px!important;
   }
 
   .card {

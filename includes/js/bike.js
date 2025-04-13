@@ -81,7 +81,7 @@ const displayBikes = () => {
             <div class="price">1.890,00€</div>
             <button class="explore-btn-2">Explore</button>
             <div class="divider"></div>
-            <ul class="features">
+            <ul class="features" style="padding: 0px">
                 <li style="padding-top: 43px; padding-bottom: 20px; display: flex; justify-content: center; align-items: center;"><span class="positive">+</span> Excellent price-performance ratio</li>
                 <li><span class="positive">+</span> Minimalistically displays everything that is required</li>
                 <li><span class="negative">–</span> No complete cable integration possible</li>
