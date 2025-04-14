@@ -1,529 +1,117 @@
-  @font-face {
-    font-family: inter;
-    src: url("../font/Inter-VariableFont_opsz\,wght.ttf");
-  }
-
-  @media (max-width: 768px) {
-    .left {
-      width: 20% !important;
-    }
-
-    .right {
-      width: 80% !important;
-      gap: 4px !important;
-    }
-
-    #headerleft {
-      content: url('../image/headerleft\(mobile\).svg');
-    }
-
-    .landscape-section-left {
-      width: 100% !important;
-      padding: 0 23px;
-    }
-
-    .landscape-section-title {
-      font-size: 32px !important;
-    }
-
-    .landscape-section {
-      height: 80px !important;
-    }
-
-    .dropdown {
-      width: 20px;
-      height: 20px;
-    }
-
-    .menu-text {
-      gap: 5px !important;
-    }
-
-    .bike-card {
-      min-width: 105px !important;
-    }
-
-    .logo {
-      width: 12px !important;
-      height: 12px !important;
-    }
-
-    .brand-name {
-      display: none !important;
-    }
-
-    .accordion-header {
-      font-size: 10px !important;
-      padding: 7px 13px 10px 10px !important;
-    }
-
-    .accordion-item {
-      font-size: 10px !important;
-      padding: 0 9px 0 6px !important;
-    }
-
-    .compare {
-      display: none !important;
-    }
-
-    .bike-info h3 {
-      font-size: 14px !important;
-    }
-
-    .bike-footer {
-      padding: 4px 2px !important;
-    }
-
-    .slogan {
-      font-size: 10px !important;
-      margin: 0px !important;
-    }
-
-    .bike-header {
-      padding: 4px 3px !important;
-    }
-
-    .bike-image {
-      padding: 0px !important;
-    }
-
-    .bikes::-webkit-scrollbar {
-      height: 2px !important;
-    }
-    .filter-box {
-      padding: 7px 3px !important;
-      height: calc(100% - 65px) !important;
-    }
-
-    .filter-box h2 {
-      font-size: 12px !important;
-    }
-
-    .range-values {
-      font-size: 12px !important;
-      margin-bottom: 0 !important;
-    }
-
-    .compare-mobile {
-      display: block !important;
-      position: absolute;
-      top: 40%;
-      right: 0;
-    }
-
-    .compare-mobile input[type="checkbox"] {
-      appearance: none;
-      width: 20px;
-      height: 20px;
-      margin-right: 10px;
-      border-radius: 5px;
-      border: none;
-      background-color: #666;
-      /* unselected */
-      transition: background 0.3s ease;
-    }
-
-    .compare-mobile input[type="checkbox"]:checked {
-      appearance: none;
-      background: linear-gradient(#23C9B5, #23A9D2);
-    }
-
-    .bikes {
-      padding-bottom: 20px !important;
-    }
-
-    .bike {
-      height: 68px !important;
-    }
-
-    .framekit {
-      height: 87px !important;
-    }
-
-    .contra {
-      height: 188px !important;
-    }
-
-    .bike-element {
-      gap: 3px !important;
-    }
-
-    .price-box {
-      margin-top: 28px !important;
-      padding: 0 !important;
-    }
-
-    .price-rev {
-      padding: 0 !important;
-      font-size: 16px !important;
-    }
-
-    .explore-btn {
-      font-size: 12px !important;
-      padding: 7px 18px !important;
-      margin-bottom: 12px !important;
-      margin-top: 10px !important;
-    }
-
-    .explore-btn-2 {
-      font-size: 12px !important;
-      padding: 7px 18px !important;
-      margin-bottom: 14px !important;
-    }
-
-    .price {
-      font-size: 16px !important;
-      padding: 12px 0 !important;
-    }
-
-    .features li {
-      flex-direction: column !important;
-      gap: 5px !important;
-      padding: 8px 0 !important;
-      font-size: 10px !important;
-    }
-
-    .features li span {
-      width: 15px !important;
-      height: 15px !important;
-    }
-
-    .price-box {
-      min-width: 105px !important;
-    }
-
-    .price-box div {
-      margin: 0px !important;
-    }
-
-    .features {
-      padding: 0px !important;
-    }
-
-    .icon img {
-      width: 90px !important;
-      padding: 15px 0 10px 0 !important;
-    }
-
-    .geometry {
-      padding: 7px 0 !important;
-    }
-
-    .bar-container {
-      height: 4px !important;
-    }
-
-    .card {
-      min-width: 105px !important;
-      padding: 0 !important;
-    }
-
-    .label {
-      font-size: 14px !important;
-      padding: 25px 0 !important;
-    }
-
-    .bar-labels {
-      font-size: 10px !important;
-    }
-
-    .fork {
-      padding: 7px 0 !important;
-    }
-
-    .frameweight {
-      padding: 7px 0 !important;
-    }
-
-    .first-label {
-      padding: 2px 0 8px 0 !important;
-    }
-
-    .circuit {
-      padding: 7px 0 !important;;
-    }
-
-    .first-cyan {
-      width: 26px !important;
-      height: 26px !important;
-      margin: 10px 0 17px 0 !important;
-    }
-
-    .cyan {
-      width: 26px !important;
-      height: 26px !important;
-      margin: 20px !important;
-    }
-
-    .pink {
-      width: 26px !important;
-      height: 26px !important;
-      margin: 20px !important;
-    }
-
-    .tools img {
-      padding-top: 15px;
-      width: 30px !important;
-    } 
-
-    .line hr {
-      width: 80% !important;
-    }
-
-    .bike-item {
-      width: 200px !important;
-    }
-
-    .bike-menu {
-      gap: 2px !important;
-      top: 80px !important;
-      right: 0 !important;
-    }
-  
-    .menu-gradient {
-      width: 160px !important;
-      gap: 10px !important;
-      padding-top: 2px !important;
-    }
-  
-    .menu-label {
-      padding: 5px !important;
-      font-size: 24px !important;
-    }
-  
-    .menu-arrow {
-      font-size: 12px !important;
-    }
-  
-    .menu-text {
-      gap: 10px !important;
-    }
-
-    .range-slider {
-      height: 4px !important;
-    }
-    
-    .slider-track {
-      height: 4px !important;
-    }
-
-    input[type=range]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      height: 8px !important;
-      width: 8px !important;
-    }
-
-    input[type=range] {
-      height: 4px !important;
-    }
-
-    .accordion-body {
-      padding: 0 7px 0 9px !important;
-    }
-
-    .menu-left {
-      left: 0px !important;
-      padding: 20px 11px 21px 11px !important;
-    }
-  
-    .menu-left img{
-      width: 200px !important;
-    }
-
-    .allow {
-      display: none;
-    }
-  }
-
-
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: inter;
-    background-color: #000000;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    justify-content: center;
-  }
-
-  .landscape-section {
-    background-image: url("../image/header/gravel.svg");
-    width: 100%;
-    height: 150px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    position: relative;
-    display: flex;
-    align-items: center;
-    margin-top: 96px;
-    margin-bottom: 50px;
-  }
-
-  .geometry {
-    padding: 37px 0;
-  }
-
-  .compare-mobile {
-    display: none;
-  }
-
-  .landscape-section-left {
-    background-image: linear-gradient(to right, #000000 30%, transparent);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 65%;
-  }
-
-  .landscape-section-title {
-    color: white;
-    font-size: 64px;
-    font-weight: 300;
-    margin: 36.5px 0;
-    white-space: nowrap;
-  }
-
-  .main {
-    display: flex;
-    flex-direction: column;
-    color: white;
-  }
-
-  .element {
-    display: flex;
-    gap: 4px;
+@font-face {
+  font-family: inter;
+  src: url("../font/Inter-VariableFont_opsz\,wght.ttf");
+}
+
+@media (max-width: 768px) {
+  .left {
+    width: 20% !important;
   }
 
   .right {
-    width: 85.44%;
+    width: 80% !important;
+    gap: 4px !important;
   }
 
-  .left {
-    width: 14.56%;
+  #headerleft {
+    content: url('../image/headerleft\(mobile\).svg');
   }
 
-  .bikes {
-    display: flex;
-    gap: 25px;
-    overflow-x: auto  ;
-    padding-bottom: 20px;
-    margin-bottom: 28px;
+  .landscape-section-left {
+    width: 100% !important;
+    padding: 0 23px;
   }
 
-
-  .bikes::-webkit-scrollbar {
-    /* background-color: #D9D9D9; */
-    height: 8px;
-    border-radius: 8px;
-    width: 30px;
+  .landscape-section-title {
+    font-size: 32px !important;
   }
 
-  .bikes::-webkit-scrollbar-thumb {
-    background-color: #626262;
-    border-radius: 8px;
+  .landscape-section {
+    height: 80px !important;
+  }
+
+  .dropdown {
     width: 20px;
+    height: 20px;
   }
 
-  .bikes::-webkit-scrollbar-track {
-    background-color: #D9D9D9;
-    border-radius: 8px;
-    width: 10px;
+  .menu-text {
+    gap: 5px !important;
   }
 
   .bike-card {
-    min-width: 350px;
-    font-family: inter;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    background-color: white;
-    color: black;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  .bike-header {
-    display: flex;
-    align-items: center;
-    padding: 10px 16px;
-    position: absolute;
-    gap: 8px;
-  }
-
-  .line {
-    position: relative;
-    padding: 17px;
-  }
-
-  .line hr {
-    width: 84%;
-    position: absolute;
-    right: 0;
-    margin: 0;  
-    border: 0;
-    height: 1px;
-    background-color: white;  
+    min-width: 105px !important;
   }
 
   .logo {
-    width: 24px;
-    height: 24px;
+    width: 12px !important;
+    height: 12px !important;
   }
 
   .brand-name {
-    font-size: 16px;
-    font-weight: bold;
+    display: none !important;
   }
 
-  .bike-image {
-    text-align: center;
-    padding: 16px;
-    background-color: white;
+  .accordion-header {
+    font-size: 10px !important;
+    padding: 7px 13px 10px 10px !important;
   }
 
-  .bike-image img {
-    max-width: 100%;
-    height: auto;
-  }
-
-  .bike-footer {
-    background-color: #ccc;
-    display: flex;
-    flex-direction: column;
-    padding: 12px 16px;
-    font-size: 20px;
-  }
-
-  .slogan {
-    font-size: 16px;
-  }
-
-  .brand {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .bike-info h3 {
-    margin: 0;
-    font-size: 18px;
-  }
-
-  .bike-info p {
-    margin: 4px 0 0;
-    font-style: italic;
-    font-size: 14px;
+  .accordion-item {
+    font-size: 10px !important;
+    padding: 0 9px 0 6px !important;
   }
 
   .compare {
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    display: none !important;
   }
 
-  .compare input[type="checkbox"] {
+  .bike-info h3 {
+    font-size: 14px !important;
+  }
+
+  .bike-footer {
+    padding: 4px 2px !important;
+  }
+
+  .slogan {
+    font-size: 10px !important;
+    margin: 0px !important;
+  }
+
+  .bike-header {
+    padding: 4px 3px !important;
+  }
+
+  .bike-image {
+    padding: 0px !important;
+  }
+
+  .bikes::-webkit-scrollbar {
+    height: 2px !important;
+  }
+  .filter-box {
+    padding: 7px 3px !important;
+    height: calc(100% - 65px) !important;
+  }
+
+  .filter-box h2 {
+    font-size: 12px !important;
+  }
+
+  .range-values {
+    font-size: 12px !important;
+    margin-bottom: 0 !important;
+  }
+
+  .compare-mobile {
+    display: block !important;
+    position: absolute;
+    top: 40%;
+    right: 0;
+  }
+
+  .compare-mobile input[type="checkbox"] {
     appearance: none;
     width: 20px;
     height: 20px;
@@ -535,431 +123,843 @@
     transition: background 0.3s ease;
   }
 
-  .compare input[type="checkbox"]:checked {
+  .compare-mobile input[type="checkbox"]:checked {
     appearance: none;
     background: linear-gradient(#23C9B5, #23A9D2);
   }
 
-  .compare label {
-    cursor: pointer;
+  .bikes {
+    padding-bottom: 20px !important;
+  }
+
+  .bike {
+    height: 68px !important;
+  }
+
+  .framekit {
+    height: 87px !important;
+  }
+
+  .contra {
+    height: 188px !important;
+  }
+
+  .bike-element {
+    gap: 3px !important;
   }
 
   .price-box {
-    background-color: #000;
-    color: #fff;
-    font-family: inter;
-    margin-top: 55px;
-    padding: 1px 26px;
-    min-width: 300px;
-    width: 300px;
-    border-radius: 10px;
-    text-align: center;
-  }
-
-  .price-box div {
-    margin: 0 20px;
-  }
-
-  .price {
-    font-size: 20px;
-    font-weight: 700;
-    padding-bottom: 9px;
-    padding-top: 13px;
+    margin-top: 28px !important;
+    padding: 0 !important;
   }
 
   .price-rev {
-    font-size: 20px;
-    font-weight: 700;
-    padding-bottom: 13px;
-    padding-top: 9px;
+    padding: 0 !important;
+    font-size: 16px !important;
   }
 
   .explore-btn {
-    background: linear-gradient(90deg, #23C9B5, #23A9D2);
-    color: white;
-    border: none;
-    border-radius: 6px;
-    padding: 10px 60px;
-    font-size: 16px;
-    font-weight: 700;
-    cursor: pointer;
-    margin-bottom: 23px;
+    font-size: 12px !important;
+    padding: 7px 18px !important;
+    margin-bottom: 12px !important;
+    margin-top: 10px !important;
   }
 
   .explore-btn-2 {
-    background: linear-gradient(90deg, #23C9B5, #23A9D2);
-    color: white;
-    border: none;
-    border-radius: 6px;
-    padding: 10px 60px;
-    font-size: 16px;
-    font-weight: 700;
-    cursor: pointer;
-    margin-bottom: 17px;
+    font-size: 12px !important;
+    padding: 7px 18px !important;
+    margin-bottom: 14px !important;
   }
 
-  .features {
-    list-style: none;
-    padding: 0 10px;
-    margin: 0;
-    text-align: center;
+  .price {
+    font-size: 16px !important;
+    padding: 12px 0 !important;
   }
 
   .features li {
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-    font-weight: 500;
+    flex-direction: column !important;
+    gap: 5px !important;
+    padding: 8px 0 !important;
+    font-size: 10px !important;
   }
 
   .features li span {
-    font-weight: bold;
-    margin-right: 10px;
-    width: 20px;
-    text-align: center;
-    border-radius: 50%;
-    width: 27px;
-    height: 27px;
+    width: 15px !important;
+    height: 15px !important;
   }
 
-  .positive {
-    color: #2cd4d9;
-    border: #23C9B5 2px solid;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    aspect-ratio: 1/1;
-    padding-bottom: 1px;
-    margin: 0px!important;
-  }
-  
-  .negative {
-    color: #ec4899;
-    border: #ec4899 2px solid;
-    aspect-ratio: 1/1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 1px;
-    margin: 0px!important;
+  .price-box {
+    min-width: 105px !important;
   }
 
-  .card {
-    padding: 0 25px;
-    text-align: center;
-    min-width: 300px;
-    width: 300px;
+  .price-box div {
+    margin: 0px !important;
+  }
+
+  .features {
+    padding: 0px !important;
   }
 
   .icon img {
-    padding-top: 30px;
-    width: 160px;
-    padding-bottom: 26px;
+    width: 90px !important;
+    padding: 15px 0 10px 0 !important;
   }
 
-  .bsa img {
-    width: 78px;
-    margin-bottom: -10px;
+  .geometry {
+    padding: 7px 0 !important;
   }
 
-  .zoll img {
-    padding-top: 15px;
-    width: 50px;
+  .bar-container {
+    height: 4px !important;
+  }
+
+  .card {
+    min-width: 105px !important;
+    padding: 0 !important;
+  }
+
+  .label {
+    font-size: 14px !important;
+    padding: 25px 0 !important;
+  }
+
+  .bar-labels {
+    font-size: 10px !important;
+  }
+
+  .fork {
+    padding: 7px 0 !important;
+  }
+
+  .frameweight {
+    padding: 7px 0 !important;
+  }
+
+  .first-label {
+    padding: 2px 0 8px 0 !important;
+  }
+
+  .circuit {
+    padding: 7px 0 !important;;
+  }
+
+  .first-cyan {
+    width: 26px !important;
+    height: 26px !important;
+    margin: 10px 0 17px 0 !important;
+  }
+
+  .cyan {
+    width: 26px !important;
+    height: 26px !important;
+    margin: 20px !important;
+  }
+
+  .pink {
+    width: 26px !important;
+    height: 26px !important;
+    margin: 20px !important;
   }
 
   .tools img {
     padding-top: 15px;
-    width: 50px;
+    width: 30px !important;
+  } 
+
+  .line hr {
+    width: 80% !important;
   }
 
-  .label {
-    padding-top: 24px;
-    padding-bottom: 24px;
-    font-size: 16px;
+  .bike-item {
+    width: 200px !important;
   }
 
-  .first-label {
-    padding-bottom: 23px;
-    padding-top: 12px
+  .bike-menu {
+    gap: 2px !important;
+    top: 80px !important;
+    right: 0 !important;
   }
 
-  .divider {
-    height: 1px;
-    background-color: white;
+  .menu-gradient {
+    width: 160px !important;
+    gap: 10px !important;
+    padding-top: 2px !important;
   }
 
-  .bar-container {
-    border-radius: 20px;
-    overflow: hidden;
-    height: 10px;
-    display: flex;
-    background-color: #d84e6f;
+  .menu-label {
+    padding: 5px !important;
+    font-size: 24px !important;
   }
 
-  .bar-comfortable {
-    border-radius: 20px;
-    width: 70%;
-    background-color: #53d8d4;
+  .menu-arrow {
+    font-size: 12px !important;
   }
 
-  .bar-labels {
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    font-weight: 500;
-    color: #aaa;
-    padding: 5px 0;
-  }
-
-  .dot {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-
-  .cyan {
-    background-color: #06b6d4;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    margin: 18px;
-  }
-
-  .first-cyan {
-    background-color: #06b6d4;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    margin-top: 12px;
-    margin-bottom: 18px;
-  }
-
-  .pink {
-    background-color: #ec4899;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    margin: 18px;
-  }
-
-  .bike-element {
-    display: flex;
-    gap: 25px;
-    overflow: hidden;
-  }
-
-  .filter-box {
-    display: flex;
-    flex-direction: column;
-    padding: 16px;
-    gap: 8px;
-    color: white;
-    background-color: #767676;
-    height: calc(100% - 88px);
-    border-radius: 0 5px 5px 0;
-  }
-
-  .filter-box hr {
-    height: 1px;
-    border: 0px;
-    background-color: white !important;
-  }
-
-  .filter-box h2 {
-    display: flex;
-    font-size: 20px;
-    font-weight: 800;
-    gap: 8px;
-    align-items: center;
-    margin: 0px;
-  }
-
-  .left hr {
-    margin: 0;
-    border: 0px;
-    height: 1px;
-    background-color: #2C2C2C;
-  }
-
-  .range-values {
-    font-size: 1.2em;
-    margin-bottom: 14px;
-    font-weight: bold;
+  .menu-text {
+    gap: 10px !important;
   }
 
   .range-slider {
-    position: relative;
-    height: 8px;
-    width: 100%;
-    border-radius: 4px;
-    background: linear-gradient(to right, #552037, #BB4678);
+    height: 4px !important;
   }
-
+  
   .slider-track {
-    position: absolute;
-    height: 8px;
-    border-radius: 4px;
-    background: linear-gradient(to right, #23C8B6, #23A9D1);
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1;
-  }
-
-  input[type=range] {
-    -webkit-appearance: none;
-    position: absolute;
-    pointer-events: none;
-    width: 100%;
-    height: 8px;
-    background: transparent;
-    margin: 0;
-    z-index: 2;
+    height: 4px !important;
   }
 
   input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
-    height: 16px;
-    width: 16px;
-    border-radius: 50%;
-    background: #23C8B6;
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
-    pointer-events: all;
+    height: 8px !important;
+    width: 8px !important;
   }
 
-  input[type=range]::-moz-range-thumb {
-    height: 16px;
-    width: 16px;
-    border-radius: 50%;
-    background: #23A9D1;
-    border: 2px solid white;
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
-    pointer-events: all;
-  }
-
-  .accordion {
-    background-color: #B8B8B8;
-    border-radius: 0 5px 5px 0;
-  }
-
-  .accordion-header {
-    background-color: #434343;
-    padding: 16px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    font-weight: 700;
-    position: relative;
-    cursor: pointer;
-    border-radius: 0 5px 0 0;
-  }
-
-  .accordion-header span {
-    white-space: nowrap;
-  }
-
-  .allow {
-    position: absolute;
-    right: 10px;
-    top: 30%;
+  input[type=range] {
+    height: 4px !important;
   }
 
   .accordion-body {
-    padding: 0 10px;
-    color: #000;
-  }
-
-  .accordion-item {
-    text-align: center;
-    height: 68px;
-    font-size: 20px;
-    font-weight: 400;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .bike {
-    height: 106px;
-    display: flex;
-    align-items: center;
-  }
-
-  .framekit {
-    height: 100px;
-    display: flex;
-    align-items: center;
-  }
-
-  .contra {
-    height: 240px;
-    display: flex;
-    align-items: center;
-  }
-
-  .bike-menu {
-    top: 120px;
-    position: absolute;
-    z-index: 10;
-    background-color: #000000F0;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    right: -550px;
-  }
-
-  .bike-item {
-    width: 860px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-  }
-
-  .menu-gradient {
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 80%), rgba(0, 0, 0, 0%));
-    width: 660px;
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    padding-top: 6px;
-  }
-
-  .menu-label {
-    padding: 19px 0px 34px 22px;
-    font-size: 64px;
-    font-weight: 300;
-    color: white;
-    display: flex;
-    align-items: center;
-  }
-
-  .menu-arrow {
-    font-size: 26.5px;
-    color: white;
-  }
-
-  .menu-text {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-    position: relative;
-    cursor: pointer;
+    padding: 0 7px 0 9px !important;
   }
 
   .menu-left {
-    position: absolute;
-    background-color: #000000C0;
-    backdrop-filter: blur(14.4px);
-    left: 40px;
-    z-index: 10;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 50px 11px 21px 11px;
+    left: 0px !important;
+    padding: 20px 11px 21px 11px !important;
   }
 
   .menu-left img{
-    width: 500px;
+    width: 200px !important;
   }
+
+  .allow {
+    display: none;
+  }
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: inter;
+  background-color: #000000;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  justify-content: center;
+}
+
+.landscape-section {
+  background-image: url("../image/header/gravel.svg");
+  width: 100%;
+  height: 150px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 96px;
+  margin-bottom: 50px;
+}
+
+.geometry {
+  padding: 37px 0;
+}
+
+.compare-mobile {
+  display: none;
+}
+
+.landscape-section-left {
+  background-image: linear-gradient(to right, #000000 30%, transparent);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 65%;
+}
+
+.landscape-section-title {
+  color: white;
+  font-size: 64px;
+  font-weight: 300;
+  margin: 36.5px 0;
+  white-space: nowrap;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.element {
+  display: flex;
+  gap: 4px;
+}
+
+.right {
+  width: 85.44%;
+}
+
+.left {
+  width: 14.56%;
+}
+
+.bikes {
+  display: flex;
+  gap: 25px;
+  overflow-x: auto  ;
+  padding-bottom: 20px;
+  margin-bottom: 28px;
+}
+
+
+.bikes::-webkit-scrollbar {
+  /* background-color: #D9D9D9; */
+  height: 8px;
+  border-radius: 8px;
+  width: 30px;
+}
+
+.bikes::-webkit-scrollbar-thumb {
+  background-color: #626262;
+  border-radius: 8px;
+  width: 20px;
+}
+
+.bikes::-webkit-scrollbar-track {
+  background-color: #D9D9D9;
+  border-radius: 8px;
+  width: 10px;
+}
+
+.bike-card {
+  min-width: 350px;
+  font-family: inter;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  color: black;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bike-header {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  position: absolute;
+  gap: 8px;
+}
+
+.line {
+  position: relative;
+  padding: 17px;
+}
+
+.line hr {
+  width: 84%;
+  position: absolute;
+  right: 0;
+  margin: 0;  
+  border: 0;
+  height: 1px;
+  background-color: white;  
+}
+
+.logo {
+  width: 24px;
+  height: 24px;
+}
+
+.brand-name {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.bike-image {
+  text-align: center;
+  padding: 16px;
+  background-color: white;
+}
+
+.bike-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+.bike-footer {
+  background-color: #ccc;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 16px;
+  font-size: 20px;
+}
+
+.slogan {
+  font-size: 16px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bike-info h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.bike-info p {
+  margin: 4px 0 0;
+  font-style: italic;
+  font-size: 14px;
+}
+
+.compare {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.compare input[type="checkbox"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #666;
+  /* unselected */
+  transition: background 0.3s ease;
+}
+
+.compare input[type="checkbox"]:checked {
+  appearance: none;
+  background: linear-gradient(#23C9B5, #23A9D2);
+}
+
+.compare label {
+  cursor: pointer;
+}
+
+.price-box {
+  background-color: #000;
+  color: #fff;
+  font-family: inter;
+  margin-top: 55px;
+  padding: 1px 26px;
+  min-width: 300px;
+  width: 300px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.price-box div {
+  margin: 0 20px;
+}
+
+.price {
+  font-size: 20px;
+  font-weight: 700;
+  padding-bottom: 9px;
+  padding-top: 13px;
+}
+
+.price-rev {
+  font-size: 20px;
+  font-weight: 700;
+  padding-bottom: 13px;
+  padding-top: 9px;
+}
+
+.explore-btn {
+  background: linear-gradient(90deg, #23C9B5, #23A9D2);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 60px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-bottom: 23px;
+}
+
+.explore-btn-2 {
+  background: linear-gradient(90deg, #23C9B5, #23A9D2);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 60px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-bottom: 17px;
+}
+
+.features {
+  list-style: none;
+  padding: 0 10px !important;
+  margin: 0;
+  text-align: center;
+}
+
+.features li {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.features li span {
+  font-weight: bold;
+  margin-right: 10px;
+  width: 20px;
+  text-align: center;
+  border-radius: 50%;
+  width: 27px;
+  height: 27px;
+}
+
+.positive {
+  color: #2cd4d9;
+  border: #23C9B5 2px solid;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1/1;
+  padding-bottom: 1px;
+  margin: 0px!important;
+}
+
+.negative {
+  color: #ec4899;
+  border: #ec4899 2px solid;
+  aspect-ratio: 1/1;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 1px;
+  margin: 0px!important;
+}
+
+.card {
+  padding: 0 25px;
+  text-align: center;
+  min-width: 300px;
+  width: 300px;
+}
+
+.icon img {
+  padding-top: 30px;
+  width: 160px;
+  padding-bottom: 26px;
+}
+
+.bsa img {
+  width: 78px;
+  margin-bottom: -10px;
+}
+
+.zoll img {
+  padding-top: 15px;
+  width: 50px;
+}
+
+.tools img {
+  padding-top: 15px;
+  width: 50px;
+}
+
+.label {
+  padding-top: 24px;
+  padding-bottom: 24px;
+  font-size: 16px;
+}
+
+.first-label {
+  padding-bottom: 23px;
+  padding-top: 12px
+}
+
+.divider {
+  height: 1px;
+  background-color: white;
+}
+
+.bar-container {
+  border-radius: 20px;
+  overflow: hidden;
+  height: 10px;
+  display: flex;
+  background-color: #d84e6f;
+}
+
+.bar-comfortable {
+  border-radius: 20px;
+  width: 70%;
+  background-color: #53d8d4;
+}
+
+.bar-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 500;
+  color: #aaa;
+  padding: 5px 0;
+}
+
+.dot {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.cyan {
+  background-color: #06b6d4;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin: 18px;
+}
+
+.first-cyan {
+  background-color: #06b6d4;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-top: 12px;
+  margin-bottom: 18px;
+}
+
+.pink {
+  background-color: #ec4899;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin: 18px;
+}
+
+.bike-element {
+  display: flex;
+  gap: 25px;
+  overflow: hidden;
+}
+
+.filter-box {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 8px;
+  color: white;
+  background-color: #767676;
+  height: calc(100% - 88px);
+  border-radius: 0 5px 5px 0;
+}
+
+.filter-box hr {
+  height: 1px;
+  border: 0px;
+  background-color: white !important;
+}
+
+.filter-box h2 {
+  display: flex;
+  font-size: 20px;
+  font-weight: 800;
+  gap: 8px;
+  align-items: center;
+  margin: 0px;
+}
+
+.left hr {
+  margin: 0;
+  border: 0px;
+  height: 1px;
+  background-color: #2C2C2C;
+}
+
+.range-values {
+  font-size: 1.2em;
+  margin-bottom: 14px;
+  font-weight: bold;
+}
+
+.range-slider {
+  position: relative;
+  height: 8px;
+  width: 100%;
+  border-radius: 4px;
+  background: linear-gradient(to right, #552037, #BB4678);
+}
+
+.slider-track {
+  position: absolute;
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(to right, #23C8B6, #23A9D1);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  position: absolute;
+  pointer-events: none;
+  width: 100%;
+  height: 8px;
+  background: transparent;
+  margin: 0;
+  z-index: 2;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #23C8B6;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  pointer-events: all;
+}
+
+input[type=range]::-moz-range-thumb {
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #23A9D1;
+  border: 2px solid white;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.accordion {
+  background-color: #B8B8B8;
+  border-radius: 0 5px 5px 0;
+}
+
+.accordion-header {
+  background-color: #434343;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 700;
+  position: relative;
+  cursor: pointer;
+  border-radius: 0 5px 0 0;
+}
+
+.accordion-header span {
+  white-space: nowrap;
+}
+
+.allow {
+  position: absolute;
+  right: 10px;
+  top: 20%;
+}
+
+.accordion-body {
+  padding: 0 10px;
+  color: #000;
+}
+
+.accordion-item {
+  text-align: center;
+  height: 68px;
+  font-size: 20px;
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bike {
+  height: 106px;
+  display: flex;
+  align-items: center;
+}
+
+.framekit {
+  height: 100px;
+  display: flex;
+  align-items: center;
+}
+
+.contra {
+  height: 240px;
+  display: flex;
+  align-items: center;
+}
+
+.bike-menu {
+  top: 120px;
+  position: absolute;
+  z-index: 10;
+  background-color: #000000F0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  right: -550px;
+}
+
+.bike-item {
+  width: 860px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+}
+
+.menu-gradient {
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 80%), rgba(0, 0, 0, 0%));
+  width: 660px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding-top: 6px;
+}
+
+.menu-label {
+  padding: 19px 0px 34px 22px;
+  font-size: 64px;
+  font-weight: 300;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+.menu-arrow {
+  font-size: 26.5px;
+  color: white;
+}
+
+.menu-text {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  position: relative;
+  cursor: pointer;
+}
+
+.menu-left {
+  position: absolute;
+  background-color: #000000C0;
+  backdrop-filter: blur(14.4px);
+  left: 40px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 50px 11px 21px 11px;
+}
+
+.menu-left img{
+  width: 500px;
+}
