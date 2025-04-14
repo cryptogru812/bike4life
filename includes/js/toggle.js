@@ -3,7 +3,7 @@ function toggleAccordion() {
     const bike = document.getElementById("price-box");
     const arrow = document.getElementById("arrow");
     content.style.display = content.style.display === "none" ? "block" : "none";
-    arrow.textContent = content.style.display === "none" ? "▸" : "▾";
+    arrow.style.rotate = content.style.display === "none" ? "270deg" : "0deg";
     bike.style.display === "flex" ? bike.style.display = "none" : bike.style.display = "flex";
   }
 
@@ -12,7 +12,7 @@ function toggleAccordion() {
     const titan = document.getElementById("titan");
     const arrow = document.getElementById("framearrow");
     content.style.display = content.style.display === "none" ? "block" : "none";
-    arrow.textContent = content.style.display === "none" ? "▸" : "▾";
+    arrow.style.rotate = content.style.display === "none" ? "270deg" : "0deg";
     titan.style.display === "flex" ? titan.style.display = "none" : titan.style.display = "flex";
   }
 
@@ -21,7 +21,7 @@ function toggleAccordion() {
     const titan = document.getElementById("bsa");
     const arrow = document.getElementById("bsaarrow");
     content.style.display = content.style.display === "none" ? "block" : "none";
-    arrow.textContent = content.style.display === "none" ? "▸" : "▾";
+    arrow.style.rotate = content.style.display === "none" ? "270deg" : "0deg";
     titan.style.display === "flex" ? titan.style.display = "none" : titan.style.display = "flex";
   }
 
@@ -30,7 +30,7 @@ function toggleAccordion() {
     const titan = document.getElementById("zoll");
     const arrow = document.getElementById("zollarrow");
     content.style.display = content.style.display === "none" ? "block" : "none";
-    arrow.textContent = content.style.display === "none" ? "▸" : "▾";
+    arrow.style.rotate = content.style.display === "none" ? "270deg" : "0deg";
     titan.style.display === "flex" ? titan.style.display = "none" : titan.style.display = "flex";
   }
 
@@ -39,7 +39,7 @@ function toggleAccordion() {
     const titan = document.getElementById("tools");
     const arrow = document.getElementById("toolsarrow");
     content.style.display = content.style.display === "none" ? "block" : "none";
-    arrow.textContent = content.style.display === "none" ? "▸" : "▾";
+    arrow.style.rotate = content.style.display === "none" ? "270deg" : "0deg";
     titan.style.display === "flex" ? titan.style.display = "none" : titan.style.display = "flex";
   }
 

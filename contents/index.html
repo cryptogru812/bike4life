@@ -5,8 +5,11 @@
   </style>
   <div class="landscape-section" id="landscape-section">
     <div class="landscape-section-left" id="landscape-section-left">
-      <div style="position: relative;" onclick="toggleMenuLeft()">
-        <img src="../includes/image/headerleft.svg" alt="headerleft" id="headerleft" />
+      <div style="position: relative; cursor: pointer;" onclick="toggleMenuLeft()">
+        <div style="display: flex; gap: 28px; padding-left: 52px;">
+          <img src="../includes/image/headerleft.svg" alt="headerleft" id="headerleft" />
+          <img src="../includes/image/dropdown.svg" alt="dropdwn" id="dropdown1" class="dropdown" />
+        </div>
         <div class="menu-left" id="menu-left">
           <img src="../includes/image/leftdrop.svg" />
           <img src="../includes/image/leftdrop.svg" />
@@ -42,7 +45,7 @@
       <div class="left accordion">
         <div class="accordion-header" onclick="toggleAccordion()">
           <span>General Infos</span>
-          <span class="allow" id="arrow">▾</span>
+          <img id="arrow" class="arrow" src="../includes/image/down.svg" />
         </div>
         <div class="accordion-body" id="accordionContent">
           <div class="accordion-item bike">Price Bike</div>
@@ -63,7 +66,7 @@
       <div class="left accordion">
         <div class="accordion-header" onclick="toggleFrame()">
           <span>Frame & Fork</span>
-          <span class="allow" id="framearrow">▾</span>
+          <img id="framearrow" class="arrow" src="../includes/image/down.svg" />
         </div>
         <div class="accordion-body" id="frameContent">
           <div class="accordion-item geometry">Geometry</div>
@@ -88,7 +91,11 @@
       <div class="right">
         <div class="bike-element" id="titan"></div>
       </div>
-    </div>
+    </div>    
+    <div id="imgModal" class="modal">
+      <span class="modal-close" id="modalClose">&times;</span>
+      <img id="modalImg" src="" alt="Bike Frame Full">
+  </div>
     <div class="line">
       <hr />
     </div>
@@ -96,7 +103,7 @@
       <div class="left accordion">
         <div class="accordion-header" onclick="toggleBsa()">
           <span>Gears & brakes</span>
-          <span class="allow" id="bsaarrow">▾</span>
+          <img id="bsaarrow" class="arrow" src="../includes/image/down.svg" />
         </div>
         <div class="accordion-body" id="bsaContent">
           <div class="accordion-item">Inner bearing type</div>
@@ -117,7 +124,7 @@
       <div class="left accordion">
         <div class="accordion-header" onclick="toggleZoll()">
           <span>Wheels & tires</span>
-          <span class="allow" id="zollarrow">▾</span>
+          <img id="zollarrow" class="arrow" src="../includes/image/down.svg" />
         </div>
         <div class="accordion-body" id="zollContent">
           <div class="accordion-item">Wheel size</div>
@@ -140,7 +147,7 @@
       <div class="left accordion">
         <div class="accordion-header" onclick="toggleTools()">
           <span>Mounting options</span>
-          <span class="allow" id="toolsarrow">▾</span>
+          <img id="toolsarrow" class="arrow" src="../includes/image/down.svg" />
         </div>
         <div class="accordion-body" id="toolsContent">
           <div class="accordion-item">Luggage rack mounting</div>

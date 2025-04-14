@@ -89,12 +89,13 @@ const displayBikes = () => {
       `;
         priceBox.appendChild(item);
     });
-    filteredBikes.forEach(() => {
+    filteredBikes.forEach((filterbike, index) => {
         const item = document.createElement("div");
         item.className = "card";
         item.innerHTML = `
             <div class="icon">
-                <img src="../includes/image/bike-frame-icon.svg" alt="Bike Frame" />
+                <img src="../includes/image/bike-frame-icon.svg" alt="Bike Frame" class="bike-frame" id="bike-frame${index}" />
+                <img src="../includes/image/scale.svg" alt="scale" class="scale" id="scale${index}" onclick="modalShow(${index})"/>
             </div>
             <div class="bar-container">
                 <div class="bar-comfortable"></div>
@@ -210,6 +211,29 @@ function handleCheck(checkbox) {
             container.appendChild(bikeCard); // No checked items — move to bottom
         }
     }
+}
+
+function modalShow(index) {
+    const modal = document.getElementById('imgModal');
+    const modalImg = document.getElementById('modalImg');
+    const closeModal = document.getElementById('modalClose');    
+    const scale = document.getElementById(`scale${index}`);
+    const bikeFrame = document.getElementById(`bike-frame${index}`);
+    if (scale && bikeFrame) {
+        scale.addEventListener('click', () => {
+            modalImg.src = bikeFrame.src;
+            modal.style.display = 'flex';
+        });
+    }
+    closeModal.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
 }
 
 window.onload = () => {

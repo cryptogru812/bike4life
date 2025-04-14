@@ -12,6 +12,9 @@ function toggleBikeMenu() {
     const dropDown = document.getElementById("dropdown");
     const menuText = document.getElementById("menu-text");
 
+    dropDown.addEventListener('mouseenter', () => dropDown.src = '../includes/image/dropdown-hover.svg');
+    dropDown.addEventListener('mouseleave', () => dropDown.src = '../includes/image/dropdown.svg');
+
     if (bikeMenu.innerHTML === "") {
         menuButtons.forEach((button) => {
             if (menuText.textContent.trim() !== button.text) {
@@ -36,14 +39,18 @@ function toggleBikeMenu() {
     }
 
     // Proper rotation toggle using transform
-    dropDown.style.transform = dropDown.style.transform === "rotate(-90deg)"
-        ? "rotate(0deg)"
-        : "rotate(-90deg)";
+    dropDown.style.transform = dropDown.style.transform === "rotate(-90deg)" ? "rotate(0deg)" : "rotate(-90deg)";
 }
 
 function toggleMenuLeft() {
     const menuLeft = document.getElementById("menu-left");
-    menuLeft.style.display = menuLeft.style.display === "none" ? "flex" : "none"
+    const dropDown = document.getElementById("dropdown1");
+
+    dropDown.addEventListener('mouseenter', () => dropDown.src = '../includes/image/dropdown-hover.svg');
+    dropDown.addEventListener('mouseleave', () => dropDown.src = '../includes/image/dropdown.svg');
+
+    menuLeft.style.display = menuLeft.style.display === "none" ? "flex" : "none";
+    dropDown.style.transform = dropDown.style.transform === "rotate(-90deg)" ? "rotate(0deg)" : "rotate(-90deg)";
 }
 
 function MenuItemClick(text, image) {
