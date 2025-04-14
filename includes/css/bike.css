@@ -24,6 +24,7 @@
 
     .landscape-section-title {
       font-size: 32px !important;
+      margin: 22px 0 !important;
     }
 
     .landscape-section {
@@ -128,16 +129,20 @@
       background: linear-gradient(#23C9B5, #23A9D2);
     }
 
+    .header-left {
+      padding-left: 0px !important;
+    }
+
     .bikes {
       padding-bottom: 20px !important;
     }
 
     .bike {
-      height: 68px !important;
+      height: 69px !important;
     }
 
     .framekit {
-      height: 87px !important;
+      height: 86px !important;
     }
 
     .contra {
@@ -213,7 +218,7 @@
     }
 
     .geometry {
-      padding: 7px 0 !important;
+      padding: 4px 0 !important;
     }
 
     .bar-container {
@@ -235,37 +240,40 @@
     }
 
     .fork {
-      padding: 7px 0 !important;
+      padding: 8.5px 0 !important;
     }
 
     .frameweight {
-      padding: 7px 0 !important;
+      padding: 8.5px 0 !important;
     }
 
     .first-label {
-      padding: 2px 0 8px 0 !important;
+      padding: 2px 0 5px 0 !important;
+    }
+    .zoll-first-label {
+      padding: 4px 0 6.5px 0 !important;
     }
 
     .circuit {
-      padding: 7px 0 !important;;
+      padding: 8px 0 !important;;
     }
 
     .first-cyan {
       width: 26px !important;
       height: 26px !important;
-      margin: 10px 0 17px 0 !important;
+      margin: 10px 0 15px 0 !important;
     }
 
     .cyan {
       width: 26px !important;
       height: 26px !important;
-      margin: 20px !important;
+      margin: 20.5px !important;
     }
 
     .pink {
       width: 26px !important;
       height: 26px !important;
-      margin: 20px !important;
+      margin: 20.5px !important;
     }
 
     .tools img {
@@ -300,10 +308,6 @@
   
     .menu-arrow {
       font-size: 12px !important;
-    }
-  
-    .menu-text {
-      gap: 10px !important;
     }
 
     .range-slider {
@@ -341,6 +345,15 @@
       right: 5px !important;
       width: 6px !important;
     }
+
+    .landscape-section-sticky {
+      padding-top: 70px !important;
+      padding-bottom: 10px !important;
+    }
+
+    .sticky {
+      top: 160px !important;
+    }
   }
 
 
@@ -356,7 +369,7 @@
   }
 
   .landscape-section {
-    background-image: url("../image/header/gravel.svg");
+    background-image: url("../image/header/gravel.png");
     width: 100%;
     height: 150px;
     background-size: cover;
@@ -365,12 +378,10 @@
     position: relative;
     display: flex;
     align-items: center;
-    margin-top: 96px;
-    margin-bottom: 50px;
   }
 
   .geometry {
-    padding: 37px 0;
+    padding: 32px 0;
   }
 
   .compare-mobile {
@@ -623,7 +634,6 @@
   .features li span {
     font-weight: bold;
     margin-right: 10px;
-    width: 20px;
     text-align: center;
     border-radius: 50%;
     width: 27px;
@@ -638,6 +648,7 @@
     align-items: center;
     aspect-ratio: 1/1;
     padding-bottom: 1px;
+    font-size: 20px;
   }
 
   .negative {
@@ -648,6 +659,7 @@
     justify-content: center;
     align-items: center;
     padding-bottom: 1px;
+    font-size: 20px;
   }
 
   .card {
@@ -693,13 +705,18 @@
 
   .label {
     padding-top: 24px;
-    padding-bottom: 24px;
+    padding-bottom: 23px;
     font-size: 16px;
   }
 
   .first-label {
     padding-bottom: 23px;
     padding-top: 12px
+  }
+
+  .zoll-first-label {
+    padding-bottom: 23px;
+    padding-top: 15px
   }
 
   .divider {
@@ -726,8 +743,8 @@
     justify-content: space-between;
     font-size: 12px;
     font-weight: 500;
-    color: #aaa;
-    padding: 5px 0;
+    color: #fff;
+    padding: 4.5px 0;
   }
 
   .dot {
@@ -741,7 +758,7 @@
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    margin: 18px;
+    margin: 18.5px;
   }
 
   .first-cyan {
@@ -749,7 +766,7 @@
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    margin-top: 12px;
+    margin-top: 10px;
     margin-bottom: 18px;
   }
 
@@ -758,7 +775,7 @@
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    margin: 18px;
+    margin: 18.5px;
   }
 
   .bike-element {
@@ -892,7 +909,7 @@
 
   .accordion-item {
     text-align: center;
-    height: 68px;
+    height: 67px;
     font-size: 20px;
     font-weight: 400;
     display: flex;
@@ -901,13 +918,13 @@
   }
 
   .bike {
-    height: 106px;
+    height: 107px;
     display: flex;
     align-items: center;
   }
 
   .framekit {
-    height: 100px;
+    height: 103px;
     display: flex;
     align-items: center;
   }
@@ -1017,4 +1034,24 @@
     color: #ccc;
   }
 
-  
+  .header-left {
+    display: flex; 
+    gap: 28px; 
+    padding-left: 52px; 
+    align-items: center;
+  }
+
+  .landscape-section-sticky {
+    position: sticky; top: 0px; 
+    z-index: 10; 
+    background-color: black; 
+    padding-top: 96px; 
+    padding-bottom: 50px;
+  }
+
+  .sticky {
+    position: sticky; 
+    top: 296px; 
+    z-index: 1; 
+    background-color: black;
+  }

@@ -3,28 +3,30 @@
   <style>
     @import url('../includes/css/bike.css');
   </style>
-  <div class="landscape-section" id="landscape-section">
-    <div class="landscape-section-left" id="landscape-section-left">
-      <div style="position: relative; cursor: pointer;" onclick="toggleMenuLeft()">
-        <div style="display: flex; gap: 28px; padding-left: 52px;">
-          <img src="../includes/image/headerleft.svg" alt="headerleft" id="headerleft" />
-          <img src="../includes/image/dropdown.svg" alt="dropdwn" id="dropdown1" class="dropdown" />
+  <div class="landscape-section-sticky">
+    <div class="landscape-section" id="landscape-section">
+      <div class="landscape-section-left" id="landscape-section-left">
+        <div style="position: relative; cursor: pointer;" onclick="toggleMenuLeft()">
+          <div class="header-left">
+            <img src="../includes/image/headerleft.svg" alt="headerleft" id="headerleft" />
+            <img src="../includes/image/dropdown.svg" alt="dropdwn" id="dropdown1" class="dropdown" />
+          </div>
+          <div class="menu-left" id="menu-left">
+            <img src="../includes/image/leftdrop.svg" />
+            <img src="../includes/image/leftdrop.svg" />
+            <img src="../includes/image/leftdrop.svg" />
+          </div>
         </div>
-        <div class="menu-left" id="menu-left">
-          <img src="../includes/image/leftdrop.svg" />
-          <img src="../includes/image/leftdrop.svg" />
-          <img src="../includes/image/leftdrop.svg" />
+        <div class="menu-text" onclick="toggleBikeMenu()">
+          <p class="landscape-section-title" id="menu-text">Gravel</p>
+          <img src="../includes/image/dropdown.svg" alt="dropdwn" id="dropdown" class="dropdown" />
+          <div class="bike-menu" id="bike-menu"></div>
         </div>
-      </div>
-      <div class="menu-text" onclick="toggleBikeMenu()">
-        <p class="landscape-section-title" id="menu-text">Gravel</p>
-        <img src="../includes/image/dropdown.svg" alt="dropdwn" id="dropdown" class="dropdown" />
-        <div class="bike-menu" id="bike-menu"></div>
       </div>
     </div>
   </div>
   <div class="main">
-    <div class="element">
+    <div class="element sticky">
       <div class="left">
         <div class="filter-box">
           <h2>Price <img src="../includes/image/down.svg" /></h2>
@@ -91,11 +93,12 @@
       <div class="right">
         <div class="bike-element" id="titan"></div>
       </div>
-    </div>    
-    <div id="imgModal" class="modal">
-      <span class="modal-close" id="modalClose">&times;</span>
+    </div>
+    <div id="imgModal" class="modal" onclick="modalClick(event)">
+      <span class="modal-close" id="modalClose" onclick="modalhidden()">&times;</span>
       <img id="modalImg" src="" alt="Bike Frame Full">
-  </div>
+    </div>
+
     <div class="line">
       <hr />
     </div>

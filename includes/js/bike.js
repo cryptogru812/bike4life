@@ -44,6 +44,7 @@ const displayBikes = () => {
     filteredBikes.forEach((bike) => {
         const item = document.createElement("div");
         item.className = "bike-card";
+        item.id = `bike-card${bike.id}`;
         item.innerHTML = `
             <div class="bike-header">
                 <img src="../includes/image/logo.png" alt="Falkenjagd Logo" class="logo">
@@ -52,7 +53,7 @@ const displayBikes = () => {
             <div class="bike-image">
                 <img src="${bike.image}" alt="Aristos T Bike">
                 <div class="compare-mobile">
-                    <input type="checkbox" id="compare-mobile${bike.id}" onchange="handleCheck(this)">
+                    <input type="checkbox" id="compare-mobile${bike.id}" onchange="handleCheck(this, ${bike.id})">
                 </div>
             </div>
 
@@ -62,7 +63,7 @@ const displayBikes = () => {
                         <h3>${bike.title}</h3>
                     </div>
                     <div class="compare">
-                        <input type="checkbox" id="compare${bike.id}" onchange="handleCheck(this)">
+                        <input type="checkbox" id="compare${bike.id}" onchange="handleCheck(this, ${bike.id})">
                         <label for="compare${bike.id}">Compare</label>
                     </div>
                 </div>
@@ -71,9 +72,10 @@ const displayBikes = () => {
       `;
         bikeCrad.appendChild(item);
     });
-    filteredBikes.forEach(() => {
+    filteredBikes.forEach((bike) => {
         const item = document.createElement("div");
         item.className = "price-box";
+        item.id = `price-box${bike.id}`
         item.innerHTML = `
             <div class="price-rev">3.499,00€</div>
             <button class="explore-btn">Explore</button>
@@ -82,20 +84,21 @@ const displayBikes = () => {
             <button class="explore-btn-2">Explore</button>
             <div class="divider"></div>
             <ul class="features">
-                <li style="padding-top: 43px; padding-bottom: 20px; display: flex; justify-content: center; align-items: center;"><span class="positive">+</span> Excellent price-performance ratio</li>
+                <li><span class="positive">+</span> Excellent price-performance ratio</li>
                 <li><span class="positive">+</span> Minimalistically displays everything that is required</li>
                 <li><span class="negative">–</span> No complete cable integration possible</li>
             </ul>
       `;
         priceBox.appendChild(item);
     });
-    filteredBikes.forEach((filterbike, index) => {
+    filteredBikes.forEach((bike) => {
         const item = document.createElement("div");
         item.className = "card";
+        item.id = `bikeframe${bike.id}`;
         item.innerHTML = `
             <div class="icon">
-                <img src="../includes/image/bike-frame-icon.svg" alt="Bike Frame" class="bike-frame" id="bike-frame${index}" />
-                <img src="../includes/image/scale.svg" alt="scale" class="scale" id="scale${index}" onclick="modalShow(${index})"/>
+                <img src="../includes/image/bike-frame-icon.svg" alt="Bike Frame" class="bike-frame" id="bike-frame${bike.id}" />
+                <img src="../includes/image/scale.svg" alt="scale" class="scale" id="scale${bike.id}" onclick="modalShow(${bike.id})"/>
             </div>
             <div class="bar-container">
                 <div class="bar-comfortable"></div>
@@ -124,9 +127,10 @@ const displayBikes = () => {
       `;
         titan.appendChild(item);
     });
-    filteredBikes.forEach(() => {
+    filteredBikes.forEach((bike) => {
         const item = document.createElement("div");
         item.className = "card"
+        item.id = `bsa${bike.id}`;
         item.innerHTML = `
             <div class="bsa">
                 <img src="../includes/image/bsa.svg" alt="BSA" />
@@ -139,14 +143,15 @@ const displayBikes = () => {
       `;
         bsa.appendChild(item);
     });
-    filteredBikes.forEach(() => {
+    filteredBikes.forEach((bike) => {
         const item = document.createElement("div");
         item.className = "card";
+        item.id = `zoll${bike.id}`;
         item.innerHTML = `
             <div class="zoll">
                 <img src="../includes/image/zoll.svg" alt="zoll" />
             </div>
-            <div class="first-label">28 Zoll</div>
+            <div class="zoll-first-label">28 Zoll</div>
             <div class="divider"></div>
             <div class="label">--</div>
             <div class="divider"></div>
@@ -156,9 +161,10 @@ const displayBikes = () => {
       `;
         zoll.appendChild(item);
     });
-    filteredBikes.forEach(() => {
+    filteredBikes.forEach((bike) => {
         const item = document.createElement("div");
         item.className = "card";
+        item.id = `tools${bike.id}`;
         item.innerHTML = `
             <div class="tools">
                 <img src="../includes/image/tools.svg" alt="tools"/>
@@ -186,13 +192,28 @@ const displayBikes = () => {
     })
 };
 
-function handleCheck(checkbox) {
+function handleCheck(checkbox, id) {
     const container = document.getElementById('bike-card');
-    const bikeCard = checkbox.closest('.bike-card');
+    const bikeCard = document.getElementById(`bike-card${id}`);
+    const priceBoxContainer = document.getElementById('price-box');
+    const priceBox = document.getElementById(`price-box${id}`);
+    const bikeframeContainer = document.getElementById('titan');
+    const bikeframe = document.getElementById(`bikeframe${id}`);
+    const bsaContainer = document.getElementById('bsa');
+    const bsa = document.getElementById(`bsa${id}`);
+    const zollContainer = document.getElementById('zoll');
+    const zoll = document.getElementById(`zoll${id}`);
+    const toolsContainer = document.getElementById('tools');
+    const tools = document.getElementById(`tools${id}`);
 
     if (checkbox.checked) {
         // Move checked item to the top
         container.insertBefore(bikeCard, container.firstChild);
+        priceBoxContainer.insertBefore(priceBox, priceBoxContainer.firstChild);
+        bikeframeContainer.insertBefore(bikeframe, bikeframeContainer.firstChild);
+        bsaContainer.insertBefore(bsa, bsaContainer.firstChild);
+        zollContainer.insertBefore(zoll, zollContainer.firstChild);
+        toolsContainer.insertBefore(tools, toolsContainer.firstChild);
     } else {
         // Move unchecked item after all checked items
         const children = Array.from(container.children);
@@ -207,8 +228,18 @@ function handleCheck(checkbox) {
 
         if (lastChecked) {
             container.insertBefore(bikeCard, lastChecked.nextSibling);
+            priceBoxContainer.insertBefore(priceBox, lastChecked.nextSibling);
+            bikeframeContainer.insertBefore(bikeframe, lastChecked.nextSibling);
+            bsaContainer.insertBefore(bsa, lastChecked.nextSibling);
+            zollContainer.insertBefore(zoll, lastChecked.nextSibling);
+            toolsContainer.insertBefore(tools, lastChecked.nextSibling);
         } else {
             container.appendChild(bikeCard); // No checked items — move to bottom
+            priceBoxContainer.appendChild(priceBox);
+            bikeframeContainer.appendChild(bikeframe);
+            bsaContainer.appendChild(bsa);
+            zollContainer.appendChild(zoll);
+            toolsContainer.appendChild(tools);
         }
     }
 }
@@ -216,24 +247,24 @@ function handleCheck(checkbox) {
 function modalShow(index) {
     const modal = document.getElementById('imgModal');
     const modalImg = document.getElementById('modalImg');
-    const closeModal = document.getElementById('modalClose');    
     const scale = document.getElementById(`scale${index}`);
     const bikeFrame = document.getElementById(`bike-frame${index}`);
     if (scale && bikeFrame) {
-        scale.addEventListener('click', () => {
-            modalImg.src = bikeFrame.src;
-            modal.style.display = 'flex';
-        });
+        modalImg.src = bikeFrame.src;
+        modal.style.display = 'flex';
     }
-    closeModal.addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
+}
 
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.style.display = 'none';
-        }
-    });
+function modalhidden() {
+    const modal = document.getElementById('imgModal');
+    modal.style.display = 'none';
+}
+
+function modalClick(e) {
+    const modal = document.getElementById('imgModal');
+    if(e.target === modal) {
+        modal.style.display = 'none';
+    }
 }
 
 window.onload = () => {
