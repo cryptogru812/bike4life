@@ -77,16 +77,16 @@ const displayBikes = () => {
         item.className = "price-box";
         item.id = `price-box${bike.id}`
         item.innerHTML = `
-            <div class="price-rev">3.499,00€</div>
+            <div class="price-rev">${bike.price}€</div>
             <button class="explore-btn">Explore</button>
             <div class="divider"></div>
             <div class="price">1.890,00€</div>
             <button class="explore-btn-2">Explore</button>
             <div class="divider"></div>
             <ul class="features">
-                <li><span class="positive">+</span> Excellent price-performance ratio</li>
-                <li><span class="positive">+</span> Minimalistically displays everything that is required</li>
-                <li><span class="negative">–</span> No complete cable integration possible</li>
+                <li class="first-feature"><div class="positive"></div> <p>Excellent price-performance ratio</p></li>
+                <li><div class="positive"></div> <p>Minimalistically displays everything that is required</p></li>
+                <li><div class="negative"></div> <p>No complete cable integration possible</p></li>
             </ul>
       `;
         priceBox.appendChild(item);
@@ -169,17 +169,17 @@ const displayBikes = () => {
             <div class="tools">
                 <img src="../includes/image/tools.svg" alt="tools"/>
             </div>
-            <div class="dot"><div class="first-cyan"></div></div>
+            <img src="../includes/image/check.svg" class="first-cyan"/>
             <div class="divider"></div>
-            <div class="dot"><div class="pink"></div></div>
+            <img src="../includes/image/fail.svg" class="cyan"/>
             <div class="divider"></div>
-            <div class="dot"><div class="cyan"></div></div>
+            <img src="../includes/image/check.svg" class="cyan"/>
             <div class="divider"></div>            
             <div class="label">3x</div>
             <div class="divider"></div>
-            <div class="dot"><div class="cyan"></div></div>
+            <img src="../includes/image/check.svg" class="cyan"/>
             <div class="divider"></div>
-            <div class="dot"><div class="pink"></div></div>
+            <img src="../includes/image/fail.svg" class="cyan"/>
       `;
         tools.appendChild(item);
     });
@@ -193,64 +193,93 @@ const displayBikes = () => {
 };
 
 function handleCheck(checkbox, id) {
-    const container = document.getElementById('bike-card');
-    const bikeCard = document.getElementById(`bike-card${id}`);
-    const priceBoxContainer = document.getElementById('price-box');
-    const priceBox = document.getElementById(`price-box${id}`);
-    const bikeframeContainer = document.getElementById('titan');
-    const bikeframe = document.getElementById(`bikeframe${id}`);
-    const bsaContainer = document.getElementById('bsa');
-    const bsa = document.getElementById(`bsa${id}`);
-    const zollContainer = document.getElementById('zoll');
-    const zoll = document.getElementById(`zoll${id}`);
-    const toolsContainer = document.getElementById('tools');
-    const tools = document.getElementById(`tools${id}`);
-
-    if (checkbox.checked) {
-        // Move checked item to the top
-        container.insertBefore(bikeCard, container.firstChild);
-        priceBoxContainer.insertBefore(priceBox, priceBoxContainer.firstChild);
-        bikeframeContainer.insertBefore(bikeframe, bikeframeContainer.firstChild);
-        bsaContainer.insertBefore(bsa, bsaContainer.firstChild);
-        zollContainer.insertBefore(zoll, zollContainer.firstChild);
-        toolsContainer.insertBefore(tools, toolsContainer.firstChild);
+    const groups = [
+      { key: 'bike', container: document.getElementById('bike-card'), prefix: 'bike-card' },
+      { key: 'price', container: document.getElementById('price-box'), prefix: 'price-box' },
+      { key: 'frame', container: document.getElementById('titan'), prefix: 'bikeframe' },
+      { key: 'bsa', container: document.getElementById('bsa'), prefix: 'bsa' },
+      { key: 'zoll', container: document.getElementById('zoll'), prefix: 'zoll' },
+      { key: 'tools', container: document.getElementById('tools'), prefix: 'tools' }
+    ];
+  
+    // Step 1: Cache initial positions
+    const firstRects = new Map();
+    groups.forEach(({ container }) => {
+      Array.from(container.children).forEach(el => {
+        firstRects.set(el, el.getBoundingClientRect());
+      });
+    });
+  
+    // Step 2: Update positions
+    const mainGroup = groups[0]; // 'bike' container used to determine logic
+    const cards = Array.from(mainGroup.container.children);
+  
+    const currentCard = document.getElementById(`${mainGroup.prefix}${id}`);
+    const isChecked = checkbox.checked;
+  
+    // Remove card from current position to reinsert it later
+    const updatedOrder = cards.filter(c => c !== currentCard);
+  
+    if (isChecked) {
+      // Checked → to top
+      updatedOrder.unshift(currentCard);
     } else {
-        // Move unchecked item after all checked items
-        const children = Array.from(container.children);
-        let lastChecked = null;
-
-        for (let i = 0; i < children.length; i++) {
-            const input = children[i].querySelector('input[type="checkbox"]');
-            if (input.checked) {
-                lastChecked = children[i];
-            }
+      // Unchecked → after last checked
+      let inserted = false;
+      for (let i = updatedOrder.length - 1; i >= 0; i--) {
+        const cb = updatedOrder[i].querySelector('input[type="checkbox"]');
+        if (cb && cb.checked) {
+          updatedOrder.splice(i + 1, 0, currentCard);
+          inserted = true;
+          break;
         }
-
-        if (lastChecked) {
-            container.insertBefore(bikeCard, lastChecked.nextSibling);
-            priceBoxContainer.insertBefore(priceBox, lastChecked.nextSibling);
-            bikeframeContainer.insertBefore(bikeframe, lastChecked.nextSibling);
-            bsaContainer.insertBefore(bsa, lastChecked.nextSibling);
-            zollContainer.insertBefore(zoll, lastChecked.nextSibling);
-            toolsContainer.insertBefore(tools, lastChecked.nextSibling);
-        } else {
-            container.appendChild(bikeCard); // No checked items — move to bottom
-            priceBoxContainer.appendChild(priceBox);
-            bikeframeContainer.appendChild(bikeframe);
-            bsaContainer.appendChild(bsa);
-            zollContainer.appendChild(zoll);
-            toolsContainer.appendChild(tools);
-        }
+      }
+      if (!inserted) updatedOrder.push(currentCard);
     }
-}
+  
+    // Step 3: Apply new order to all groups
+    groups.forEach(({ container, prefix }) => {
+      updatedOrder.forEach(c => {
+        const cardId = c.id.replace(mainGroup.prefix, '');
+        const el = document.getElementById(`${prefix}${cardId}`);
+        container.appendChild(el);
+      });
+    });
+  
+    // Step 4: FLIP animation
+    requestAnimationFrame(() => {
+      groups.forEach(({ container }) => {
+        Array.from(container.children).forEach(el => {
+          const lastRect = el.getBoundingClientRect();
+          const firstRect = firstRects.get(el);
+          if (!firstRect) return;
+  
+          const dx = firstRect.left - lastRect.left;
+          const dy = firstRect.top - lastRect.top;
+  
+          el.style.transform = `translate(${dx}px, ${dy}px)`;
+          el.style.transition = 'transform 0s';
+  
+          requestAnimationFrame(() => {
+            el.style.transition = 'transform 0.4s ease';
+            el.style.transform = 'translate(0, 0)';
+          });
+  
+          el.addEventListener('transitionend', () => {
+            el.style.transition = '';
+            el.style.transform = '';
+          }, { once: true });
+        });
+      });
+    });
+  }
 
 function modalShow(index) {
     const modal = document.getElementById('imgModal');
     const modalImg = document.getElementById('modalImg');
     const scale = document.getElementById(`scale${index}`);
-    const bikeFrame = document.getElementById(`bike-frame${index}`);
-    if (scale && bikeFrame) {
-        modalImg.src = bikeFrame.src;
+    if (scale) {
+        modalImg.src = '../includes/image/zoomout.png';
         modal.style.display = 'flex';
     }
 }
@@ -266,6 +295,23 @@ function modalClick(e) {
         modal.style.display = 'none';
     }
 }
+
+const menuLeft = document.getElementById('menu-left');
+const bikeMenu = document.getElementById('bike-menu');
+const dropdown = document.getElementById('dropdown');
+const dropdown1 = document.getElementById('dropdown1');
+
+document.addEventListener('click', (e) => {
+    if(!e.target.closest('.header-left')) {
+        menuLeft.style.display = 'none';
+        dropdown1.style.transform = "rotate(0deg)"
+    }   
+
+    if(!e.target.closest('.header-menu')) {
+        bikeMenu.innerHTML = "";    
+        dropdown.style.transform = "rotate(0deg)"   
+    }
+})
 
 window.onload = () => {
     displayBikes();
