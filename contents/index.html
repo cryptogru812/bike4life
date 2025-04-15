@@ -50,8 +50,15 @@
         <div class="custom-slider" id="custom-slider">
           <input type="range" class="scroll-range-slider" min="0" max="100" value="0" id="progressSlider" />
           <div style="display: flex; gap: 16px; float: right; padding-right: 5%;">
-            <button class="scroll-slider-btn prev" onclick="scrollSlider(-2)">&#x2039;</button>
-            <button class="scroll-slider-btn next" onclick="scrollSlider(2)">&#x203A;</button>
+            <button class="scroll-slider-btn prev" onclick="scrollSlider(-2)">
+              <div class="dropdown" style="rotate: 180deg;">
+              <img src="../includes/image/dropdown.svg"/>
+            </div></button>
+            <button class="scroll-slider-btn next" onclick="scrollSlider(2)">
+              <div class="dropdown">
+                <img src="../includes/image/dropdown.svg"/>
+              </div>
+            </button>
           </div>
         </div>
       </div>

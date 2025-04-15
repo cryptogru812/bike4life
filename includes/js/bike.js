@@ -84,9 +84,9 @@ const displayBikes = () => {
             <button class="explore-btn-2">Explore</button>
             <div class="divider"></div>
             <ul class="features">
-                <li class="first-feature"><div class="positive"></div> <p>Excellent price-performance ratio</p></li>
-                <li><div class="positive"></div> <p>Minimalistically displays everything that is required</p></li>
-                <li><div class="negative"></div> <p>No complete cable integration possible</p></li>
+                <li class="first-feature"><div><div class="positive"></div></div><p>Excellent price-performance ratio</p></li>
+                <li><div><div class="positive"></div></div><p>Minimalistically displays everything that is required</p></li>
+                <li><div><div class="negative"></div></div><p>No complete cable integration possible</p></li>
             </ul>
       `;
         priceBox.appendChild(item);

@@ -705,8 +705,8 @@ body {
 }
 
 .label {
-  padding-top: 24px;
-  padding-bottom: 24px;
+  padding-top: 23.5px;
+  padding-bottom: 23.5px;
   font-size: 16px;
 }
 
@@ -774,7 +774,7 @@ body {
   gap: 8px;
   color: white;
   background-color: #767676;
-  height: 79%;
+  height: 77.5%;
   border-radius: 0 5px 5px 0;
 }
 
@@ -1122,6 +1122,14 @@ input[type=range]::-moz-range-thumb {
 #progressSlider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
+  width: 200px;
+  height: 8px;
+  border-radius: 4px;
+  background: #626262;
+  cursor: pointer;
+}
+
+#progressSlider::-moz-range-thumb {
   width: 200px;
   height: 8px;
   border-radius: 4px;
