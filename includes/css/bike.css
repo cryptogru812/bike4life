@@ -377,6 +377,10 @@
   #progressSlider {
     width: calc(100% - 100px) !important;
   }
+
+  .modal-image {
+    transform: translate(-50%, -30%) !important;
+  }
 }
 
 
@@ -649,6 +653,10 @@ body {
   padding: 0 10px !important;
   margin: 0;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 43px;
 }
 
 .features li {
@@ -1149,3 +1157,60 @@ input[type=range]::-moz-range-thumb {
   align-items: center; 
   width: 100%;
 }
+
+.modal1 {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.85);
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.modal1.show {
+  display: block;
+  opacity: 1;
+}
+
+.modal-image {
+  max-width: 90%;
+  max-height: 90%;
+  margin-top: 50%;
+  margin-left: 50%;
+  border-radius: 10px;
+  transform: translate(-50%, -80%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.modal-image.show {
+  opacity: 1;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: white;
+  font-size: 36px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.prev1, .next1 {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+  padding: 20px;
+  user-select: none;
+}
+
+.prev1 { left: 20px; }
+.next1 { right: 20px; }

@@ -51,7 +51,7 @@ const displayBikes = () => {
                 <span class="brand-name">Falkenjagd</span>
             </div>
             <div class="bike-image">
-                <img src="${bike.image}" alt="Aristos T Bike">
+                <img src="${bike.image}" alt="Aristos T Bike" onclick="openModal(${bike.id})">
                 <div class="compare-mobile">
                     <input type="checkbox" id="compare-mobile${bike.id}" onchange="handleCheck(this, ${bike.id})">
                 </div>
@@ -84,7 +84,7 @@ const displayBikes = () => {
             <button class="explore-btn-2">Explore</button>
             <div class="divider"></div>
             <ul class="features">
-                <li class="first-feature"><div><div class="positive"></div></div><p>Excellent price-performance ratio</p></li>
+                <li><div><div class="positive"></div></div><p>Excellent price-performance ratio</p></li>
                 <li><div><div class="positive"></div></div><p>Minimalistically displays everything that is required</p></li>
                 <li><div><div class="negative"></div></div><p>No complete cable integration possible</p></li>
             </ul>
@@ -316,3 +316,55 @@ document.addEventListener('click', (e) => {
 window.onload = () => {
     displayBikes();
 };
+
+let currentIndex = 0;
+
+function openModal(index) {
+    currentIndex = index;
+    const modal = document.getElementById("modal1");
+    const modalImg = document.getElementById("modalImage1");
+    modalImg.classList.remove("show");
+    modal.style.display = "block";
+    setTimeout(() => modal.classList.add("show"), 10); // trigger fade-in
+
+    modalImg.src = bikes[currentIndex].image;
+    modalImg.onload = () => {
+    modalImg.classList.add("show");
+    };
+}
+
+function closeModal(e) {
+    if (e.target.id === "modal1" || e.target.className === "close") {
+    const modal = document.getElementById("modal1");
+    const modalImg = document.getElementById("modalImage1");
+    modal.classList.remove("show");
+    modalImg.classList.remove("show");
+    setTimeout(() => {
+        modal.style.display = "none";
+    }, 400); // match the CSS transition duration
+    }
+}
+
+function nextImage(e) {
+    e.stopPropagation();
+    const modalImg = document.getElementById("modalImage1");
+    modalImg.classList.remove("show");
+    setTimeout(() => {
+    currentIndex = (currentIndex + 1) % bikes.length;
+    modalImg.src = bikes[currentIndex].image;
+    }, 200);
+}
+
+function prevImage(e) {
+    e.stopPropagation();
+    const modalImg = document.getElementById("modalImage1");
+    modalImg.classList.remove("show");
+    setTimeout(() => {
+    currentIndex = (currentIndex - 1 + bikes.length) % bikes.length;
+    modalImg.src = bikes[currentIndex].image;
+    }, 200);
+}
+
+document.getElementById("modalImage1").addEventListener("load", () => {
+    document.getElementById("modalImage1").classList.add("show");
+});

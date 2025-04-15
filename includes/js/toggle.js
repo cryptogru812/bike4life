@@ -1,58 +1,93 @@
+function slideDown(element, duration = 300) {
+  element.style.removeProperty('display');
+  let display = window.getComputedStyle(element).display;
+  if (display === 'none') display = 'block';
+  element.style.display = display;
+
+  const height = element.scrollHeight;
+  element.style.overflow = 'hidden';
+  element.style.height = '0';
+  element.style.opacity = '0';
+  element.offsetHeight; // force repaint
+
+  let startTime;
+
+  function animate(time) {
+    if (!startTime) startTime = time;
+    const progress = Math.min((time - startTime) / duration, 1);
+    element.style.height = height * progress + 'px';
+    element.style.opacity = progress;
+
+    if (progress < 1) {
+      requestAnimationFrame(animate);
+    } else {
+      element.style.height = '';
+      element.style.opacity = '';
+      element.style.overflow = '';
+    }
+  }
+
+  requestAnimationFrame(animate);
+}
+
+function slideUp(element, duration = 300) {
+  const height = element.scrollHeight;
+  element.style.overflow = 'hidden';
+  element.style.height = height + 'px';
+  element.style.opacity = '1';
+  element.offsetHeight; // force repaint
+
+  let startTime;
+
+  function animate(time) {
+    if (!startTime) startTime = time;
+    const progress = Math.min((time - startTime) / duration, 1);
+    element.style.height = height * (1 - progress) + 'px';
+    element.style.opacity = 1 - progress;
+
+    if (progress < 1) {
+      requestAnimationFrame(animate);
+    } else {
+      element.style.display = 'none';
+      element.style.height = '';
+      element.style.opacity = '';
+      element.style.overflow = '';
+    }
+  }
+
+  requestAnimationFrame(animate);
+}
+
+function toggleSection(contentId, boxId, arrowId) {
+  const content = document.getElementById(contentId);
+  const box = document.getElementById(boxId);
+  const arrow = document.getElementById(arrowId);
+
+  const isVisible = window.getComputedStyle(content).display !== 'none';
+
+  if (isVisible) {
+    slideUp(content);
+    slideUp(box);
+    arrow.style.rotate = "270deg";
+  } else {
+    slideDown(content);
+    slideDown(box);
+    arrow.style.rotate = "0deg";
+  }
+}
+
 function toggleAccordion() {
-    const content = document.getElementById("accordionContent");
-    const bike = document.getElementById("price-box");
-    const arrow = document.getElementById("arrow");
-    content.style.display = content.style.display === "none" ? "block" : "none";
-    arrow.style.rotate = content.style.display === "none" ? "270deg" : "0deg";
-    bike.style.display === "flex" ? bike.style.display = "none" : bike.style.display = "flex";
-  }
-
-  function toggleFrame() {
-    const content = document.getElementById("frameContent");
-    const titan = document.getElementById("titan");
-    const arrow = document.getElementById("framearrow");
-    content.style.display = content.style.display === "none" ? "block" : "none";
-    arrow.style.rotate = content.style.display === "none" ? "270deg" : "0deg";
-    titan.style.display === "flex" ? titan.style.display = "none" : titan.style.display = "flex";
-  }
-
-  function toggleBsa() {
-    const content = document.getElementById("bsaContent");
-    const titan = document.getElementById("bsa");
-    const arrow = document.getElementById("bsaarrow");
-    content.style.display = content.style.display === "none" ? "block" : "none";
-    arrow.style.rotate = content.style.display === "none" ? "270deg" : "0deg";
-    titan.style.display === "flex" ? titan.style.display = "none" : titan.style.display = "flex";
-  }
-
-  function toggleZoll() {
-    const content = document.getElementById("zollContent");
-    const titan = document.getElementById("zoll");
-    const arrow = document.getElementById("zollarrow");
-    content.style.display = content.style.display === "none" ? "block" : "none";
-    arrow.style.rotate = content.style.display === "none" ? "270deg" : "0deg";
-    titan.style.display === "flex" ? titan.style.display = "none" : titan.style.display = "flex";
-  }
-
-  function toggleTools() {
-    const content = document.getElementById("toolsContent");
-    const titan = document.getElementById("tools");
-    const arrow = document.getElementById("toolsarrow");
-    content.style.display = content.style.display === "none" ? "block" : "none";
-    arrow.style.rotate = content.style.display === "none" ? "270deg" : "0deg";
-    titan.style.display === "flex" ? titan.style.display = "none" : titan.style.display = "flex";
-  }
-
-  // Optional: start opened or closed
-  document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("accordionContent").style.display = "block";
-    document.getElementById("price-box").style.display = "flex";
-    document.getElementById("frameContent").style.display = "block";
-    document.getElementById("titan").style.display = "flex";
-    document.getElementById("bsaContent").style.display = "block";
-    document.getElementById("bsa").style.display = "flex";
-    document.getElementById("zollContent").style.display = "block";
-    document.getElementById("zoll").style.display = "flex";
-    document.getElementById("toolsContent").style.display = "block";
-    document.getElementById("tools").style.display = "flex";
-  });
+  toggleSection("accordionContent", "price-box", "arrow");
+}
+function toggleFrame() {
+  toggleSection("frameContent", "titan", "framearrow");
+}
+function toggleBsa() {
+  toggleSection("bsaContent", "bsa", "bsaarrow");
+}
+function toggleZoll() {
+  toggleSection("zollContent", "zoll", "zollarrow");
+}
+function toggleTools() {
+  toggleSection("toolsContent", "tools", "toolsarrow");
+}
