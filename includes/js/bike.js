@@ -323,6 +323,24 @@ function openModal(index) {
     currentIndex = index;
     const modal = document.getElementById("modal1");
     const modalImg = document.getElementById("modalImage1");
+    const prevImg = document.getElementById('prevImg');
+    const nextImg = document.getElementById('nextImg');
+
+    if (index > 0) {
+        prevImg.src = bikes[index - 1].image;
+        prevImg.style.display = 'block';
+      } else {
+        prevImg.style.display = 'none';
+      }
+
+      // Show next image (or hide if at end)
+      if (index < bikes.length - 1) {
+        nextImg.src = bikes[index + 1].image;
+        nextImg.style.display = 'block';
+      } else {
+        nextImg.style.display = 'none';
+      }
+
     modalImg.classList.remove("show");
     modal.style.display = "block";
     setTimeout(() => modal.classList.add("show"), 10); // trigger fade-in
