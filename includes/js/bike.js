@@ -1,382 +1,627 @@
 const filterBikesByPriceAndTypes = () => {
-    const bikes = [
-      { id: 1, image: '../includes/image/bike/bike1.svg', title: 'Aristos T', slogan: 'A titan for everyone!', price: 2000, type: 'Gravel'},
-      { id: 2, image: '../includes/image/bike/bike2.svg', title: 'Aristos GT', slogan: 'For gravel and bikepacking', price: 3500, type: 'Gravel' },
-      { id: 3, image: '../includes/image/bike/bike3.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 9000, type: 'Gravel' },
-      { id: 4, image: '../includes/image/bike/bike4.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 8000, type: 'Racing' },
-      { id: 5, image: '../includes/image/bike/bike1.svg', title: 'Aristos T', slogan: 'A titan for everyone!', price: 7500, type: 'Racing' },
-      { id: 6, image: '../includes/image/bike/bike2.svg', title: 'Aristos GT', slogan: 'For gravel and bikepacking', price: 3200, type: 'Gravel' },
-      { id: 7, image: '../includes/image/bike/bike3.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 3800, type: 'Touring' },
-      { id: 8, image: '../includes/image/bike/bike4.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 3400, type: 'E-bike' },
-      { id: 9, image: '../includes/image/bike/bike1.svg', title: 'Aristos T', slogan: 'A titan for everyone!', price: 7300, type: 'Trekking' },
-      { id: 10, image: '../includes/image/bike/bike2.svg', title: 'Aristos GT', slogan: 'For gravel and bikepacking', price: 6000, type: 'Gravel' },
-      { id: 11, image: '../includes/image/bike/bike3.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 5400, type: 'Gravel' },
-      { id: 12, image: '../includes/image/bike/bike4.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 4700, type: 'Gravel' },
-  ]
-    const rangeMinElem = document.getElementById("range-min");
-    const rangeMaxElem = document.getElementById("range-max");
-    const minPrice = parseInt(rangeMinElem.value) || 0;
-    const maxPrice = parseInt(rangeMaxElem.value) || 10000;
+  const bikes = [
+    { id: 1, image: '../includes/image/bike/bike1.svg', title: 'Aristos T', slogan: 'A titan for everyone!', price: 2000, type: 'Gravel'},
+    { id: 2, image: '../includes/image/bike/bike2.svg', title: 'Aristos GT', slogan: 'For gravel and bikepacking', price: 3500, type: 'Gravel' },
+    { id: 3, image: '../includes/image/bike/bike3.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 9000, type: 'Gravel' },
+    { id: 4, image: '../includes/image/bike/bike4.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 8000, type: 'Racing' },
+    { id: 5, image: '../includes/image/bike/bike1.svg', title: 'Aristos T', slogan: 'A titan for everyone!', price: 7500, type: 'Racing' },
+    { id: 6, image: '../includes/image/bike/bike2.svg', title: 'Aristos GT', slogan: 'For gravel and bikepacking', price: 3200, type: 'Gravel' },
+    { id: 7, image: '../includes/image/bike/bike3.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 3800, type: 'Touring' },
+    { id: 8, image: '../includes/image/bike/bike4.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 3400, type: 'E-bike' },
+    { id: 9, image: '../includes/image/bike/bike1.svg', title: 'Aristos T', slogan: 'A titan for everyone!', price: 7300, type: 'Trekking' },
+    { id: 10, image: '../includes/image/bike/bike2.svg', title: 'Aristos GT', slogan: 'For gravel and bikepacking', price: 6000, type: 'Gravel' },
+    { id: 11, image: '../includes/image/bike/bike3.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 5400, type: 'Gravel' },
+    { id: 12, image: '../includes/image/bike/bike4.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 4700, type: 'Gravel' },
+]
+  const rangeMinElem = document.getElementById("range-min");
+  const rangeMaxElem = document.getElementById("range-max");
+  const minPrice = parseInt(rangeMinElem.value) || 0;
+  const maxPrice = parseInt(rangeMaxElem.value) || 10000;
 
-    // Return only bikes with price between min and max
-    return bikes.filter(bike => bike.price >= minPrice && bike.price <= maxPrice);
+  // Return only bikes with price between min and max
+  return bikes.filter(bike => bike.price >= minPrice && bike.price <= maxPrice);
 };
 
 const displayBikes = () => {
-    const bikeCrad = document.getElementById("bike-card");
-    const priceBox = document.getElementById("price-box");
-    const titan = document.getElementById("titan");
-    const bsa = document.getElementById("bsa");
-    const zoll = document.getElementById("zoll");
-    const tools = document.getElementById("tools");
-    const filteredBikes = filterBikesByPriceAndTypes();
+  const bikeCrad = document.getElementById("bike-card");
+  const priceBox = document.getElementById("price-box");
+  const titan = document.getElementById("titan");
+  const bsa = document.getElementById("bsa");
+  const zoll = document.getElementById("zoll");
+  const tools = document.getElementById("tools");
+  const filteredBikes = filterBikesByPriceAndTypes();
 
-    bikeCrad.innerHTML = "";
-    priceBox.innerHTML = "";
-    titan.innerHTML = ""
-    bsa.innerHTML = "";
-    zoll.innerHTML = "";
-    tools.innerHTML = "";
-    filteredBikes.forEach((bike) => {
-        const item = document.createElement("div");
-        item.className = "bike-card";
-        item.id = `bike-card${bike.id}`;
-        item.innerHTML = `
-            <div class="bike-header">
-                <img src="../includes/image/logo.png" alt="Falkenjagd Logo" class="logo">
-                <span class="brand-name">Falkenjagd</span>
-            </div>
-            <div class="bike-image">
-                <img src="${bike.image}" alt="Aristos T Bike" onclick="openModal(${bike.id})">
-                <div class="compare-mobile">
-                    <input type="checkbox" id="compare-mobile${bike.id}" onchange="handleCheck(this, ${bike.id})">
-                </div>
-            </div>
+  bikeCrad.innerHTML = "";
+  priceBox.innerHTML = "";
+  titan.innerHTML = ""
+  bsa.innerHTML = "";
+  zoll.innerHTML = "";
+  tools.innerHTML = "";
+  filteredBikes.forEach((bike) => {
+      const item = document.createElement("div");
+      item.className = "bike-card";
+      item.id = `bike-card${bike.id}`;
+      item.innerHTML = `
+          <div class="bike-header">
+              <img src="../includes/image/logo.png" alt="Falkenjagd Logo" class="logo">
+              <span class="brand-name">Falkenjagd</span>
+          </div>
+          <div class="bike-image">
+              <img src="${bike.image}" alt="Aristos T Bike" onclick="openModal(${bike.id})">
+              <div class="compare-mobile">
+                  <input type="checkbox" id="compare-mobile${bike.id}" onchange="handleCheck(this, ${bike.id})">
+              </div>
+          </div>
 
-            <div class="bike-footer">
-                <div class="brand">
-                    <div class="bike-info">
-                        <h3>${bike.title}</h3>
-                    </div>
-                    <div class="compare">
-                        <input type="checkbox" id="compare${bike.id}" onchange="handleCheck(this, ${bike.id})">
-                        <label for="compare${bike.id}">Compare</label>
-                    </div>
-                </div>
-                <p class="slogan"><em>${bike.slogan}</em></p>
-            </div>
-      `;
-        bikeCrad.appendChild(item);
-    });
-    filteredBikes.forEach((bike) => {
-        const item = document.createElement("div");
-        item.className = "price-box";
-        item.id = `price-box${bike.id}`
-        item.innerHTML = `
-            <div class="price-rev">${bike.price}€</div>
-            <button class="explore-btn">Explore</button>
-            <div class="divider"></div>
-            <div class="price">1.890,00€</div>
-            <button class="explore-btn-2">Explore</button>
-            <div class="divider"></div>
-            <ul class="features">
-                <li><div><div class="positive"></div></div><p>Excellent price-performance ratio</p></li>
-                <li><div><div class="positive"></div></div><p>Minimalistically displays everything that is required</p></li>
-                <li><div><div class="negative"></div></div><p>No complete cable integration possible</p></li>
-            </ul>
-      `;
-        priceBox.appendChild(item);
-    });
-    filteredBikes.forEach((bike) => {
-        const item = document.createElement("div");
-        item.className = "card";
-        item.id = `bikeframe${bike.id}`;
-        item.innerHTML = `
-            <div class="icon">
-                <img src="../includes/image/bike-frame-icon.svg" alt="Bike Frame" class="bike-frame" id="bike-frame${bike.id}" />
-                <img src="../includes/image/scale.svg" alt="scale" class="scale" id="scale${bike.id}" onclick="modalShow(${bike.id})"/>
-            </div>
-            <div class="bar-container">
-                <div class="bar-comfortable"></div>
-                <div class="bar-sporty"></div>
-            </div>
-            <div class="bar-labels">
-                <span>Comfortable</span>
-                <span>Sporty</span>
-            </div>
-            <div class="divider"></div>
-            <div class="label">Titan 3/2,5</div>
-            <div class="divider"></div>
-            <div class="label">double butted</div>
-            <div class="divider"></div>
-            <div class="label">Parapera Carbon</div>
-            <div class="divider"></div>
-            <div class="label">8,5 Kg</div>
-            <div class="divider"></div>
-            <div class="label">ca. 1950g (Size L)</div>
-            <div class="divider"></div>
-            <div class="label">550g</div>
-            <div class="divider"></div>
-            <div class="label">Standard</div>
-            <div class="divider"></div>
-            <div class="label">Partially integrated from down tube</div>
-      `;
-        titan.appendChild(item);
-    });
-    filteredBikes.forEach((bike) => {
-        const item = document.createElement("div");
-        item.className = "card"
-        item.id = `bsa${bike.id}`;
-        item.innerHTML = `
-            <div class="bsa">
-                <img src="../includes/image/bsa.svg" alt="BSA" />
-            </div>
-            <div class="first-label">BSA</div>
-            <div class="divider"></div>
-            <div class="label">Chain , single and double</div>
-            <div class="divider"></div>
-            <div class="label">10 - 48</div>
-      `;
-        bsa.appendChild(item);
-    });
-    filteredBikes.forEach((bike) => {
-        const item = document.createElement("div");
-        item.className = "card";
-        item.id = `zoll${bike.id}`;
-        item.innerHTML = `
-            <div class="zoll">
-                <img src="../includes/image/zoll.svg" alt="zoll" />
-            </div>
-            <div class="zoll-first-label">28 Zoll</div>
-            <div class="divider"></div>
-            <div class="label">--</div>
-            <div class="divider"></div>
-            <div class="label">45mm</div>
-            <div class="divider"></div>
-            <div class="label">145Kg</div>
-      `;
-        zoll.appendChild(item);
-    });
-    filteredBikes.forEach((bike) => {
-        const item = document.createElement("div");
-        item.className = "card";
-        item.id = `tools${bike.id}`;
-        item.innerHTML = `
-            <div class="tools">
-                <img src="../includes/image/tools.svg" alt="tools"/>
-            </div>
-            <img src="../includes/image/check.svg" class="first-cyan"/>
-            <div class="divider"></div>
-            <img src="../includes/image/fail.svg" class="cyan"/>
-            <div class="divider"></div>
-            <img src="../includes/image/check.svg" class="cyan"/>
-            <div class="divider"></div>            
-            <div class="label">3x</div>
-            <div class="divider"></div>
-            <img src="../includes/image/check.svg" class="cyan"/>
-            <div class="divider"></div>
-            <img src="../includes/image/fail.svg" class="cyan"/>
-      `;
-        tools.appendChild(item);
-    });
-    bikeCrad.addEventListener("scroll", () => {
-        priceBox.scrollLeft = bikeCrad.scrollLeft;
-        titan.scrollLeft = bikeCrad.scrollLeft;
-        bsa.scrollLeft = bikeCrad.scrollLeft;
-        zoll.scrollLeft = bikeCrad.scrollLeft;
-        tools.scrollLeft = bikeCrad.scrollLeft;
-    })
+          <div class="bike-footer">
+              <div class="brand">
+                  <div class="bike-info">
+                      <h3>${bike.title}</h3>
+                  </div>
+                  <div class="compare">
+                      <input type="checkbox" id="compare${bike.id}" onchange="handleCheck(this, ${bike.id})">
+                      <label for="compare${bike.id}">Compare</label>
+                  </div>
+              </div>
+              <p class="slogan"><em>${bike.slogan}</em></p>
+          </div>
+    `;
+      bikeCrad.appendChild(item);
+  });
+  filteredBikes.forEach((bike) => {
+      const item = document.createElement("div");
+      item.className = "price-box";
+      item.id = `price-box${bike.id}`
+      item.innerHTML = `
+          <div class="price-rev">${bike.price}€</div>
+          <button class="explore-btn">Explore</button>
+          <div class="divider"></div>
+          <div class="price">1.890,00€</div>
+          <button class="explore-btn-2">Explore</button>
+          <div class="divider"></div>
+          <ul class="features">
+              <li><div><div class="positive"></div></div><p>Excellent price-performance ratio</p></li>
+              <li><div><div class="positive"></div></div><p>Minimalistically displays everything that is required</p></li>
+              <li><div><div class="negative"></div></div><p>No complete cable integration possible</p></li>
+          </ul>
+    `;
+      priceBox.appendChild(item);
+  });
+  filteredBikes.forEach((bike) => {
+      const item = document.createElement("div");
+      item.className = "card";
+      item.id = `bikeframe${bike.id}`;
+      item.innerHTML = `
+          <div class="icon">
+              <img src="../includes/image/bike-frame-icon.svg" alt="Bike Frame" class="bike-frame" id="bike-frame${bike.id}" />
+              <img src="../includes/image/scale.svg" alt="scale" class="scale" id="scale${bike.id}" onclick="modalShow(${bike.id})"/>
+          </div>
+          <div class="bar-container">
+              <div class="bar-comfortable"></div>
+              <div class="bar-sporty"></div>
+          </div>
+          <div class="bar-labels">
+              <span>Comfortable</span>
+              <span>Sporty</span>
+          </div>
+          <div class="divider"></div>
+          <div class="label">Titan 3/2,5</div>
+          <div class="divider"></div>
+          <div class="label">double butted</div>
+          <div class="divider"></div>
+          <div class="label">Parapera Carbon</div>
+          <div class="divider"></div>
+          <div class="label">8,5 Kg</div>
+          <div class="divider"></div>
+          <div class="label">ca. 1950g (Size L)</div>
+          <div class="divider"></div>
+          <div class="label">550g</div>
+          <div class="divider"></div>
+          <div class="label">Standard</div>
+          <div class="divider"></div>
+          <div class="label">Partially integrated from down tube</div>
+    `;
+      titan.appendChild(item);
+  });
+  filteredBikes.forEach((bike) => {
+      const item = document.createElement("div");
+      item.className = "card"
+      item.id = `bsa${bike.id}`;
+      item.innerHTML = `
+          <div class="bsa">
+              <img src="../includes/image/bsa.svg" alt="BSA" />
+          </div>
+          <div class="first-label">BSA</div>
+          <div class="divider"></div>
+          <div class="label">Chain , single and double</div>
+          <div class="divider"></div>
+          <div class="label">10 - 48</div>
+    `;
+      bsa.appendChild(item);
+  });
+  filteredBikes.forEach((bike) => {
+      const item = document.createElement("div");
+      item.className = "card";
+      item.id = `zoll${bike.id}`;
+      item.innerHTML = `
+          <div class="zoll">
+              <img src="../includes/image/zoll.svg" alt="zoll" />
+          </div>
+          <div class="zoll-first-label">28 Zoll</div>
+          <div class="divider"></div>
+          <div class="label">--</div>
+          <div class="divider"></div>
+          <div class="label">45mm</div>
+          <div class="divider"></div>
+          <div class="label">145Kg</div>
+    `;
+      zoll.appendChild(item);
+  });
+  filteredBikes.forEach((bike) => {
+      const item = document.createElement("div");
+      item.className = "card";
+      item.id = `tools${bike.id}`;
+      item.innerHTML = `
+          <div class="tools">
+              <img src="../includes/image/tools.svg" alt="tools"/>
+          </div>
+          <img src="../includes/image/check.svg" class="first-cyan"/>
+          <div class="divider"></div>
+          <img src="../includes/image/fail.svg" class="cyan"/>
+          <div class="divider"></div>
+          <img src="../includes/image/check.svg" class="cyan"/>
+          <div class="divider"></div>            
+          <div class="label">3x</div>
+          <div class="divider"></div>
+          <img src="../includes/image/check.svg" class="cyan"/>
+          <div class="divider"></div>
+          <img src="../includes/image/fail.svg" class="cyan"/>
+    `;
+      tools.appendChild(item);
+  });
+  bikeCrad.addEventListener("scroll", () => {
+      priceBox.scrollLeft = bikeCrad.scrollLeft;
+      titan.scrollLeft = bikeCrad.scrollLeft;
+      bsa.scrollLeft = bikeCrad.scrollLeft;
+      zoll.scrollLeft = bikeCrad.scrollLeft;
+      tools.scrollLeft = bikeCrad.scrollLeft;
+  })
 };
 
 function handleCheck(checkbox, id) {
-    const groups = [
-      { key: 'bike', container: document.getElementById('bike-card'), prefix: 'bike-card' },
-      { key: 'price', container: document.getElementById('price-box'), prefix: 'price-box' },
-      { key: 'frame', container: document.getElementById('titan'), prefix: 'bikeframe' },
-      { key: 'bsa', container: document.getElementById('bsa'), prefix: 'bsa' },
-      { key: 'zoll', container: document.getElementById('zoll'), prefix: 'zoll' },
-      { key: 'tools', container: document.getElementById('tools'), prefix: 'tools' }
-    ];
-  
-    // Step 1: Cache initial positions
-    const firstRects = new Map();
-    groups.forEach(({ container }) => {
-      Array.from(container.children).forEach(el => {
-        firstRects.set(el, el.getBoundingClientRect());
-      });
+  const groups = [
+    { key: 'bike', container: document.getElementById('bike-card'), prefix: 'bike-card' },
+    { key: 'price', container: document.getElementById('price-box'), prefix: 'price-box' },
+    { key: 'frame', container: document.getElementById('titan'), prefix: 'bikeframe' },
+    { key: 'bsa', container: document.getElementById('bsa'), prefix: 'bsa' },
+    { key: 'zoll', container: document.getElementById('zoll'), prefix: 'zoll' },
+    { key: 'tools', container: document.getElementById('tools'), prefix: 'tools' }
+  ];
+
+  // Step 1: Cache initial positions
+  const firstRects = new Map();
+  groups.forEach(({ container }) => {
+    Array.from(container.children).forEach(el => {
+      firstRects.set(el, el.getBoundingClientRect());
     });
-  
-    // Step 2: Update positions
-    const mainGroup = groups[0]; // 'bike' container used to determine logic
-    const cards = Array.from(mainGroup.container.children);
-  
-    const currentCard = document.getElementById(`${mainGroup.prefix}${id}`);
-    const isChecked = checkbox.checked;
-  
-    // Remove card from current position to reinsert it later
-    const updatedOrder = cards.filter(c => c !== currentCard);
-  
-    if (isChecked) {
-      // Checked → to top
-      updatedOrder.unshift(currentCard);
-    } else {
-      // Unchecked → after last checked
-      let inserted = false;
-      for (let i = updatedOrder.length - 1; i >= 0; i--) {
-        const cb = updatedOrder[i].querySelector('input[type="checkbox"]');
-        if (cb && cb.checked) {
-          updatedOrder.splice(i + 1, 0, currentCard);
-          inserted = true;
-          break;
-        }
+  });
+
+  // Step 2: Update positions
+  const mainGroup = groups[0]; // 'bike' container used to determine logic
+  const cards = Array.from(mainGroup.container.children);
+
+  const currentCard = document.getElementById(`${mainGroup.prefix}${id}`);
+  const isChecked = checkbox.checked;
+
+  // Remove card from current position to reinsert it later
+  const updatedOrder = cards.filter(c => c !== currentCard);
+
+  if (isChecked) {
+    // Checked → to top
+    updatedOrder.unshift(currentCard);
+  } else {
+    // Unchecked → after last checked
+    let inserted = false;
+    for (let i = updatedOrder.length - 1; i >= 0; i--) {
+      const cb = updatedOrder[i].querySelector('input[type="checkbox"]');
+      if (cb && cb.checked) {
+        updatedOrder.splice(i + 1, 0, currentCard);
+        inserted = true;
+        break;
       }
-      if (!inserted) updatedOrder.push(currentCard);
     }
-  
-    // Step 3: Apply new order to all groups
-    groups.forEach(({ container, prefix }) => {
-      updatedOrder.forEach(c => {
-        const cardId = c.id.replace(mainGroup.prefix, '');
-        const el = document.getElementById(`${prefix}${cardId}`);
-        container.appendChild(el);
-      });
-    });
-  
-    // Step 4: FLIP animation
-    requestAnimationFrame(() => {
-      groups.forEach(({ container }) => {
-        Array.from(container.children).forEach(el => {
-          const lastRect = el.getBoundingClientRect();
-          const firstRect = firstRects.get(el);
-          if (!firstRect) return;
-  
-          const dx = firstRect.left - lastRect.left;
-          const dy = firstRect.top - lastRect.top;
-  
-          el.style.transform = `translate(${dx}px, ${dy}px)`;
-          el.style.transition = 'transform 0s';
-  
-          requestAnimationFrame(() => {
-            el.style.transition = 'transform 0.4s ease';
-            el.style.transform = 'translate(0, 0)';
-          });
-  
-          el.addEventListener('transitionend', () => {
-            el.style.transition = '';
-            el.style.transform = '';
-          }, { once: true });
-        });
-      });
-    });
+    if (!inserted) updatedOrder.push(currentCard);
   }
 
+  // Step 3: Apply new order to all groups
+  groups.forEach(({ container, prefix }) => {
+    updatedOrder.forEach(c => {
+      const cardId = c.id.replace(mainGroup.prefix, '');
+      const el = document.getElementById(`${prefix}${cardId}`);
+      container.appendChild(el);
+    });
+  });
+
+  // Step 4: FLIP animation
+  requestAnimationFrame(() => {
+    groups.forEach(({ container }) => {
+      Array.from(container.children).forEach(el => {
+        const lastRect = el.getBoundingClientRect();
+        const firstRect = firstRects.get(el);
+        if (!firstRect) return;
+
+        const dx = firstRect.left - lastRect.left;
+        const dy = firstRect.top - lastRect.top;
+
+        el.style.transform = `translate(${dx}px, ${dy}px)`;
+        el.style.transition = 'transform 0s';
+
+        requestAnimationFrame(() => {
+          el.style.transition = 'transform 0.4s ease';
+          el.style.transform = 'translate(0, 0)';
+        });
+
+        el.addEventListener('transitionend', () => {
+          el.style.transition = '';
+          el.style.transform = '';
+        }, { once: true });
+      });
+    });
+  });
+}
+
 function modalShow(index) {
-    const modal = document.getElementById('imgModal');
-    const scale = document.getElementById(`scale${index}`);
-    if (scale) {
-        modal.style.display = 'flex';
-    }
+  const modal = document.getElementById('imgModal');
+  const scale = document.getElementById(`scale${index}`);
+  if (scale) {
+      modal.style.display = 'flex';
+  }
 }
 
 function modalhidden() {
-    const modal = document.getElementById('imgModal');
-    modal.style.display = 'none';
+  const modal = document.getElementById('imgModal');
+  modal.style.display = 'none';
 }
 
 function modalClick(e) {
-    const modal = document.getElementById('imgModal');
-    if(e.target === modal) {
-        modal.style.display = 'none';
-    }
+  const modal = document.getElementById('imgModal');
+  if(e.target === modal) {
+      modal.style.display = 'none';
+  }
 }
 
 
 document.addEventListener('click', (e) => {
-    const menuLeft = document.getElementById('menu-left');
-    const bikeMenu = document.getElementById('bike-menu');
-    const dropdown = document.getElementById('dropdown');
-    const dropdown1 = document.getElementById('dropdown1');
-    if(!e.target.closest('.header-left')) {
-        menuLeft.style.display = 'none';
-        dropdown1.style.transform = "rotate(0deg)"
-    }   
+  const menuLeft = document.getElementById('menu-left');
+  const bikeMenu = document.getElementById('bike-menu');
+  const dropdown = document.getElementById('dropdown');
+  const dropdown1 = document.getElementById('dropdown1');
+  if(!e.target.closest('.header-left')) {
+      menuLeft.style.display = 'none';
+      dropdown1.style.transform = "rotate(0deg)"
+  }   
 
-    if(!e.target.closest('.header-menu')) {
-        bikeMenu.innerHTML = "";    
-        dropdown.style.transform = "rotate(0deg)"   
-    }
+  if(!e.target.closest('.header-menu')) {
+      bikeMenu.innerHTML = "";    
+      dropdown.style.transform = "rotate(0deg)"   
+  }
 })
 
-window.onload = () => {
-    displayBikes();
-};
-
-
 function openModal(index) {
-    let currentIndex = 0;
-    currentIndex = index;
-    const modal = document.getElementById("modal1");
-    const modalImg = document.getElementById("modalImage1");
-    const prevImg = document.getElementById('prevImg');
-    const nextImg = document.getElementById('nextImg');
+  let currentIndex = 0;
+  currentIndex = index;
+  const modal = document.getElementById("modal1");
+  const modalImg = document.getElementById("modalImage1");
+  const prevImg = document.getElementById('prevImg');
+  const nextImg = document.getElementById('nextImg');
 
-    if (index > 0) {
-        prevImg.src = bikes[index - 1].image;
-        prevImg.style.display = 'block';
-      } else {
-        prevImg.style.display = 'none';
-      }
+  if (index > 0) {
+      prevImg.src = bikes[index - 1].image;
+      prevImg.style.display = 'block';
+    } else {
+      prevImg.style.display = 'none';
+    }
 
-      // Show next image (or hide if at end)
-      if (index < bikes.length - 1) {
-        nextImg.src = bikes[index + 1].image;
-        nextImg.style.display = 'block';
-      } else {
-        nextImg.style.display = 'none';
-      }
+    // Show next image (or hide if at end)
+    if (index < bikes.length - 1) {
+      nextImg.src = bikes[index + 1].image;
+      nextImg.style.display = 'block';
+    } else {
+      nextImg.style.display = 'none';
+    }
 
-    modalImg.classList.remove("show");
-    modal.style.display = "block";
-    setTimeout(() => modal.classList.add("show"), 10); // trigger fade-in
+  modalImg.classList.remove("show");
+  modal.style.display = "block";
+  setTimeout(() => modal.classList.add("show"), 10); // trigger fade-in
 
-    modalImg.src = bikes[currentIndex].image;
-    modalImg.onload = () => {
-    modalImg.classList.add("show");
-    };
+  modalImg.src = bikes[currentIndex].image;
+  modalImg.onload = () => {
+  modalImg.classList.add("show");
+  };
 }
 
 function closeModal(e) {
-    if (e.target.id === "modal1" || e.target.className === "close") {
-    const modal = document.getElementById("modal1");
-    const modalImg = document.getElementById("modalImage1");
-    modal.classList.remove("show");
-    modalImg.classList.remove("show");
-    setTimeout(() => {
-        modal.style.display = "none";
-    }, 400); // match the CSS transition duration
-    }
+  if (e.target.id === "modal1" || e.target.className === "close") {
+  const modal = document.getElementById("modal1");
+  const modalImg = document.getElementById("modalImage1");
+  modal.classList.remove("show");
+  modalImg.classList.remove("show");
+  setTimeout(() => {
+      modal.style.display = "none";
+  }, 400); // match the CSS transition duration
+  }
 }
 
 function nextImage(e) {
-    e.stopPropagation();
-    const modalImg = document.getElementById("modalImage1");
-    modalImg.classList.remove("show");
-    setTimeout(() => {
-    currentIndex = (currentIndex + 1) % bikes.length;
-    modalImg.src = bikes[currentIndex].image;
-    }, 200);
+  e.stopPropagation();
+  const modalImg = document.getElementById("modalImage1");
+  modalImg.classList.remove("show");
+  setTimeout(() => {
+  currentIndex = (currentIndex + 1) % bikes.length;
+  modalImg.src = bikes[currentIndex].image;
+  }, 200);
 }
 
 function prevImage(e) {
-    e.stopPropagation();
-    const modalImg = document.getElementById("modalImage1");
-    modalImg.classList.remove("show");
-    setTimeout(() => {
-    currentIndex = (currentIndex - 1 + bikes.length) % bikes.length;
-    modalImg.src = bikes[currentIndex].image;
-    }, 200);
+  e.stopPropagation();
+  const modalImg = document.getElementById("modalImage1");
+  modalImg.classList.remove("show");
+  setTimeout(() => {
+  currentIndex = (currentIndex - 1 + bikes.length) % bikes.length;
+  modalImg.src = bikes[currentIndex].image;
+  }, 200);
 }
 
 document.getElementById("modalImage1").addEventListener("load", () => {
-    document.getElementById("modalImage1").classList.add("show");
+  document.getElementById("modalImage1").classList.add("show");
 });
+
+function slideDown(element, duration = 300) {
+  element.style.removeProperty('display');
+  let display = window.getComputedStyle(element).display;
+  if (display === 'none') display = 'block';
+  element.style.display = display;
+
+  const height = element.scrollHeight;
+  element.style.overflow = 'hidden';
+  element.style.height = '0';
+  element.style.opacity = '0';
+  element.offsetHeight; // force repaint
+
+  let startTime;
+
+  function animate(time) {
+    if (!startTime) startTime = time;
+    const progress = Math.min((time - startTime) / duration, 1);
+    element.style.height = height * progress + 'px';
+    element.style.opacity = progress;
+
+    if (progress < 1) {
+      requestAnimationFrame(animate);
+    } else {
+      element.style.height = '';
+      element.style.opacity = '';
+      element.style.overflow = '';
+    }
+  }
+
+  requestAnimationFrame(animate);
+}
+
+function slideUp(element, duration = 300) {
+  const height = element.scrollHeight;
+  element.style.overflow = 'hidden';
+  element.style.height = height + 'px';
+  element.style.opacity = '1';
+  element.offsetHeight; // force repaint
+
+  let startTime;
+
+  function animate(time) {
+    if (!startTime) startTime = time;
+    const progress = Math.min((time - startTime) / duration, 1);
+    element.style.height = height * (1 - progress) + 'px';
+    element.style.opacity = 1 - progress;
+
+    if (progress < 1) {
+      requestAnimationFrame(animate);
+    } else {
+      element.style.display = 'none';
+      element.style.height = '';
+      element.style.opacity = '';
+      element.style.overflow = '';
+    }
+  }
+
+  requestAnimationFrame(animate);
+}
+
+function toggleSection(contentId, boxId, arrowId) {
+  const content = document.getElementById(contentId);
+  const box = document.getElementById(boxId);
+  const arrow = document.getElementById(arrowId);
+
+  const isVisible = window.getComputedStyle(content).display !== 'none';
+
+  if (isVisible) {
+    slideUp(content);
+    slideUp(box);
+    arrow.style.rotate = "270deg";
+  } else {
+    slideDown(content);
+    slideDown(box);
+    arrow.style.rotate = "0deg";
+  }
+}
+
+function toggleAccordion() {
+  toggleSection("accordionContent", "price-box", "arrow");
+}
+function toggleFrame() {
+  toggleSection("frameContent", "titan", "framearrow");
+}
+function toggleBsa() {
+  toggleSection("bsaContent", "bsa", "bsaarrow");
+}
+function toggleZoll() {
+  toggleSection("zollContent", "zoll", "zollarrow");
+}
+function toggleTools() {
+  toggleSection("toolsContent", "tools", "toolsarrow");
+}
+
+function toggleBikeMenu() {
+  const menuButtons = [
+      { id: 1, text: "Gravel", image: "../includes/image/header/gravel.png" },
+      { id: 2, text: "Racing", image: "../includes/image/header/racing.jpg" },
+      { id: 3, text: "Touring", image: "../includes/image/header/touring.jpg" },
+      { id: 4, text: "E-bike", image: "../includes/image/header/ebike.jpg" },
+      { id: 5, text: "Mountainbike", image: "../includes/image/header/mountainbike.jpg" },
+      { id: 6, text: "Trekking", image: "../includes/image/header/trekking.jpg" },
+  ];
+  const bikeMenu = document.getElementById("bike-menu");
+  const menuText = document.getElementById("menu-text");    
+  const dropDown = document.getElementById("dropdown");
+  if (bikeMenu.innerHTML === "") {
+      menuButtons.forEach((button) => {
+          if (menuText.textContent.trim() !== button.text) {
+              const item = document.createElement("div");
+              item.className = "bike-item";
+              item.style.backgroundImage = `url(${button.image})`;
+
+              item.innerHTML = `
+                  <div class="menu-gradient">
+                      <span class="menu-label">${button.text}</span>
+                      <span class="menu-arrow">›</span>
+                  </div>
+              `;
+
+              // Attach event listener properly
+              item.addEventListener("click", () => MenuItemClick(button.text, button.image));
+              bikeMenu.appendChild(item);
+          }
+      });
+  } else {
+      bikeMenu.innerHTML = "";
+  }
+
+  // Proper rotation toggle using transform
+  dropDown.style.transform = dropDown.style.transform === "rotate(90deg)" ? "rotate(0deg)" : "rotate(90deg)";
+}
+
+function toggleMenuLeft() {
+  const menuLeft = document.getElementById("menu-left");
+  const dropDown1 = document.getElementById("dropdown1");
+  menuLeft.style.display = menuLeft.style.display === "none" ? "flex" : "none";
+  dropDown1.style.transform = dropDown1.style.transform === "rotate(90deg)" ? "rotate(0deg)" : "rotate(90deg)";
+}
+
+function MenuItemClick(text, image) {
+  const LandScapeSection = document.getElementById("landscape-section");
+  const menuText = document.getElementById("menu-text");
+  menuText.textContent = text;
+  LandScapeSection.style.backgroundImage = `url(${image})`;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("bike-menu").style.display = "flex";
+  document.getElementById("dropdown").style.transform = "rotate(0deg)";
+  document.getElementById("menu-left").style.display = "none";
+});
+
+function scrollSlider(direction) {
+  const slider = document.getElementById('bike-card');
+  const pitch = window.innerWidth > 768 ? 200 : 50; 
+  const scrollAmount = slider.querySelector('img').offsetWidth + pitch;
+  slider.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+}
+
+window.addEventListener('load', () => {
+  const slider = document.getElementById('bike-card');
+  const range = document.getElementById('progressSlider');
+  const range1 = document.getElementById('range-min');
+  const range2 = document.getElementById('range-max');
+  const customSlider = document.getElementById('custom-slider');
+
+  // Update range when scrolling
+  slider.addEventListener('scroll', () => {
+      const maxScroll = slider.scrollWidth - slider.clientWidth;
+      const percent = (slider.scrollLeft / maxScroll) * 100;
+      range.value = percent;
+  });
+
+  // Scroll slider when dragging range input
+  range.addEventListener('input', () => {
+      const maxScroll = slider.scrollWidth - slider.clientWidth;
+      const newScrollLeft = (range.value / 100) * maxScroll;
+      slider.scrollLeft = newScrollLeft;
+  });
+
+  range1.addEventListener('input', () => {
+      const a = window.innerWidth > 768 ? 0.8544 : 0.8;
+      if(slider.scrollWidth < window.innerWidth * a) {
+          customSlider.style.display = 'none';
+      }
+      else {
+          customSlider.style.display = 'block';
+      }
+  });
+
+  range2.addEventListener('input', () => {
+      const a = window.innerWidth > 768 ? 0.8544 : 0.8;
+      if(slider.scrollWidth < window.innerWidth * a) {
+          customSlider.style.display = 'none';
+      }
+      else {
+          customSlider.style.display = 'block';
+      }
+  });
+  const a = window.innerWidth > 768 ? 0.8544 : 0.8;
+  if(slider.scrollWidth < window.innerWidth * a) {
+      customSlider.style.display = 'none';
+  }
+  else {
+      customSlider.style.display = 'block';
+  }
+
+  const rangeMin = document.getElementById("range-min");
+  const rangeMax = document.getElementById("range-max");
+  rangeMin.addEventListener("input", updateSlider);
+  rangeMax.addEventListener("input", updateSlider);
+  updateSlider();
+  displayBikes();
+})
+
+
+function updateSlider() {
+  const rangeMin = document.getElementById("range-min");
+  const rangeMax = document.getElementById("range-max");
+  const minGap = 500;
+  const rangeValue = document.getElementById("rangeValue");
+  let min = parseInt(rangeMin.value);
+  let max = parseInt(rangeMax.value);
+
+  if (max - min <= minGap) {
+      if (event.target.id === "range-min") {
+          rangeMin.value = max - minGap;
+      } else {
+          rangeMax.value = min + minGap;
+      }
+  } else {
+      rangeValue.textContent = `${rangeMin.value}€ to ${rangeMax.value}€`;
+      fillSlider();
+
+      // displayBikes();
+  }
+}
+
+function fillSlider() {
+  const rangeMin = document.getElementById("range-min");
+  const rangeMax = document.getElementById("range-max");
+  const maxVal = 10000;
+  const sliderTrack = document.getElementById("slider-track");
+  const percent1 = (rangeMin.value / maxVal) * 100;
+  const percent2 = (rangeMax.value / maxVal) * 100;
+  sliderTrack.style.left = percent1 + "%";
+  sliderTrack.style.width = (percent2 - percent1) + "%";
+}
