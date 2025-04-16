@@ -1,19 +1,15 @@
-const menuButtons = [
-    { id: 1, text: "Gravel", image: "../includes/image/header/gravel.png" },
-    { id: 2, text: "Racing", image: "../includes/image/header/racing.jpg" },
-    { id: 3, text: "Touring", image: "../includes/image/header/touring.jpg" },
-    { id: 4, text: "E-bike", image: "../includes/image/header/ebike.jpg" },
-    { id: 5, text: "Mountainbike", image: "../includes/image/header/mountainbike.jpg" },
-    { id: 6, text: "Trekking", image: "../includes/image/header/trekking.jpg" },
-];
-
-const dropDown = document.getElementById("dropdown");
-const dropDown1 = document.getElementById("dropdown1");
-
 function toggleBikeMenu() {
+    const menuButtons = [
+        { id: 1, text: "Gravel", image: "../includes/image/header/gravel.png" },
+        { id: 2, text: "Racing", image: "../includes/image/header/racing.jpg" },
+        { id: 3, text: "Touring", image: "../includes/image/header/touring.jpg" },
+        { id: 4, text: "E-bike", image: "../includes/image/header/ebike.jpg" },
+        { id: 5, text: "Mountainbike", image: "../includes/image/header/mountainbike.jpg" },
+        { id: 6, text: "Trekking", image: "../includes/image/header/trekking.jpg" },
+    ];
     const bikeMenu = document.getElementById("bike-menu");
     const menuText = document.getElementById("menu-text");    
-
+    const dropDown = document.getElementById("dropdown");
     if (bikeMenu.innerHTML === "") {
         menuButtons.forEach((button) => {
             if (menuText.textContent.trim() !== button.text) {
@@ -43,7 +39,7 @@ function toggleBikeMenu() {
 
 function toggleMenuLeft() {
     const menuLeft = document.getElementById("menu-left");
-
+    const dropDown1 = document.getElementById("dropdown1");
     menuLeft.style.display = menuLeft.style.display === "none" ? "flex" : "none";
     dropDown1.style.transform = dropDown1.style.transform === "rotate(90deg)" ? "rotate(0deg)" : "rotate(90deg)";
 }

@@ -1,27 +1,18 @@
-const bikeCrad = document.getElementById("bike-card");
-const priceBox = document.getElementById("price-box");
-const titan = document.getElementById("titan");
-const bsa = document.getElementById("bsa");
-const zoll = document.getElementById("zoll");
-const tools = document.getElementById("tools");
-
-const bikes = [
-    { id: 1, image: '../includes/image/bike/bike1.svg', title: 'Aristos T', slogan: 'A titan for everyone!', price: 2000 },
-    { id: 2, image: '../includes/image/bike/bike2.svg', title: 'Aristos GT', slogan: 'For gravel and bikepacking', price: 3500 },
-    { id: 3, image: '../includes/image/bike/bike3.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 9000 },
-    { id: 4, image: '../includes/image/bike/bike4.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 8000 },
-    { id: 5, image: '../includes/image/bike/bike1.svg', title: 'Aristos T', slogan: 'A titan for everyone!', price: 7500 },
-    { id: 6, image: '../includes/image/bike/bike2.svg', title: 'Aristos GT', slogan: 'For gravel and bikepacking', price: 3200 },
-    { id: 7, image: '../includes/image/bike/bike3.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 3800 },
-    { id: 8, image: '../includes/image/bike/bike4.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 3400 },
-    { id: 9, image: '../includes/image/bike/bike1.svg', title: 'Aristos T', slogan: 'A titan for everyone!', price: 7300 },
-    { id: 10, image: '../includes/image/bike/bike2.svg', title: 'Aristos GT', slogan: 'For gravel and bikepacking', price: 6000 },
-    { id: 11, image: '../includes/image/bike/bike3.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 5400 },
-    { id: 12, image: '../includes/image/bike/bike4.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 4700 },
-]
-
-const filterBikesByPrice = () => {
-    // Get the slider values from the DOM (ensure these elements exist)
+const filterBikesByPriceAndTypes = () => {
+    const bikes = [
+      { id: 1, image: '../includes/image/bike/bike1.svg', title: 'Aristos T', slogan: 'A titan for everyone!', price: 2000, type: 'Gravel'},
+      { id: 2, image: '../includes/image/bike/bike2.svg', title: 'Aristos GT', slogan: 'For gravel and bikepacking', price: 3500, type: 'Gravel' },
+      { id: 3, image: '../includes/image/bike/bike3.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 9000, type: 'Gravel' },
+      { id: 4, image: '../includes/image/bike/bike4.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 8000, type: 'Racing' },
+      { id: 5, image: '../includes/image/bike/bike1.svg', title: 'Aristos T', slogan: 'A titan for everyone!', price: 7500, type: 'Racing' },
+      { id: 6, image: '../includes/image/bike/bike2.svg', title: 'Aristos GT', slogan: 'For gravel and bikepacking', price: 3200, type: 'Gravel' },
+      { id: 7, image: '../includes/image/bike/bike3.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 3800, type: 'Touring' },
+      { id: 8, image: '../includes/image/bike/bike4.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 3400, type: 'E-bike' },
+      { id: 9, image: '../includes/image/bike/bike1.svg', title: 'Aristos T', slogan: 'A titan for everyone!', price: 7300, type: 'Trekking' },
+      { id: 10, image: '../includes/image/bike/bike2.svg', title: 'Aristos GT', slogan: 'For gravel and bikepacking', price: 6000, type: 'Gravel' },
+      { id: 11, image: '../includes/image/bike/bike3.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 5400, type: 'Gravel' },
+      { id: 12, image: '../includes/image/bike/bike4.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 4700, type: 'Gravel' },
+  ]
     const rangeMinElem = document.getElementById("range-min");
     const rangeMaxElem = document.getElementById("range-max");
     const minPrice = parseInt(rangeMinElem.value) || 0;
@@ -32,8 +23,13 @@ const filterBikesByPrice = () => {
 };
 
 const displayBikes = () => {
-
-    const filteredBikes = filterBikesByPrice();
+    const bikeCrad = document.getElementById("bike-card");
+    const priceBox = document.getElementById("price-box");
+    const titan = document.getElementById("titan");
+    const bsa = document.getElementById("bsa");
+    const zoll = document.getElementById("zoll");
+    const tools = document.getElementById("tools");
+    const filteredBikes = filterBikesByPriceAndTypes();
 
     bikeCrad.innerHTML = "";
     priceBox.innerHTML = "";
@@ -276,10 +272,8 @@ function handleCheck(checkbox, id) {
 
 function modalShow(index) {
     const modal = document.getElementById('imgModal');
-    const modalImg = document.getElementById('modalImg');
     const scale = document.getElementById(`scale${index}`);
     if (scale) {
-        modalImg.src = '../includes/image/zoomout.png';
         modal.style.display = 'flex';
     }
 }
@@ -296,12 +290,12 @@ function modalClick(e) {
     }
 }
 
-const menuLeft = document.getElementById('menu-left');
-const bikeMenu = document.getElementById('bike-menu');
-const dropdown = document.getElementById('dropdown');
-const dropdown1 = document.getElementById('dropdown1');
 
 document.addEventListener('click', (e) => {
+    const menuLeft = document.getElementById('menu-left');
+    const bikeMenu = document.getElementById('bike-menu');
+    const dropdown = document.getElementById('dropdown');
+    const dropdown1 = document.getElementById('dropdown1');
     if(!e.target.closest('.header-left')) {
         menuLeft.style.display = 'none';
         dropdown1.style.transform = "rotate(0deg)"
@@ -317,9 +311,9 @@ window.onload = () => {
     displayBikes();
 };
 
-let currentIndex = 0;
 
 function openModal(index) {
+    let currentIndex = 0;
     currentIndex = index;
     const modal = document.getElementById("modal1");
     const modalImg = document.getElementById("modalImage1");
