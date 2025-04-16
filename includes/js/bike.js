@@ -42,7 +42,7 @@ function displayBikes() {
   bsa.innerHTML = "";
   zoll.innerHTML = "";
   tools.innerHTML = "";
-  filteredBikes.forEach((bike) => {
+  filteredBikes.forEach((bike, index) => {
       const item = document.createElement("div");
       item.className = "bike-card";
       item.id = `bike-card${bike.id}`;
@@ -52,7 +52,7 @@ function displayBikes() {
               <span class="brand-name">Falkenjagd</span>
           </div>
           <div class="bike-image">
-              <img src="${bike.image}" alt="Aristos T Bike" onclick="openModal(${bike.id})">
+              <img src="${bike.image}" alt="Aristos T Bike" onclick="openModal(${index})">
               <div class="compare-mobile">
                   <input type="checkbox" id="compare-mobile${bike.id}" onchange="handleCheck(this, ${bike.id})">
               </div>
@@ -302,69 +302,82 @@ function modalClick(e) {
   }
 }
 
-function openModal(index) {
-  let currentIndex = 0;
-  currentIndex = index;
-  const modal = document.getElementById("modal1");
+function showImage(index) {
+  const bikes = filterBikesByPriceAndTypes();
   const modalImg = document.getElementById("modalImage1");
   const prevImg = document.getElementById('prevImg');
   const nextImg = document.getElementById('nextImg');
+  const prevBtn = document.getElementById('prev1');
+  const nextBtn = document.getElementById('next1');
 
+  // Boundary checks
+  if (index < 0 || index >= bikes.length) return;
+
+  // Update main image
+  modalImg.src = bikes[index].image;
+  modalImg.dataset.imgId = index;
+
+  // Update preview thumbnails
   if (index > 0) {
-      prevImg.src = bikes[index - 1].image;
-      prevImg.style.display = 'block';
-    } else {
-      prevImg.style.display = 'none';
-    }
+    prevImg.src = bikes[index - 1].image;
+    prevImg.style.display = 'block';
+    prevBtn.style.display = 'block';
+  } else {
+    prevImg.style.display = 'none';
+    prevBtn.style.display = 'none';
+  }
 
-    // Show next image (or hide if at end)
-    if (index < bikes.length - 1) {
-      nextImg.src = bikes[index + 1].image;
-      nextImg.style.display = 'block';
-    } else {
-      nextImg.style.display = 'none';
-    }
-
-  modalImg.classList.remove("show");
-  modal.style.display = "block";
-  setTimeout(() => modal.classList.add("show"), 10); // trigger fade-in
-
-  modalImg.src = bikes[currentIndex].image;
-  modalImg.onload = () => {
-  modalImg.classList.add("show");
-  };
+  if (index < bikes.length - 1) {
+    nextImg.src = bikes[index + 1].image;
+    nextImg.style.display = 'block';
+    nextBtn.style.display = 'block';
+  } else {
+    nextImg.style.display = 'none';
+    nextBtn.style.display = 'none';
+  }
 }
 
 function closeModal(e) {
   if (e.target.id === "modal1" || e.target.className === "close") {
+    const modal = document.getElementById("modal1");
+    const modalImg = document.getElementById("modalImage1");
+    modal.classList.remove("show");
+    modalImg.classList.remove("show");
+    setTimeout(() => {
+      modal.style.display = "none";
+      modalImg.classList.add("show");
+    }, 400);
+  }
+}
+
+function openModal(index) {
   const modal = document.getElementById("modal1");
   const modalImg = document.getElementById("modalImage1");
-  modal.classList.remove("show");
   modalImg.classList.remove("show");
-  setTimeout(() => {
-      modal.style.display = "none";
-  }, 400); // match the CSS transition duration
-  }
+  modal.style.display = "block";
+  setTimeout(() => modal.classList.add("show"), 10);
+  showImage(index);
 }
 
 function nextImage(e) {
   e.stopPropagation();
   const modalImg = document.getElementById("modalImage1");
-  modalImg.classList.remove("show");
-  setTimeout(() => {
-  currentIndex = (currentIndex + 1) % bikes.length;
-  modalImg.src = bikes[currentIndex].image;
-  }, 200);
+  const bikes = filterBikesByPriceAndTypes();
+  let index = Number(modalImg.dataset.imgId);
+  if (index < bikes.length - 1) {
+    modalImg.classList.remove("show");
+    setTimeout(() => showImage(index + 1), 200);
+  }
 }
 
 function prevImage(e) {
   e.stopPropagation();
   const modalImg = document.getElementById("modalImage1");
-  modalImg.classList.remove("show");
-  setTimeout(() => {
-  currentIndex = (currentIndex - 1 + bikes.length) % bikes.length;
-  modalImg.src = bikes[currentIndex].image;
-  }, 200);
+  let index = Number(modalImg.dataset.imgId);
+  if (index > 0) {
+    modalImg.classList.remove("show");
+    setTimeout(() => showImage(index - 1), 200);
+  }
 }
 
 function slideDown(element, duration = 300) {
@@ -524,43 +537,57 @@ function MenuItemClick(text, image) {
 
 function scrollSlider(direction) {
   const slider = document.getElementById('bike-card');
-  const pitch = window.innerWidth > 768 ? 200 : 50; 
-  const scrollAmount = slider.querySelector('img').offsetWidth + pitch;
-  slider.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+  if (!slider) return;
+
+  const bikeImage = slider.querySelector('img');
+  if (!bikeImage) return;
+
+  const pitch = window.innerWidth > 768 ? 200 : 50;
+  const scrollAmount = bikeImage.offsetWidth + pitch;
+
+  slider.scrollBy({
+    left: direction * scrollAmount,
+    behavior: 'smooth'
+  });
 }
 
-function updateSlider() {
+function updateSlider(event) {
   const rangeMin = document.getElementById("range-min");
   const rangeMax = document.getElementById("range-max");
-  const minGap = 500;
   const rangeValue = document.getElementById("rangeValue");
+  const minGap = 500;
+
   let min = parseInt(rangeMin.value);
   let max = parseInt(rangeMax.value);
 
-  if (max - min <= minGap) {
-      if (event.target.id === "range-min") {
-          rangeMin.value = max - minGap;
-      } else {
-          rangeMax.value = min + minGap;
-      }
-  } else {
-      rangeValue.textContent = `${rangeMin.value}€ to ${rangeMax.value}€`;
-      fillSlider();
-
-      displayBikes();
+  // Enforce minimum gap between sliders
+  if (max - min < minGap) {
+    if (event.target.id === "range-min") {
+      rangeMin.value = max - minGap;
+      min = max - minGap;
+    } else {
+      rangeMax.value = min + minGap;
+      max = min + minGap;
+    }
   }
+
+  // Update range display and visuals
+  rangeValue.textContent = `${min}€ to ${max}€`;
+  fillSlider(min, max);
+  displayBikes();
 }
 
-function fillSlider() {
-  const rangeMin = document.getElementById("range-min");
-  const rangeMax = document.getElementById("range-max");
-  const maxVal = 10000;
+function fillSlider(min, max) {
   const sliderTrack = document.getElementById("slider-track");
-  const percent1 = (rangeMin.value / maxVal) * 100;
-  const percent2 = (rangeMax.value / maxVal) * 100;
-  sliderTrack.style.left = percent1 + "%";
-  sliderTrack.style.width = (percent2 - percent1) + "%";
+  const maxRangeValue = 10000;
+
+  const percentMin = (min / maxRangeValue) * 100;
+  const percentMax = (max / maxRangeValue) * 100;
+
+  sliderTrack.style.left = `${percentMin}%`;
+  sliderTrack.style.width = `${percentMax - percentMin}%`;
 }
+
 
 window.addEventListener('load', () => {
   const slider = document.getElementById('bike-card');
