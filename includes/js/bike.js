@@ -1,34 +1,39 @@
-const filterBikesByPriceAndTypes = () => {
+function filterBikesByPriceAndTypes() {
   const bikes = [
-    { id: 1, image: '../includes/image/bike/bike1.svg', title: 'Aristos T', slogan: 'A titan for everyone!', price: 2000, type: 'Gravel'},
-    { id: 2, image: '../includes/image/bike/bike2.svg', title: 'Aristos GT', slogan: 'For gravel and bikepacking', price: 3500, type: 'Gravel' },
-    { id: 3, image: '../includes/image/bike/bike3.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 9000, type: 'Gravel' },
-    { id: 4, image: '../includes/image/bike/bike4.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 8000, type: 'Racing' },
-    { id: 5, image: '../includes/image/bike/bike1.svg', title: 'Aristos T', slogan: 'A titan for everyone!', price: 7500, type: 'Racing' },
-    { id: 6, image: '../includes/image/bike/bike2.svg', title: 'Aristos GT', slogan: 'For gravel and bikepacking', price: 3200, type: 'Gravel' },
-    { id: 7, image: '../includes/image/bike/bike3.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 3800, type: 'Touring' },
-    { id: 8, image: '../includes/image/bike/bike4.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 3400, type: 'E-bike' },
-    { id: 9, image: '../includes/image/bike/bike1.svg', title: 'Aristos T', slogan: 'A titan for everyone!', price: 7300, type: 'Trekking' },
-    { id: 10, image: '../includes/image/bike/bike2.svg', title: 'Aristos GT', slogan: 'For gravel and bikepacking', price: 6000, type: 'Gravel' },
-    { id: 11, image: '../includes/image/bike/bike3.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 5400, type: 'Gravel' },
-    { id: 12, image: '../includes/image/bike/bike4.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 4700, type: 'Gravel' },
+    { id: 1, image: '../includes/image/bike/bike1.svg', title: 'Aristos T', slogan: 'A titan for everyone!', price: 2000, type: 'Gravel', menuId: 'falkenjagd1' },
+    { id: 2, image: '../includes/image/bike/bike2.svg', title: 'Aristos GT', slogan: 'For gravel and bikepacking', price: 3500, type: 'Gravel', menuId: 'falkenjagd2' },
+    { id: 3, image: '../includes/image/bike/bike3.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 9000, type: 'Gravel', menuId: 'falkenjagd1' },
+    { id: 4, image: '../includes/image/bike/bike4.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 8000, type: 'Racing', menuId: 'falkenjagd1' },
+    { id: 5, image: '../includes/image/bike/bike1.svg', title: 'Aristos T', slogan: 'A titan for everyone!', price: 7500, type: 'Racing', menuId: 'falkenjagd3' },
+    { id: 6, image: '../includes/image/bike/bike2.svg', title: 'Aristos GT', slogan: 'For gravel and bikepacking', price: 3200, type: 'Gravel', menuId: 'falkenjagd1' },
+    { id: 7, image: '../includes/image/bike/bike3.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 3800, type: 'Touring', menuId: 'falkenjagd3' },
+    { id: 8, image: '../includes/image/bike/bike4.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 3400, type: 'E-bike', menuId: 'falkenjagd1' },
+    { id: 9, image: '../includes/image/bike/bike1.svg', title: 'Aristos T', slogan: 'A titan for everyone!', price: 7300, type: 'Trekking', menuId: 'falkenjagd1' },
+    { id: 10, image: '../includes/image/bike/bike2.svg', title: 'Aristos GT', slogan: 'For gravel and bikepacking', price: 6000, type: 'Gravel', menuId: 'falkenjagd2' },
+    { id: 11, image: '../includes/image/bike/bike3.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 5400, type: 'Gravel', menuId: 'falkenjagd1' },
+    { id: 12, image: '../includes/image/bike/bike4.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 4700, type: 'Gravel', menuId: 'falkenjagd1' },
 ]
   const rangeMinElem = document.getElementById("range-min");
   const rangeMaxElem = document.getElementById("range-max");
+  const menuText = document.getElementById('menu-text');
+  const menuLeftId = document.getElementById('menu-left').dataset.menuLeftId;
   const minPrice = parseInt(rangeMinElem.value) || 0;
   const maxPrice = parseInt(rangeMaxElem.value) || 10000;
+  const filteredBikesByType = bikes.filter(bike => bike.type === menuText.textContent);
+  const filteredBikesByTypeAndMenuId = filteredBikesByType.filter(bike => bike.menuId === menuLeftId);
 
   // Return only bikes with price between min and max
-  return bikes.filter(bike => bike.price >= minPrice && bike.price <= maxPrice);
+  return filteredBikesByTypeAndMenuId.filter(bike => bike.price >= minPrice && bike.price <= maxPrice);
 };
 
-const displayBikes = () => {
+function displayBikes() {
   const bikeCrad = document.getElementById("bike-card");
   const priceBox = document.getElementById("price-box");
   const titan = document.getElementById("titan");
   const bsa = document.getElementById("bsa");
   const zoll = document.getElementById("zoll");
   const tools = document.getElementById("tools");
+  const customSlider = document.getElementById('custom-slider');
   const filteredBikes = filterBikesByPriceAndTypes();
 
   bikeCrad.innerHTML = "";
@@ -185,7 +190,14 @@ const displayBikes = () => {
       bsa.scrollLeft = bikeCrad.scrollLeft;
       zoll.scrollLeft = bikeCrad.scrollLeft;
       tools.scrollLeft = bikeCrad.scrollLeft;
-  })
+  });
+  const a = window.innerWidth > 768 ? 0.8544 : 0.8;
+      if(bikeCrad.scrollWidth < window.innerWidth * a) {
+          customSlider.style.display = 'none';
+      }
+      else {
+          customSlider.style.display = 'block';
+      }
 };
 
 function handleCheck(checkbox, id) {
@@ -290,23 +302,6 @@ function modalClick(e) {
   }
 }
 
-
-document.addEventListener('click', (e) => {
-  const menuLeft = document.getElementById('menu-left');
-  const bikeMenu = document.getElementById('bike-menu');
-  const dropdown = document.getElementById('dropdown');
-  const dropdown1 = document.getElementById('dropdown1');
-  if(!e.target.closest('.header-left')) {
-      menuLeft.style.display = 'none';
-      dropdown1.style.transform = "rotate(0deg)"
-  }   
-
-  if(!e.target.closest('.header-menu')) {
-      bikeMenu.innerHTML = "";    
-      dropdown.style.transform = "rotate(0deg)"   
-  }
-})
-
 function openModal(index) {
   let currentIndex = 0;
   currentIndex = index;
@@ -371,10 +366,6 @@ function prevImage(e) {
   modalImg.src = bikes[currentIndex].image;
   }, 200);
 }
-
-document.getElementById("modalImage1").addEventListener("load", () => {
-  document.getElementById("modalImage1").classList.add("show");
-});
 
 function slideDown(element, duration = 300) {
   element.style.removeProperty('display');
@@ -507,6 +498,8 @@ function toggleBikeMenu() {
 
   // Proper rotation toggle using transform
   dropDown.style.transform = dropDown.style.transform === "rotate(90deg)" ? "rotate(0deg)" : "rotate(90deg)";
+
+  displayBikes();
 }
 
 function toggleMenuLeft() {
@@ -514,6 +507,12 @@ function toggleMenuLeft() {
   const dropDown1 = document.getElementById("dropdown1");
   menuLeft.style.display = menuLeft.style.display === "none" ? "flex" : "none";
   dropDown1.style.transform = dropDown1.style.transform === "rotate(90deg)" ? "rotate(0deg)" : "rotate(90deg)";
+  displayBikes();
+}
+
+function selectMenuLeftId(div) {
+  const menuLeft = document.getElementById('menu-left');
+  menuLeft.dataset.menuLeftId = div.dataset.menuLeftId;
 }
 
 function MenuItemClick(text, image) {
@@ -523,17 +522,44 @@ function MenuItemClick(text, image) {
   LandScapeSection.style.backgroundImage = `url(${image})`;
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("bike-menu").style.display = "flex";
-  document.getElementById("dropdown").style.transform = "rotate(0deg)";
-  document.getElementById("menu-left").style.display = "none";
-});
-
 function scrollSlider(direction) {
   const slider = document.getElementById('bike-card');
   const pitch = window.innerWidth > 768 ? 200 : 50; 
   const scrollAmount = slider.querySelector('img').offsetWidth + pitch;
   slider.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+}
+
+function updateSlider() {
+  const rangeMin = document.getElementById("range-min");
+  const rangeMax = document.getElementById("range-max");
+  const minGap = 500;
+  const rangeValue = document.getElementById("rangeValue");
+  let min = parseInt(rangeMin.value);
+  let max = parseInt(rangeMax.value);
+
+  if (max - min <= minGap) {
+      if (event.target.id === "range-min") {
+          rangeMin.value = max - minGap;
+      } else {
+          rangeMax.value = min + minGap;
+      }
+  } else {
+      rangeValue.textContent = `${rangeMin.value}€ to ${rangeMax.value}€`;
+      fillSlider();
+
+      displayBikes();
+  }
+}
+
+function fillSlider() {
+  const rangeMin = document.getElementById("range-min");
+  const rangeMax = document.getElementById("range-max");
+  const maxVal = 10000;
+  const sliderTrack = document.getElementById("slider-track");
+  const percent1 = (rangeMin.value / maxVal) * 100;
+  const percent2 = (rangeMax.value / maxVal) * 100;
+  sliderTrack.style.left = percent1 + "%";
+  sliderTrack.style.width = (percent2 - percent1) + "%";
 }
 
 window.addEventListener('load', () => {
@@ -592,36 +618,28 @@ window.addEventListener('load', () => {
   displayBikes();
 })
 
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("bike-menu").style.display = "flex";
+  document.getElementById("dropdown").style.transform = "rotate(0deg)";
+  document.getElementById("menu-left").style.display = "none";  
+});
 
-function updateSlider() {
-  const rangeMin = document.getElementById("range-min");
-  const rangeMax = document.getElementById("range-max");
-  const minGap = 500;
-  const rangeValue = document.getElementById("rangeValue");
-  let min = parseInt(rangeMin.value);
-  let max = parseInt(rangeMax.value);
+document.getElementById("modalImage1").addEventListener("load", () => {
+  document.getElementById("modalImage1").classList.add("show");
+});
 
-  if (max - min <= minGap) {
-      if (event.target.id === "range-min") {
-          rangeMin.value = max - minGap;
-      } else {
-          rangeMax.value = min + minGap;
-      }
-  } else {
-      rangeValue.textContent = `${rangeMin.value}€ to ${rangeMax.value}€`;
-      fillSlider();
+document.addEventListener('click', (e) => {
+  const menuLeft = document.getElementById('menu-left');
+  const bikeMenu = document.getElementById('bike-menu');
+  const dropdown = document.getElementById('dropdown');
+  const dropdown1 = document.getElementById('dropdown1');
+  if(!e.target.closest('.header-left')) {
+      menuLeft.style.display = 'none';
+      dropdown1.style.transform = "rotate(0deg)"
+  }   
 
-      // displayBikes();
+  if(!e.target.closest('.header-menu')) {
+      bikeMenu.innerHTML = "";    
+      dropdown.style.transform = "rotate(0deg)"   
   }
-}
-
-function fillSlider() {
-  const rangeMin = document.getElementById("range-min");
-  const rangeMax = document.getElementById("range-max");
-  const maxVal = 10000;
-  const sliderTrack = document.getElementById("slider-track");
-  const percent1 = (rangeMin.value / maxVal) * 100;
-  const percent2 = (rangeMax.value / maxVal) * 100;
-  sliderTrack.style.left = percent1 + "%";
-  sliderTrack.style.width = (percent2 - percent1) + "%";
-}
+})
