@@ -586,10 +586,9 @@ function fillSlider(min, max) {
 
   sliderTrack.style.left = `${percentMin}%`;
   sliderTrack.style.width = `${percentMax - percentMin}%`;
-}
+} 
 
-
-window.addEventListener('load', () => {
+window.addEventListener('load', () => {  
   const slider = document.getElementById('bike-card');
   const range = document.getElementById('progressSlider');
   const range1 = document.getElementById('range-min');
