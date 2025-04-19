@@ -240,6 +240,14 @@
     font-size: 10px !important;
   }
 
+  /* .fork {
+    padding: 8.5px 0 !important;
+  }
+
+  .frameweight {
+    padding: 8.5px 0 !important;
+  } */
+
   .first-label {
     padding: 2px 0 5px 0 !important;
   }
@@ -431,6 +439,7 @@ body {
   display: flex;
   gap: 4px;
   overscroll-behavior-y: auto;
+  overflow: hidden;
 }
 
 .right {
@@ -454,6 +463,12 @@ body {
 @media (max-width: 768px) {
   .bikes {
     margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 1030px) {
+  .accordion-item {
+    font-size: 14px !important;
   }
 }
 
