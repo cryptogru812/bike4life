@@ -29,7 +29,7 @@
 
   .landscape-section {
     height: 80px !important;
-    margin-top: 17px !important;
+    margin-top: 58px !important;
     margin-bottom: 9px !important;
   }
 
@@ -99,7 +99,7 @@
   }
   .filter-box {
     padding: 7px 3px !important;
-    height: calc(100% - 62px) !important;
+    height: calc(100% - 44px) !important;
   }
 
   .filter-box h2 {
@@ -347,10 +347,6 @@
     width: 6px !important;
   }
 
-  .sticky {
-    top: -13px !important;
-  }
-
   .positive {
     width: 20px !important;
     height: 20px !important;
@@ -462,6 +458,11 @@ body {
   margin-bottom: 28px;
 }
 
+@media (max-width: 768px) {
+  .bikes {
+    margin-bottom: 10px;
+  }
+}
 
 .bikes::-webkit-scrollbar {
   /* background-color: #D9D9D9; */
@@ -1037,10 +1038,34 @@ input[type=range]::-moz-range-thumb {
 
 .sticky {
   position: sticky; 
-  top: -148px; 
+  top: 60px; 
   z-index: 1; 
   background-color: black;
 }
+
+@media (max-width: 1000px) {
+  .sticky {
+    top: -193px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sticky {
+    top: calc(20% - 100px);
+  }
+}
+
+/* @media (max-width: 425px) {
+  .sticky {
+    top: -52px;
+  }
+}
+
+@media (max-width: 375px) {
+  .sticky {
+    top: -38px;
+  }
+} */
 
 .header-menu {
   display: flex;
