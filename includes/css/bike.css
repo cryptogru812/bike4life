@@ -73,7 +73,6 @@
 
   .accordion-item {
     font-size: 10px !important;
-    padding: 0 9px 0 6px !important;
   }
 
   .compare {
@@ -164,6 +163,7 @@
 
   .bike-element {
     gap: 3px !important;
+    margin-top: 2px !important;
   }
 
   .price-box {
@@ -241,6 +241,8 @@
   .label {
     font-size: 14px !important;
     padding: 25px 0 !important;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   .bar-labels {
@@ -260,11 +262,7 @@
   }
   .zoll-first-label {
     padding: 4px 0 6.5px 0 !important;
-  }
-
-  .circuit {
-    padding: 8px 0 !important;;
-  }
+  }  
 
   .first-cyan {
     width: 26px !important;
