@@ -3,6 +3,13 @@
   src: url("../font/Inter-VariableFont_opsz\,wght.ttf");
 }
 
+@media (max-width: 1300px) {
+  .accordion-header {
+    font-size: 14px !important;
+    padding: 20px !important;
+  }
+}
+
 @media (max-width: 768px) {
   .left {
     width: 20% !important;
