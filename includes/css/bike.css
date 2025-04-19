@@ -46,10 +46,6 @@
     gap: 5px !important;
   }
 
-  .bike-card {
-    min-width: 105px !important;
-  }
-
   .logo {
     width: 12px !important;
     height: 12px !important;
@@ -60,6 +56,7 @@
   }
 
   .accordion-header {
+    height: 30px !important;
     font-size: 10px !important;
     padding: 7px 13px 10px 10px !important;
   }
@@ -160,7 +157,7 @@
   }
 
   .price-box {
-    margin-top: 28px !important;
+    margin-top: 48px !important;
     padding: 0 !important;
   }
 
@@ -229,6 +226,7 @@
   .card {
     min-width: 105px !important;
     padding: 0 !important;
+    margin-top: 20px !important;
   }
 
   .label {
@@ -331,6 +329,10 @@
 
   .accordion-body {
     padding: 0 7px 0 9px !important;
+  }
+
+  .bike-card {
+    min-width: 105px !important;
   }
 
   .menu-left {
@@ -448,7 +450,6 @@ body {
 
 .left {
   width: 14.56%;
-  min-width: 100px;
 }
 
 .bikes {
@@ -601,7 +602,7 @@ body {
   background-color: #000;
   color: #fff;
   font-family: inter;
-  margin-top: 55px;
+  margin-top: 110px;
   padding: 1px 26px;
   min-width: 300px;
   width: 300px;
@@ -679,6 +680,7 @@ body {
   text-align: center;
   min-width: 300px;
   width: 300px;
+  margin-top: 55px;
 }
 
 .bike-frame {
@@ -874,6 +876,7 @@ input[type=range]::-moz-range-thumb {
 
 .accordion-header {
   background-color: #434343;
+  height: 80px;
   padding: 16px;
   display: flex;
   justify-content: center;
@@ -883,10 +886,6 @@ input[type=range]::-moz-range-thumb {
   position: relative;
   cursor: pointer;
   border-radius: 0 5px 0 0;
-}
-
-.accordion-header span {
-  white-space: nowrap;
 }
 
 .arrow {
