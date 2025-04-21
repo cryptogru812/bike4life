@@ -376,7 +376,7 @@
   }
 
   #progressSlider {
-    width: calc(100% - 100px) !important;
+    width: calc(100% - 105px) !important;
   }
 
   .modal-image {
@@ -1036,6 +1036,7 @@ input[type=range]::-moz-range-thumb {
   font-size: 30px;
   color: white;
   cursor: pointer;
+  z-index: 99999999;
 }
 
 .modal-close:hover {
@@ -1064,7 +1065,7 @@ input[type=range]::-moz-range-thumb {
 
 @media (max-width: 768px) {
   .sticky {
-    top: calc(20% - 100px);
+    top: 45px;
   }
 }
 
@@ -1145,6 +1146,20 @@ input[type=range]::-moz-range-thumb {
   width: 0;
   height: 0;
 } 
+
+.scroll-slider-btns {
+  display: flex;
+  gap: 16px;
+  float: right;
+  padding-right: 5%;
+}
+
+@media (max-width: 450px) {
+  .scroll-slider-btns {
+    padding-right: 10%;
+    gap: 8px;
+  }
+}
 
 .scroll-slider-btn {
   width: 40px;

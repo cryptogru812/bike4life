@@ -192,12 +192,12 @@ function displayBikes() {
       tools.scrollLeft = bikeCrad.scrollLeft;
   });
   const a = window.innerWidth > 768 ? 0.8544 : 0.8;
-      if(bikeCrad.scrollWidth < window.innerWidth * a) {
-          customSlider.style.display = 'none';
-      }
-      else {
-          customSlider.style.display = 'block';
-      }
+  if(bikeCrad.scrollWidth < window.innerWidth * a) {
+      customSlider.style.display = 'none';
+  }
+  else {
+      customSlider.style.display = 'block';
+  }
 };
 
 function handleCheck(checkbox, id) {
@@ -286,7 +286,8 @@ function modalShow(index) {
   const modal = document.getElementById('imgModal');
   const scale = document.getElementById(`scale${index}`);
   if (scale) {
-      modal.style.display = 'flex';
+    modal.style.display = 'flex';
+    modal.style.overflowY = 'auto';
   }
 }
 
@@ -588,7 +589,7 @@ function fillSlider(min, max) {
   sliderTrack.style.width = `${percentMax - percentMin}%`;
 } 
 
-window.addEventListener('load', () => {  
+function initBike() {
   const slider = document.getElementById('bike-card');
   const range = document.getElementById('progressSlider');
   const range1 = document.getElementById('range-min');
@@ -640,15 +641,18 @@ window.addEventListener('load', () => {
   const rangeMax = document.getElementById("range-max");
   rangeMin.addEventListener("input", updateSlider);
   rangeMax.addEventListener("input", updateSlider);
-  updateSlider();
-  displayBikes();
-})
 
-document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("bike-menu").style.display = "flex";
   document.getElementById("dropdown").style.transform = "rotate(0deg)";
   document.getElementById("menu-left").style.display = "none";  
-});
+
+  updateSlider();
+  displayBikes();
+}
+
+window.addEventListener('load', () => {  
+  initBike();
+})
 
 document.getElementById("modalImage1").addEventListener("load", () => {
   document.getElementById("modalImage1").classList.add("show");
