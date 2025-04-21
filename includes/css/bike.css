@@ -16,7 +16,8 @@
   }
 
   .right {
-    width: 80% !important;
+    width: min(80% , calc(100% - 100px)) !important;
+    
     gap: 4px !important;
   }
 
@@ -100,9 +101,6 @@
     padding: 0px !important;
   }
 
-  .bikes::-webkit-scrollbar {
-    height: 2px !important;
-  }
   .filter-box {
     padding: 7px 3px !important;
     height: calc(100% - 44px) !important;
@@ -460,7 +458,7 @@ body {
 .bikes {
   display: flex;
   gap: 25px;
-  overflow-x: hidden;
+  overflow-x: auto;
   padding-bottom: 20px;
   margin-bottom: 28px;
 }
@@ -479,21 +477,8 @@ body {
 
 .bikes::-webkit-scrollbar {
   /* background-color: #D9D9D9; */
-  height: 8px;
-  border-radius: 8px;
-  width: 30px;
-}
-
-.bikes::-webkit-scrollbar-thumb {
-  background-color: #626262;
-  border-radius: 8px;
-  width: 20px;
-}
-
-.bikes::-webkit-scrollbar-track {
-  background-color: #D9D9D9;
-  border-radius: 8px;
-  width: 10px;
+  height: 0px;
+  width: 0px;
 }
 
 .bike-card {
@@ -995,7 +980,7 @@ input[type=range]::-moz-range-thumb {
   backdrop-filter: blur(14.4px);
   left: 40px;
   z-index: 10;
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 10px;
   padding: 50px 11px 21px 11px;
@@ -1067,18 +1052,6 @@ input[type=range]::-moz-range-thumb {
     top: calc(20% - 100px);
   }
 }
-
-/* @media (max-width: 425px) {
-  .sticky {
-    top: -52px;
-  }
-}
-
-@media (max-width: 375px) {
-  .sticky {
-    top: -38px;
-  }
-} */
 
 .header-menu {
   display: flex;
