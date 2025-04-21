@@ -1027,6 +1027,18 @@ input[type=range]::-moz-range-thumb {
   color: #ccc;
 }
 
+.modal-content {
+  position: fixed;
+  top: -64px;
+  width: 100%;
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    top: 0;
+  }
+}
+
 .header-left {
   display: flex; 
   gap: 28px; 
