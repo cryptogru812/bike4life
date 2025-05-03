@@ -1,7 +1,7 @@
 function filterBikesByPriceAndTypes() {
   const bikes = [
     { id: 1, image: '../includes/image/bike/bike1.svg', title: 'Aristos T', slogan: 'A titan for everyone!', price: 2000, type: 'Gravel', menuId: 'falkenjagd1' },
-    { id: 2, image: '../includes/image/bike/bike2.svg', title: 'Aristos GT', slogan: 'For gravel and bikepacking', price: 3500, type: 'Gravel', menuId: 'falkenjagd2' },
+    { id: 2, image: '../includes/image/bike/bike2.svg', title: 'Aristos GT', slogan: 'For gravel and bikepacking', price: 3500, type: 'Touring', menuId: 'falkenjagd2' },
     { id: 3, image: '../includes/image/bike/bike3.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 9000, type: 'Gravel', menuId: 'falkenjagd1' },
     { id: 4, image: '../includes/image/bike/bike4.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 8000, type: 'Racing', menuId: 'falkenjagd1' },
     { id: 5, image: '../includes/image/bike/bike1.svg', title: 'Aristos T', slogan: 'A titan for everyone!', price: 7500, type: 'Racing', menuId: 'falkenjagd3' },
@@ -12,7 +12,8 @@ function filterBikesByPriceAndTypes() {
     { id: 10, image: '../includes/image/bike/bike2.svg', title: 'Aristos GT', slogan: 'For gravel and bikepacking', price: 6000, type: 'Gravel', menuId: 'falkenjagd2' },
     { id: 11, image: '../includes/image/bike/bike3.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 5400, type: 'Gravel', menuId: 'falkenjagd1' },
     { id: 12, image: '../includes/image/bike/bike4.svg', title: 'Aristos GTR', slogan: 'One wheel - infinite possibilities', price: 4700, type: 'Gravel', menuId: 'falkenjagd1' },
-]
+  ]
+
   const rangeMinElem = document.getElementById("range-min");
   const rangeMaxElem = document.getElementById("range-max");
   const menuText = document.getElementById('menu-text');
@@ -32,6 +33,7 @@ function displayBikes() {
   const titan = document.getElementById("titan");
   const bsa = document.getElementById("bsa");
   const zoll = document.getElementById("zoll");
+  const zolla = document.getElementById("zolla");
   const tools = document.getElementById("tools");
   const customSlider = document.getElementById('custom-slider');
   const filteredBikes = filterBikesByPriceAndTypes();
@@ -41,12 +43,13 @@ function displayBikes() {
   titan.innerHTML = ""
   bsa.innerHTML = "";
   zoll.innerHTML = "";
+  zolla.innerHTML = "";
   tools.innerHTML = "";
   filteredBikes.forEach((bike, index) => {
-      const item = document.createElement("div");
-      item.className = "bike-card";
-      item.id = `bike-card${bike.id}`;
-      item.innerHTML = `
+    const item = document.createElement("div");
+    item.className = "bike-card";
+    item.id = `bike-card${bike.id}`;
+    item.innerHTML = `
           <div class="bike-header">
               <img src="../includes/image/logo.png" alt="Falkenjagd Logo" class="logo">
               <span class="brand-name">Falkenjagd</span>
@@ -71,32 +74,32 @@ function displayBikes() {
               <p class="slogan"><em>${bike.slogan}</em></p>
           </div>
     `;
-      bikeCrad.appendChild(item);
+    bikeCrad.appendChild(item);
   });
   filteredBikes.forEach((bike) => {
-      const item = document.createElement("div");
-      item.className = "price-box";
-      item.id = `price-box${bike.id}`
-      item.innerHTML = `
+    const item = document.createElement("div");
+    item.className = "price-box";
+    item.id = `price-box${bike.id}`
+    item.innerHTML = `
           <div class="price-rev">${bike.price}€</div>
           <button class="explore-btn">Explore</button>
           <div class="divider"></div>
-          <div class="price">1.890,00€</div>
-          <button class="explore-btn-2">Explore</button>
-          <div class="divider"></div>
+          <div class="price" id="framekit2">1.890,00€</div>
+          <button class="explore-btn-2" id="framekit3">Explore</button>
+          <div class="divider" id="framekit4"></div>
           <ul class="features">
               <li><div><div class="positive"></div></div><p>Excellent price-performance ratio</p></li>
               <li><div><div class="positive"></div></div><p>Minimalistically displays everything that is required</p></li>
               <li><div><div class="negative"></div></div><p>No complete cable integration possible</p></li>
           </ul>
     `;
-      priceBox.appendChild(item);
+    priceBox.appendChild(item);
   });
   filteredBikes.forEach((bike) => {
-      const item = document.createElement("div");
-      item.className = "card";
-      item.id = `bikeframe${bike.id}`;
-      item.innerHTML = `
+    const item = document.createElement("div");
+    item.className = "card";
+    item.id = `bikeframe${bike.id}`;
+    item.innerHTML = `
           <div class="icon">
               <img src="../includes/image/bike-frame-icon.svg" alt="Bike Frame" class="bike-frame" id="bike-frame${bike.id}" />
               <img src="../includes/image/scale.svg" alt="scale" class="scale" id="scale${bike.id}" onclick="modalShow(${bike.id})"/>
@@ -124,31 +127,41 @@ function displayBikes() {
           <div class="divider"></div>
           <div class="label">Standard</div>
           <div class="divider"></div>
+          <div class="label" style="display: none;" id="aerodynamics1">Standard</div>
+          <div class="divider" style="display: none;" id="aerodynamics2"></div>
+          <div class="label" style="display: none;" id="stiffness1">Standard</div>
+          <div class="divider" style="display: none;" id="stiffness2"></div>
+          <div class="label" style="display: none;" id="vario1">Standard</div>
+          <div class="divider" style="display: none;" id="vario2"></div>
           <div class="label">Partially integrated from down tube</div>
     `;
-      titan.appendChild(item);
+    titan.appendChild(item);
   });
   filteredBikes.forEach((bike) => {
-      const item = document.createElement("div");
-      item.className = "card"
-      item.id = `bsa${bike.id}`;
-      item.innerHTML = `
+    const item = document.createElement("div");
+    item.className = "card"
+    item.id = `bsa${bike.id}`;
+    item.innerHTML = `
           <div class="bsa">
               <img src="../includes/image/bsa.svg" alt="BSA" />
           </div>
           <div class="first-label">BSA</div>
           <div class="divider"></div>
           <div class="label">Chain , single and double</div>
-          <div class="divider"></div>
-          <div class="label">10 - 48</div>
+          <div class="divider" id="translation2"></div>
+          <div class="label" id="translation3">10 - 48</div>
+          <div class="divider" id="brake3" style="display: none;"></div>
+          <div class="label" id="brake2" style="display: none;">10 - 48</div>
+          <div class="divider" id="breakdisc3" style="display: none;"></div>
+          <div class="label" id="breakdisc2" style="display: none;">10 - 48</div>
     `;
-      bsa.appendChild(item);
+    bsa.appendChild(item);
   });
   filteredBikes.forEach((bike) => {
-      const item = document.createElement("div");
-      item.className = "card";
-      item.id = `zoll${bike.id}`;
-      item.innerHTML = `
+    const item = document.createElement("div");
+    item.className = "card";
+    item.id = `zolla${bike.id}`;
+    item.innerHTML = `
           <div class="zoll">
               <img src="../includes/image/zoll.svg" alt="zoll" />
           </div>
@@ -159,44 +172,71 @@ function displayBikes() {
           <div class="label">45mm</div>
           <div class="divider"></div>
           <div class="label">145Kg</div>
+          <div class="divider"></div>
+          <div class="label">--</div>
+          <div class="divider"></div>
+          <div class="label">45mm</div>
+          <div class="divider"></div>
+          <div class="label">145Kg</div>
     `;
-      zoll.appendChild(item);
+    zolla.appendChild(item);
   });
   filteredBikes.forEach((bike) => {
-      const item = document.createElement("div");
-      item.className = "card";
-      item.id = `tools${bike.id}`;
-      item.innerHTML = `
+    const item = document.createElement("div");
+    item.className = "card";
+    item.id = `zoll${bike.id}`;
+    item.innerHTML = `
+          <div class="zoll">
+              <img src="../includes/image/zoll.svg" alt="zoll" />
+          </div>
+          <div class="zoll-first-label" id="wheel2">28 Zoll</div>
+          <div class="divider" id="wheel3"></div>
+          <div class="label" id="tire2">--</div>
+          <div class="divider" id="tire3"></div>
+          <div class="label" id="tire4">45mm</div>
+          <div class="divider"></div>
+          <div class="label">145Kg</div>
+    `;
+    zoll.appendChild(item);
+  });
+  filteredBikes.forEach((bike) => {
+    const item = document.createElement("div");
+    item.className = "card";
+    item.id = `tools${bike.id}`;
+    item.innerHTML = `
           <div class="tools">
               <img src="../includes/image/tools.svg" alt="tools"/>
           </div>
-          <img src="../includes/image/check.svg" class="first-cyan"/>
-          <div class="divider"></div>
-          <img src="../includes/image/fail.svg" class="cyan"/>
-          <div class="divider"></div>
-          <img src="../includes/image/check.svg" class="cyan"/>
-          <div class="divider"></div>            
+          <img src="../includes/image/check.svg" class="first-cyan" id="luggage2"/>
+          <div class="divider" id="luggage3"></div>
+          <img src="../includes/image/check.svg" id="e-motor2" style="display: none;" class="cyan"/>
+          <div class="divider" id="e-motor3" style="display: none;"></div>
+          <img src="../includes/image/fail.svg" class="cyan" id="lowrider2"/>
+          <div class="divider" id="lowrider3"></div>
+          <img src="../includes/image/check.svg" class="cyan" id="mudguard2"/>
+          <div class="divider" id="mudguard3"></div>            
           <div class="label">3x</div>
-          <div class="divider"></div>
-          <img src="../includes/image/check.svg" class="cyan"/>
-          <div class="divider"></div>
-          <img src="../includes/image/fail.svg" class="cyan"/>
+          <div class="divider"></div>           
+          <div class="label" id="integrated1" style="display: none;">3x</div>
+          <img src="../includes/image/check.svg" class="cyan" id="light2"/>
+          <div class="divider" id="light3"></div>
+          <img src="../includes/image/fail.svg" class="cyan" id="stand1"/>
     `;
-      tools.appendChild(item);
+    tools.appendChild(item);
   });
   bikeCrad.addEventListener("scroll", () => {
-      priceBox.scrollLeft = bikeCrad.scrollLeft;
-      titan.scrollLeft = bikeCrad.scrollLeft;
-      bsa.scrollLeft = bikeCrad.scrollLeft;
-      zoll.scrollLeft = bikeCrad.scrollLeft;
-      tools.scrollLeft = bikeCrad.scrollLeft;
+    priceBox.scrollLeft = bikeCrad.scrollLeft;
+    titan.scrollLeft = bikeCrad.scrollLeft;
+    bsa.scrollLeft = bikeCrad.scrollLeft;
+    zoll.scrollLeft = bikeCrad.scrollLeft;
+    tools.scrollLeft = bikeCrad.scrollLeft;
   });
   const a = window.innerWidth > 768 ? 0.8544 : 0.8;
-  if(bikeCrad.scrollWidth < window.innerWidth * a) {
-      customSlider.style.display = 'none';
+  if (bikeCrad.scrollWidth < window.innerWidth * a) {
+    customSlider.style.display = 'none';
   }
   else {
-      customSlider.style.display = 'block';
+    customSlider.style.display = 'block';
   }
 };
 
@@ -298,8 +338,8 @@ function modalhidden() {
 
 function modalClick(e) {
   const modal = document.getElementById('imgModal');
-  if(e.target === modal) {
-      modal.style.display = 'none';
+  if (e.target === modal) {
+    modal.style.display = 'none';
   }
 }
 
@@ -471,43 +511,46 @@ function toggleBsa() {
 function toggleZoll() {
   toggleSection("zollContent", "zoll", "zollarrow");
 }
+function toggleZolla() {
+  toggleSection("zollContenta", "zolla", "zollarrowa");
+}
 function toggleTools() {
   toggleSection("toolsContent", "tools", "toolsarrow");
 }
 
 function toggleBikeMenu() {
   const menuButtons = [
-      { id: 1, text: "Gravel", image: "../includes/image/header/gravel.png" },
-      { id: 2, text: "Racing", image: "../includes/image/header/racing.jpg" },
-      { id: 3, text: "Touring", image: "../includes/image/header/touring.jpg" },
-      { id: 4, text: "E-bike", image: "../includes/image/header/ebike.jpg" },
-      { id: 5, text: "Mountainbike", image: "../includes/image/header/mountainbike.jpg" },
-      { id: 6, text: "Trekking", image: "../includes/image/header/trekking.jpg" },
+    { id: 1, text: "Gravel", image: "../includes/image/header/gravel.png" },
+    { id: 2, text: "Racing", image: "../includes/image/header/racing.jpg" },
+    { id: 3, text: "Touring", image: "../includes/image/header/touring.jpg" },
+    { id: 4, text: "E-bike", image: "../includes/image/header/ebike.jpg" },
+    { id: 5, text: "Mountainbike", image: "../includes/image/header/mountainbike.jpg" },
+    { id: 6, text: "Trekking", image: "../includes/image/header/trekking.jpg" },
   ];
   const bikeMenu = document.getElementById("bike-menu");
-  const menuText = document.getElementById("menu-text");    
+  const menuText = document.getElementById("menu-text");
   const dropDown = document.getElementById("dropdown");
   if (bikeMenu.innerHTML === "") {
-      menuButtons.forEach((button) => {
-          if (menuText.textContent.trim() !== button.text) {
-              const item = document.createElement("div");
-              item.className = "bike-item";
-              item.style.backgroundImage = `url(${button.image})`;
+    menuButtons.forEach((button) => {
+      if (menuText.textContent.trim() !== button.text) {
+        const item = document.createElement("div");
+        item.className = "bike-item";
+        item.style.backgroundImage = `url(${button.image})`;
 
-              item.innerHTML = `
+        item.innerHTML = `
                   <div class="menu-gradient">
                       <span class="menu-label">${button.text}</span>
                       <span class="menu-arrow">›</span>
                   </div>
               `;
 
-              // Attach event listener properly
-              item.addEventListener("click", () => MenuItemClick(button.text, button.image));
-              bikeMenu.appendChild(item);
-          }
-      });
+        // Attach event listener properly
+        item.addEventListener("click", () => MenuItemClick(button.text, button.image));
+        bikeMenu.appendChild(item);
+      }
+    });
   } else {
-      bikeMenu.innerHTML = "";
+    bikeMenu.innerHTML = "";
   }
 
   // Proper rotation toggle using transform
@@ -587,7 +630,7 @@ function fillSlider(min, max) {
 
   sliderTrack.style.left = `${percentMin}%`;
   sliderTrack.style.width = `${percentMax - percentMin}%`;
-} 
+}
 
 function initBike() {
   const slider = document.getElementById('bike-card');
@@ -598,43 +641,43 @@ function initBike() {
 
   // Update range when scrolling
   slider.addEventListener('scroll', () => {
-      const maxScroll = slider.scrollWidth - slider.clientWidth;
-      const percent = (slider.scrollLeft / maxScroll) * 100;
-      range.value = percent;
+    const maxScroll = slider.scrollWidth - slider.clientWidth;
+    const percent = (slider.scrollLeft / maxScroll) * 100;
+    range.value = percent;
   });
 
   // Scroll slider when dragging range input
   range.addEventListener('input', () => {
-      const maxScroll = slider.scrollWidth - slider.clientWidth;
-      const newScrollLeft = (range.value / 100) * maxScroll;
-      slider.scrollLeft = newScrollLeft;
+    const maxScroll = slider.scrollWidth - slider.clientWidth;
+    const newScrollLeft = (range.value / 100) * maxScroll;
+    slider.scrollLeft = newScrollLeft;
   });
 
   range1.addEventListener('input', () => {
-      const a = window.innerWidth > 768 ? 0.8544 : 0.8;
-      if(slider.scrollWidth < window.innerWidth * a) {
-          customSlider.style.display = 'none';
-      }
-      else {
-          customSlider.style.display = 'block';
-      }
+    const a = window.innerWidth > 768 ? 0.8544 : 0.8;
+    if (slider.scrollWidth < window.innerWidth * a) {
+      customSlider.style.display = 'none';
+    }
+    else {
+      customSlider.style.display = 'block';
+    }
   });
 
   range2.addEventListener('input', () => {
-      const a = window.innerWidth > 768 ? 0.8544 : 0.8;
-      if(slider.scrollWidth < window.innerWidth * a) {
-          customSlider.style.display = 'none';
-      }
-      else {
-          customSlider.style.display = 'block';
-      }
+    const a = window.innerWidth > 768 ? 0.8544 : 0.8;
+    if (slider.scrollWidth < window.innerWidth * a) {
+      customSlider.style.display = 'none';
+    }
+    else {
+      customSlider.style.display = 'block';
+    }
   });
   const a = window.innerWidth > 768 ? 0.8544 : 0.8;
-  if(slider.scrollWidth < window.innerWidth * a) {
-      customSlider.style.display = 'none';
+  if (slider.scrollWidth < window.innerWidth * a) {
+    customSlider.style.display = 'none';
   }
   else {
-      customSlider.style.display = 'block';
+    customSlider.style.display = 'block';
   }
 
   const rangeMin = document.getElementById("range-min");
@@ -644,13 +687,13 @@ function initBike() {
 
   document.getElementById("bike-menu").style.display = "flex";
   document.getElementById("dropdown").style.transform = "rotate(0deg)";
-  document.getElementById("menu-left").style.display = "none";  
+  document.getElementById("menu-left").style.display = "none";
 
   updateSlider();
   displayBikes();
 }
 
-window.addEventListener('load', () => {  
+window.addEventListener('load', () => {
   initBike();
 })
 
@@ -663,13 +706,188 @@ document.addEventListener('click', (e) => {
   const bikeMenu = document.getElementById('bike-menu');
   const dropdown = document.getElementById('dropdown');
   const dropdown1 = document.getElementById('dropdown1');
-  if(!e.target.closest('.header-left')) {
-      menuLeft.style.display = 'none';
-      dropdown1.style.transform = "rotate(0deg)"
-  }   
-
-  if(!e.target.closest('.header-menu')) {
-      bikeMenu.innerHTML = "";    
-      dropdown.style.transform = "rotate(0deg)"   
+  if (!e.target.closest('.header-left')) {
+    menuLeft.style.display = 'none';
+    dropdown1.style.transform = "rotate(0deg)"
   }
+
+  if (!e.target.closest('.header-menu')) {
+    bikeMenu.innerHTML = "";
+    dropdown.style.transform = "rotate(0deg)"
+  }
+  const menuText = document.getElementById("menu-text").textContent.trim();
+
+  if (menuText === "Mountainbike") {
+    document.getElementById("fork").textContent = "Suspension Fork";
+    document.getElementById("inner").textContent = "Bottom bracket standard";
+    document.getElementById("type").textContent = "Gear type";
+  } else {
+    document.getElementById("fork").textContent = "Fork";
+    document.getElementById("inner").textContent = "Inner bearing type";
+    document.getElementById("type").textContent = "Circuit type";
+  }
+
+  const getById = (id) => document.getElementById(id);
+  const toggleElements = (elements, display) => {
+    elements.forEach(el => {
+      if (el) el.style.display = display;
+    });
+  };
+
+  const elementGroups = {
+    framekitEls: ["framekit", "framekit1", "framekit2", "framekit3", "framekit4"],
+    lowriderEls: ["lowrider", "lowrider1", "lowrider2", "lowrider3"],
+    zollaEls: ["zolla1", "zolla2"],
+    varioEls: ["vario", "vario1", "vario2", "vario3"],
+    breakdiscEls: ["breakdisc", "breakdisc1", "breakdisc2", "breakdisc3"],
+    brakeEls: ["brake", "brake1", "brake2", "brake3"],
+    emotorEls: ["e-motor", "e-motor1", "e-motor2", "e-motor3"],
+    wheelEls: ["wheel", "wheel1", "wheel2", "wheel3"],
+    tireEls: ["tire", "tire1", "tire2", "tire3"],
+    translationEls: ["translation", "translation1", "translation2", "translation3"],
+    aeroEls: ["aerodynamics", "aerodynamics1", "aerodynamics2", "aerodynamics3"],
+    stiffnessEls: ["stiffness", "stiffness1", "stiffness2", "stiffness3"],
+    integratedEls: ["integrated", "integrated1"],
+    luggageEls: ["luggage", "luggage1", "luggage2", "luggage3"],
+    mudguardEls: ["mudguard", "mudguard1", "mudguard2", "mudguard3"],
+    lightEls: ["light", "light1", "light2", "light3"],
+    standEls: ["stand", "stand1"]
+  };
+
+  for (let key in elementGroups) {
+    elementGroups[key] = elementGroups[key].map(getById);
+  }  
+
+  const {
+    framekitEls, lowriderEls, zollaEls, varioEls, breakdiscEls,
+    brakeEls, emotorEls, wheelEls, tireEls, translationEls,
+    aeroEls, stiffnessEls, integratedEls, luggageEls,
+    mudguardEls, lightEls, standEls
+  } = elementGroups;
+  // 💡 Example switch-case
+  switch (menuText) {
+    case "Gravel":
+      toggleElements(framekitEls, "");
+      toggleElements(lowriderEls, "");
+      toggleElements(varioEls, "none");
+      toggleElements(brakeEls, "none");
+      toggleElements(breakdiscEls, "none");
+      toggleElements(zollaEls, "none");
+      toggleElements(emotorEls, "none");
+      toggleElements(wheelEls, "");
+      toggleElements(tireEls, "");
+      toggleElements(translationEls, "");
+      toggleElements(aeroEls, "none");
+      toggleElements(stiffnessEls, "none");
+      toggleElements(integratedEls, "none");
+      toggleElements(luggageEls, "");
+      toggleElements(mudguardEls, "");
+      toggleElements(lightEls, "");
+      toggleElements(standEls, "");
+      break;
+
+    case "Trekking":
+      toggleElements(framekitEls, "");
+      toggleElements(aeroEls, "none");
+      toggleElements(stiffnessEls, "none");
+      toggleElements(varioEls, "none");
+      toggleElements(translationEls, "none");
+      toggleElements(brakeEls, "none");
+      toggleElements(breakdiscEls, "");
+      toggleElements(zollaEls, "none");
+      toggleElements(emotorEls, "none");
+      toggleElements(wheelEls, "");
+      toggleElements(tireEls, "");
+      toggleElements(integratedEls, "none");
+      toggleElements(luggageEls, "");
+      toggleElements(lowriderEls, "");
+      toggleElements(mudguardEls, "");
+      toggleElements(lightEls, "");
+      toggleElements(standEls, "");
+      break;
+
+    case "Racing":
+      toggleElements(framekitEls, "");
+      toggleElements(aeroEls, "");
+      toggleElements(varioEls, "none");
+      toggleElements(stiffnessEls, "");
+      toggleElements(translationEls, "");
+      toggleElements(brakeEls, "");
+      toggleElements(breakdiscEls, "");
+      toggleElements(zollaEls, "none");
+      toggleElements(emotorEls, "none");
+      toggleElements(wheelEls, "none");
+      toggleElements(tireEls, "none");
+      toggleElements(integratedEls, "");
+      toggleElements(luggageEls, "none");
+      toggleElements(lowriderEls, "none");
+      toggleElements(mudguardEls, "none");
+      toggleElements(lightEls, "none");
+      toggleElements(standEls, "none");
+      break;
+
+    case "Mountainbike":
+      toggleElements(framekitEls, "");
+      toggleElements(varioEls, "");
+      toggleElements(translationEls, "none");
+      toggleElements(brakeEls, "none");
+      toggleElements(breakdiscEls, "");
+      toggleElements(zollaEls, "none");
+      toggleElements(emotorEls, "none");
+      toggleElements(wheelEls, "");
+      toggleElements(tireEls, "");
+      toggleElements(aeroEls, "none");
+      toggleElements(stiffnessEls, "none");
+      toggleElements(integratedEls, "none");
+      toggleElements(luggageEls, "");
+      toggleElements(lowriderEls, "none");
+      toggleElements(mudguardEls, "");
+      toggleElements(lightEls, "");
+      toggleElements(standEls, "");
+      break;
+
+    case "E-bike":
+      toggleElements(framekitEls, "none");
+      toggleElements(lowriderEls, "");
+      toggleElements(varioEls, "none");
+      toggleElements(brakeEls, "none");
+      toggleElements(breakdiscEls, "");
+      toggleElements(zollaEls, "");
+      toggleElements(emotorEls, "none");
+      toggleElements(wheelEls, "");
+      toggleElements(tireEls, "");
+      toggleElements(translationEls, "");
+      toggleElements(aeroEls, "none");
+      toggleElements(stiffnessEls, "none");
+      toggleElements(integratedEls, "none");
+      toggleElements(luggageEls, "");
+      toggleElements(mudguardEls, "");
+      toggleElements(lightEls, "");
+      toggleElements(standEls, "");
+      break;
+
+    case "Touring":
+      toggleElements(framekitEls, "");
+      toggleElements(lowriderEls, "");
+      toggleElements(varioEls, "none");
+      toggleElements(brakeEls, "none");
+      toggleElements(breakdiscEls, "");
+      toggleElements(zollaEls, "none");
+      toggleElements(emotorEls, "");
+      toggleElements(wheelEls, "");
+      toggleElements(tireEls, "");
+      toggleElements(translationEls, "");
+      toggleElements(aeroEls, "none");
+      toggleElements(stiffnessEls, "none");
+      toggleElements(integratedEls, "none");
+      toggleElements(luggageEls, "");
+      toggleElements(mudguardEls, "");
+      toggleElements(lightEls, "");
+      toggleElements(standEls, "");
+      break;
+
+    default:
+  }
+
 })
+

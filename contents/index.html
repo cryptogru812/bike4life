@@ -72,8 +72,8 @@
         <div class="accordion-body" id="accordionContent">
           <div class="accordion-item bike">Price Bike</div>
           <hr />
-          <div class="accordion-item framekit">Price Framekit</div>
-          <hr />
+          <div class="accordion-item framekit" id="framekit">Price Framekit</div>
+          <hr id="framekit1" />
           <div class="accordion-item contra">Pro and Contra</div>
         </div>
       </div>
@@ -97,7 +97,7 @@
           <hr />
           <div class="accordion-item">Pipe set</div>
           <hr />
-          <div class="accordion-item fork">Fork</div>
+          <div class="accordion-item fork" id="fork">Fork</div>
           <hr />
           <div class="accordion-item">Weight bike</div>
           <hr />
@@ -107,6 +107,12 @@
           <hr />
           <div class="accordion-item">Dropout</div>
           <hr />
+          <div class="accordion-item" style="display: none;" id="aerodynamics">Aerodynamics</div>
+          <hr style="display: none;" id="aerodynamics3" />
+          <div class="accordion-item" style="display: none;" id="stiffness">Stiffness</div>
+          <hr style="display: none;" id="stiffness3" />
+          <div class="accordion-item" style="display: none;" id="vario">Vario post compatibility</div>
+          <hr style="display: none;" id="vario3" />
           <div class="accordion-item">Cable routing </div>
         </div>
       </div>
@@ -139,11 +145,15 @@
           <img id="bsaarrow" class="arrow" src="../includes/image/down.svg" />
         </div>
         <div class="accordion-body" id="bsaContent">
-          <div class="accordion-item">Inner bearing type</div>
+          <div class="accordion-item" id="inner">Inner bearing type</div>
           <hr />
-          <div class="accordion-item circuit">Circuit type</div>
-          <hr />
-          <div class="accordion-item">Translation options</div>
+          <div class="accordion-item circuit" id="type">Circuit type</div>
+          <hr id="translation1" />
+          <div class="accordion-item" id="translation">Translation options</div>
+          <hr id="brake1" style="display: none;" />
+          <div class="accordion-item" id="brake" style="display: none;">Brake type</div>
+          <hr id="breakdisc1" style="display: none;" />
+          <div class="accordion-item" id="breakdisc" style="display: none;">Breakdisc Size</div>
         </div>
       </div>
       <div class="right">
@@ -153,6 +163,35 @@
     <div class="line">
       <hr />
     </div>
+    <div class="element" id="zolla1" style="display: none;">
+      <div class="left accordion">
+        <div class="accordion-header" onclick="toggleZolla()">
+          <span>Motor & Akku</span>
+          <img id="zollarrowa" class="arrow" src="../includes/image/down.svg" />
+        </div>
+        <div class="accordion-body" id="zollContenta">
+          <div class="accordion-item">Motor manufacturer</div>
+          <hr />
+          <div class="accordion-item">Motor type</div>
+          <hr />
+          <div class="accordion-item">Motor power</div>
+          <hr />
+          <div class="accordion-item">Battery capacity</div>
+          <hr />
+          <div class="accordion-item">Battery position</div>
+          <hr />
+          <div class="accordion-item">Range</div>
+          <hr />
+          <div class="accordion-item">Model name Motor</div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="bike-element" id="zolla"></div>
+      </div>
+    </div>    
+    <div class="line" id="zolla2" style="display: none;">
+      <hr />
+    </div>
     <div class="element">
       <div class="left accordion">
         <div class="accordion-header" onclick="toggleZoll()">
@@ -160,10 +199,10 @@
           <img id="zollarrow" class="arrow" src="../includes/image/down.svg" />
         </div>
         <div class="accordion-body" id="zollContent">
-          <div class="accordion-item">Wheel size</div>
-          <hr />
-          <div class="accordion-item">Tire width 27.5” (without mudguards)</div>
-          <hr />
+          <div class="accordion-item" id="wheel">Wheel size</div>
+          <hr id="wheel1" />
+          <div class="accordion-item" id="tire">Tire width 27.5” (without mudguards)</div>
+          <hr id="tire1" />
           <div class="accordion-item">Tire width 28” (without mudguards)</div>
           <hr />
           <div class="accordion-item">Maximum total load</div>
@@ -172,7 +211,7 @@
       <div class="right">
         <div class="bike-element" id="zoll"></div>
       </div>
-    </div>
+    </div>    
     <div class="line">
       <hr />
     </div>
@@ -183,17 +222,20 @@
           <img id="toolsarrow" class="arrow" src="../includes/image/down.svg" />
         </div>
         <div class="accordion-body" id="toolsContent">
-          <div class="accordion-item">Luggage rack mounting</div>
-          <hr />
-          <div class="accordion-item">Lowrider mounting</div>
-          <hr />
-          <div class="accordion-item">Mudguard mounting</div>
-          <hr />
+          <div class="accordion-item" id="e-motor" style="display: none;" >E-motor retrofittable</div>
+          <hr id="e-motor1" style="display: none;" />
+          <div class="accordion-item" id="luggage">Luggage rack mounting</div>
+          <hr id="luggage1" />
+          <div class="accordion-item" id="lowrider">Lowrider mounting</div>
+          <hr  id="lowrider1" />
+          <div class="accordion-item" id="mudguard">Mudguard mounting</div>
+          <hr id="mudguard1" />
           <div class="accordion-item">Bottle holder eyelets</div>
           <hr />
-          <div class="accordion-item">Light mounting</div>
-          <hr />
-          <div class="accordion-item">Stand mounting</div>
+          <div class="accordion-item" id="integrated" style="display: none;">Integrated aero cockpit</div>
+          <div class="accordion-item" id="light">Light mounting</div>
+          <hr id="light1" />
+          <div class="accordion-item" id="stand">Stand mounting</div>
         </div>
       </div>
       <div class="right">
