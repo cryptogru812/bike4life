@@ -569,7 +569,9 @@ function toggleMenuLeft() {
 
 function selectMenuLeftId(div) {
   const menuLeft = document.getElementById('menu-left');
+  const headerLeft = document.getElementById('headerleft');
   menuLeft.dataset.menuLeftId = div.dataset.menuLeftId;
+  headerLeft.src = div.src;
 }
 
 function MenuItemClick(text, image) {
